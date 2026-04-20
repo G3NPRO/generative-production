@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-04-20">
+
+<title>Generative Production</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3ab3c25880d787e734ee9f73ca06a7d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Generative Production</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./foundations/"> 
+<span class="menu-text">Foundations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./generative-media/"> 
+<span class="menu-text">Generative Media</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./vibe-coding/"> 
+<span class="menu-text">Vibe-coding</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./practical/"> 
+<span class="menu-text">Practical</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./decks/"> <i class="bi bi-easel" role="img">
+</i> 
+<span class="menu-text">Present</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-download" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-download" role="img">
+</i> 
+ <span class="menu-text">Download</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-download">    
+        <li>
+    <a class="dropdown-item" href="./study-guide.pdf">
+ <span class="dropdown-text">PDF (full study guide)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./study-guide.epub">
+ <span class="dropdown-text">EPUB (full study guide)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./study-guide.html">
+ <span class="dropdown-text">Single-page HTML</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Generative Production</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-is-generative-production" id="toc-what-is-generative-production" class="nav-link" data-scroll-target="#what-is-generative-production">What is Generative Production?</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas" id="toc-key-ideas" class="nav-link" data-scroll-target="#key-ideas">Key ideas</a></li>
+  <li><a href="#common-mistakes" id="toc-common-mistakes" class="nav-link" data-scroll-target="#common-mistakes">Common mistakes</a></li>
+  <li><a href="#related-pages" id="toc-related-pages" class="nav-link" data-scroll-target="#related-pages">Related pages</a></li>
+  </ul></li>
+  <li><a href="#prompting-principles" id="toc-prompting-principles" class="nav-link" data-scroll-target="#prompting-principles">Prompting Principles</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas-1" id="toc-key-ideas-1" class="nav-link" data-scroll-target="#key-ideas-1">Key ideas</a></li>
+  <li><a href="#common-mistakes-1" id="toc-common-mistakes-1" class="nav-link" data-scroll-target="#common-mistakes-1">Common mistakes</a></li>
+  <li><a href="#try-this" id="toc-try-this" class="nav-link" data-scroll-target="#try-this">Try this</a></li>
+  <li><a href="#related-pages-1" id="toc-related-pages-1" class="nav-link" data-scroll-target="#related-pages-1">Related pages</a></li>
+  </ul></li>
+  <li><a href="#iteration-and-selection" id="toc-iteration-and-selection" class="nav-link" data-scroll-target="#iteration-and-selection">Iteration and Selection</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas-2" id="toc-key-ideas-2" class="nav-link" data-scroll-target="#key-ideas-2">Key ideas</a></li>
+  <li><a href="#common-mistakes-2" id="toc-common-mistakes-2" class="nav-link" data-scroll-target="#common-mistakes-2">Common mistakes</a></li>
+  <li><a href="#related-pages-2" id="toc-related-pages-2" class="nav-link" data-scroll-target="#related-pages-2">Related pages</a></li>
+  </ul></li>
+  <li><a href="#tracking-your-work" id="toc-tracking-your-work" class="nav-link" data-scroll-target="#tracking-your-work">Tracking Your Work</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas-3" id="toc-key-ideas-3" class="nav-link" data-scroll-target="#key-ideas-3">Key ideas</a></li>
+  <li><a href="#common-mistakes-3" id="toc-common-mistakes-3" class="nav-link" data-scroll-target="#common-mistakes-3">Common mistakes</a></li>
+  <li><a href="#related-pages-3" id="toc-related-pages-3" class="nav-link" data-scroll-target="#related-pages-3">Related pages</a></li>
+  </ul></li>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a>
+  <ul class="collapse">
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents">Contents</a></li>
+  </ul></li>
+  <li><a href="#model-basics" id="toc-model-basics" class="nav-link" data-scroll-target="#model-basics">Model Basics</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics" id="toc-planned-topics" class="nav-link" data-scroll-target="#planned-topics">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#seeds" id="toc-seeds" class="nav-link" data-scroll-target="#seeds">Seeds</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas-4" id="toc-key-ideas-4" class="nav-link" data-scroll-target="#key-ideas-4">Key ideas</a></li>
+  <li><a href="#common-mistakes-4" id="toc-common-mistakes-4" class="nav-link" data-scroll-target="#common-mistakes-4">Common mistakes</a></li>
+  <li><a href="#related-pages-4" id="toc-related-pages-4" class="nav-link" data-scroll-target="#related-pages-4">Related pages</a></li>
+  </ul></li>
+  <li><a href="#modalities" id="toc-modalities" class="nav-link" data-scroll-target="#modalities">Modalities</a>
+  <ul class="collapse">
+  <li><a href="#planned-pages" id="toc-planned-pages" class="nav-link" data-scroll-target="#planned-pages">Planned pages</a></li>
+  </ul></li>
+  <li><a href="#tools-and-vendors" id="toc-tools-and-vendors" class="nav-link" data-scroll-target="#tools-and-vendors">Tools and Vendors</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-1" id="toc-planned-topics-1" class="nav-link" data-scroll-target="#planned-topics-1">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#craft" id="toc-craft" class="nav-link" data-scroll-target="#craft">Craft</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-2" id="toc-planned-topics-2" class="nav-link" data-scroll-target="#planned-topics-2">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-crosswalk" id="toc-lifecycle-crosswalk" class="nav-link" data-scroll-target="#lifecycle-crosswalk">Lifecycle Crosswalk</a>
+  <ul class="collapse">
+  <li><a href="#planned-structure" id="toc-planned-structure" class="nav-link" data-scroll-target="#planned-structure">Planned structure</a></li>
+  </ul></li>
+  <li><a href="#foundations-vibe-coding" id="toc-foundations-vibe-coding" class="nav-link" data-scroll-target="#foundations-vibe-coding">Foundations (Vibe-coding)</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-3" id="toc-planned-topics-3" class="nav-link" data-scroll-target="#planned-topics-3">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#setup-and-safety" id="toc-setup-and-safety" class="nav-link" data-scroll-target="#setup-and-safety">Setup and Safety</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-4" id="toc-planned-topics-4" class="nav-link" data-scroll-target="#planned-topics-4">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#managing-credentials" id="toc-managing-credentials" class="nav-link" data-scroll-target="#managing-credentials">Managing Credentials</a>
+  <ul class="collapse">
+  <li><a href="#key-ideas-5" id="toc-key-ideas-5" class="nav-link" data-scroll-target="#key-ideas-5">Key ideas</a></li>
+  <li><a href="#common-mistakes-5" id="toc-common-mistakes-5" class="nav-link" data-scroll-target="#common-mistakes-5">Common mistakes</a></li>
+  <li><a href="#try-this-1" id="toc-try-this-1" class="nav-link" data-scroll-target="#try-this-1">Try this</a></li>
+  <li><a href="#related-pages-5" id="toc-related-pages-5" class="nav-link" data-scroll-target="#related-pages-5">Related pages</a></li>
+  </ul></li>
+  <li><a href="#working-with-models" id="toc-working-with-models" class="nav-link" data-scroll-target="#working-with-models">Working with Models</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-5" id="toc-planned-topics-5" class="nav-link" data-scroll-target="#planned-topics-5">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#building-software" id="toc-building-software" class="nav-link" data-scroll-target="#building-software">Building Software</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-6" id="toc-planned-topics-6" class="nav-link" data-scroll-target="#planned-topics-6">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#common-traps" id="toc-common-traps" class="nav-link" data-scroll-target="#common-traps">Common Traps</a>
+  <ul class="collapse">
+  <li><a href="#planned-pages-1" id="toc-planned-pages-1" class="nav-link" data-scroll-target="#planned-pages-1">Planned pages</a></li>
+  </ul></li>
+  <li><a href="#practical" id="toc-practical" class="nav-link" data-scroll-target="#practical">Practical</a>
+  <ul class="collapse">
+  <li><a href="#planned-topics-7" id="toc-planned-topics-7" class="nav-link" data-scroll-target="#planned-topics-7">Planned topics</a></li>
+  </ul></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">A</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">C</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">D</a></li>
+  <li><a href="#g" id="toc-g" class="nav-link" data-scroll-target="#g">G</a></li>
+  <li><a href="#i" id="toc-i" class="nav-link" data-scroll-target="#i">I</a></li>
+  <li><a href="#l" id="toc-l" class="nav-link" data-scroll-target="#l">L</a></li>
+  <li><a href="#p" id="toc-p" class="nav-link" data-scroll-target="#p">P</a></li>
+  <li><a href="#s" id="toc-s" class="nav-link" data-scroll-target="#s">S</a></li>
+  </ul></li>
+  <li><a href="#learning-sources" id="toc-learning-sources" class="nav-link" data-scroll-target="#learning-sources">Learning Sources</a>
+  <ul class="collapse">
+  <li><a href="#youtube" id="toc-youtube" class="nav-link" data-scroll-target="#youtube">YouTube</a></li>
+  <li><a href="#discord" id="toc-discord" class="nav-link" data-scroll-target="#discord">Discord</a></li>
+  <li><a href="#in-person" id="toc-in-person" class="nav-link" data-scroll-target="#in-person">In person</a></li>
+  <li><a href="#model-and-tool-directories" id="toc-model-and-tool-directories" class="nav-link" data-scroll-target="#model-and-tool-directories">Model and tool directories</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="study-guide.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="study-guide.epub"><i class="bi bi-file"></i>ePub</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Generative Production</h1>
+<p class="subtitle lead">A Study Guide for Filmmakers Learning Generative AI</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1 unnumbered">
+<h1 class="unnumbered">Introduction</h1>
+<p>This is a single-document version of the Generative Production curriculum — foundations, generative media, vibe-coding for filmmakers, and the practical matters that sit under both. It is assembled from the same markdown source that powers the website at <a href="https://generative-production.com">generative-production.com</a>. Read straight through for a complete pass, or jump to any section via the table of contents.</p>
+<p>A note on the reading order: this bundle is flat on purpose. Each chapter below is the same short explainer you would find on a topic page of the site, in the order a teacher would assign them. Internal cross-references use the site URLs, so some links will take you out of this file to the web version.</p>
+<hr>
+<p><em>Part I — Foundations. The umbrella claim: media generation and code generation are the same discipline. The following four chapters earn that claim.</em></p>
+</section>
+<section id="what-is-generative-production" class="level1">
+<h1>What is Generative Production?</h1>
+<p><strong>In one sentence:</strong> Generative Production is the discipline of making creative work — films, images, sound, and the code that assembles them — by collaborating with models that generate candidates from your prompts.</p>
+<p><strong>Why it matters for filmmakers:</strong> Generative tools are not a new kind of camera or a new kind of codec. They’re a new kind of collaborator, and the skills that make the collaboration work are the same across media and code. Treating them as one discipline keeps you from re-learning the same lessons in four different contexts.</p>
+<section id="key-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas">Key ideas</h2>
+<ul>
+<li><strong>Both pillars of this repo are Generative Production.</strong> Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.</li>
+<li><strong>The meta-skills are universal.</strong> Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you’re allowed to do with the result — these apply to every generative tool.</li>
+<li><strong>Outputs differ, workflows rhyme.</strong> A video model and a coding agent look nothing alike on the surface. But the rhythm of <em>try, read, refine, commit</em> is the same.</li>
+<li><strong>The collapsing middle.</strong> Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better.</li>
+</ul>
+</section>
+<section id="common-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes">Common mistakes</h2>
+<ul>
+<li>Treating media generation and code generation as unrelated hobbies. They reinforce each other.</li>
+<li>Assuming the skill is “getting the tool to work.” The skill is getting the <em>collaboration</em> to work — the tool is a starting point.</li>
+<li>Expecting a single prompt to produce a final product. Generative Production is iterative; your first output is almost never your best.</li>
+</ul>
+</section>
+<section id="related-pages" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages">Related pages</h2>
+<ul>
+<li><a href="prompting-principles.md"><code>prompting-principles.md</code></a> — the universal skill.</li>
+<li><a href="iteration-and-selection.md"><code>iteration-and-selection.md</code></a> — how to work with the fact that the tool gives you many candidates.</li>
+<li><a href="tracking-your-work.md"><code>tracking-your-work.md</code></a> — staying reproducible across months.</li>
+</ul>
+</section>
+</section>
+<section id="prompting-principles" class="level1">
+<h1>Prompting Principles</h1>
+<p><strong>In one sentence:</strong> A prompt is a set of instructions that tells a generative model what to make; prompting well is the difference between “the model won’t cooperate” and “the model is a collaborator.”</p>
+<p><strong>Why it matters for filmmakers:</strong> Every generative tool you use — image, video, audio, code — takes a prompt of some kind. The specifics vary wildly between tools, but the underlying skill transfers. A filmmaker who prompts well in Midjourney will prompt better in Claude Code on day one.</p>
+<section id="key-ideas-1" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas-1">Key ideas</h2>
+<ul>
+<li><strong>Specificity beats cleverness.</strong> The most common prompt mistake is vagueness. “A cinematic shot” gives the model permission to do anything; “a medium shot, 35mm, golden-hour backlight, shallow depth of field, subject in profile” narrows the space. Narrow spaces produce useful outputs.</li>
+<li><strong>Tell it what, not how, unless the how matters.</strong> For open creative work, describe the outcome you want and let the model choose the approach. For technical work (code, specific camera moves), describe the approach because the outcome depends on it.</li>
+<li><strong>Show, don’t only tell.</strong> Reference images, code examples, or prior outputs often teach the model faster than adjectives. Modern tools accept multiple modalities of reference — use them.</li>
+<li><strong>Constrain to create.</strong> Counter-intuitively, adding constraints (a time budget, a palette, a rule like “no text in image”) usually improves output. Constraints give the model edges to push against.</li>
+<li><strong>Iterate in small moves.</strong> Change one thing per attempt. If you rewrite half the prompt between generations, you won’t know which change helped. This is the same discipline as debugging code.</li>
+<li><strong>The prompt is not the whole context.</strong> In media tools, seeds, samplers, and reference images shape the output alongside the prompt. In coding tools, project files, <code>CLAUDE.md</code> / <code>AGENTS.md</code>, and conversation history do the same. The prompt is one input among several.</li>
+</ul>
+</section>
+<section id="common-mistakes-1" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-1">Common mistakes</h2>
+<ul>
+<li><strong>Prompt-and-pray.</strong> Writing one long prompt, hitting generate, being disappointed, and writing a completely different long prompt. Iterate on a working base instead.</li>
+<li><strong>Over-stuffing adjectives.</strong> Piling on descriptors (“epic, cinematic, masterpiece, 8K, trending”) usually adds noise, not signal. Keep the prompt specific instead.</li>
+<li><strong>Ignoring the tool’s own prompting guide.</strong> Every major tool publishes one. They aren’t generic — a Midjourney prompt doesn’t translate directly to Runway, and neither translates directly to Claude. Read the guide.</li>
+</ul>
+</section>
+<section id="try-this" class="level2">
+<h2 class="anchored" data-anchor-id="try-this">Try this</h2>
+<p>Pick a tool you’ve used and write three prompts for the same intended outcome: one vague, one specific, one specific-with-constraints. Compare results. Do this before writing more elaborate prompts — the exercise recalibrates what “specific” actually means.</p>
+</section>
+<section id="related-pages-1" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages-1">Related pages</h2>
+<ul>
+<li><a href="iteration-and-selection.md"><code>iteration-and-selection.md</code></a> — what to do once you have candidates.</li>
+<li><a href="../generative-media/craft/"><code>../generative-media/craft/</code></a> — prompting refinements for media (planned).</li>
+<li><a href="../vibe-coding/working-with-models/"><code>../vibe-coding/working-with-models/</code></a> — prompting refinements for code (planned).</li>
+</ul>
+</section>
+</section>
+<section id="iteration-and-selection" class="level1">
+<h1>Iteration and Selection</h1>
+<p><strong>In one sentence:</strong> Generative tools produce candidates; the craft is in deciding which candidate to keep, which to iterate on, and when to stop.</p>
+<p><strong>Why it matters for filmmakers:</strong> Film has always been about selection — you shoot coverage, you cut the film. Generative tools dramatically cheapen the “coverage” step, which means selection becomes the rate-limiting skill. The filmmakers who do well with generative tools are the ones with taste and discipline in culling, not the ones with the best prompts.</p>
+<section id="key-ideas-2" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas-2">Key ideas</h2>
+<ul>
+<li><strong>The model is a coverage machine.</strong> A text-to-image model gives you four candidates per generation. A coding agent gives you several attempts at the same function. A video model gives you takes. In all three cases, your job is directing the model toward better candidates <em>and</em> editing them down.</li>
+<li><strong>Cull early, cull often.</strong> Keep every generation and you drown. Mark the one or two candidates worth building on, discard the rest, and iterate. This is the opposite of “save everything in case” — you want active selection.</li>
+<li><strong>Iterate on the best candidate, not the next idea.</strong> The temptation is to start over when the first batch disappoints. Usually the better move is to take the best of what you got and push in the direction it suggests. This is how working with a model becomes a conversation instead of a gamble.</li>
+<li><strong>Set a budget before you start.</strong> “I’ll spend 20 minutes on this shot” or “I’ll give this function three attempts.” Without a budget, iteration becomes a slot machine.</li>
+<li><strong>Know when to stop.</strong> Generative tools are especially good at tempting you to keep iterating forever — the next batch might be perfect. A 75%-quality shot that ships beats a 95%-quality shot that never does.</li>
+</ul>
+</section>
+<section id="common-mistakes-2" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-2">Common mistakes</h2>
+<ul>
+<li><strong>Keeping every generation.</strong> The archive becomes noise.</li>
+<li><strong>Starting over after every disappointing batch.</strong> You lose the direction you were building toward.</li>
+<li><strong>Iterating without recording what changed.</strong> Without a log, you can’t reproduce the good attempts. See <a href="tracking-your-work.md"><code>tracking-your-work.md</code></a>.</li>
+</ul>
+</section>
+<section id="related-pages-2" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages-2">Related pages</h2>
+<ul>
+<li><a href="prompting-principles.md"><code>prompting-principles.md</code></a> — how to aim the model in the first place.</li>
+<li><a href="tracking-your-work.md"><code>tracking-your-work.md</code></a> — how to remember what worked.</li>
+</ul>
+</section>
+</section>
+<section id="tracking-your-work" class="level1">
+<h1>Tracking Your Work</h1>
+<p><strong>In one sentence:</strong> Generative work is only as reproducible as your records of it; a prompt book for media and a git history for code are the same discipline with different files.</p>
+<p><strong>Why it matters for filmmakers:</strong> Without records, a great generation is unrepeatable — you can’t extend it, match it, or recover it if a file goes missing. And a project that can’t be rebuilt in six months is effectively disposable. Tracking your work is what turns generative output from a trick into a craft.</p>
+<section id="key-ideas-3" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas-3">Key ideas</h2>
+<ul>
+<li><strong>Capture the inputs, not just the outputs.</strong> For media: prompt, seed, sampler, model, reference images, tool version. For code: the conversation that produced it, the prompt or rules file, the model. The output alone is not enough — you need to know how to get back to it.</li>
+<li><strong>One source of truth per project.</strong> For media work, keep a prompt book (a spreadsheet or a markdown file) alongside the finished frames. For code, the git repository is the prompt book — commit messages carry the <em>why</em>. Either way, the record lives next to the work.</li>
+<li><strong>Save seeds and commits, not just final picks.</strong> The abandoned attempts carry information about what almost worked. A commit you revert is still a record; a seed you noted is still a recipe.</li>
+<li><strong>Models change under you.</strong> A model version that produced a look last year may no longer exist. Note the exact version when you use it and, for production work, consider whether you need to archive the model itself.</li>
+</ul>
+</section>
+<section id="common-mistakes-3" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-3">Common mistakes</h2>
+<ul>
+<li><strong>Trusting the cloud tool to remember for you.</strong> Most generative services retain history for some window and then discard it — or change the retention policy without warning. Export locally.</li>
+<li><strong>Losing the prompt when keeping the image.</strong> A folder of PNGs with no prompts attached is a gallery, not a record.</li>
+<li><strong>Mixing commits and generations.</strong> For code projects, don’t let the agent commit on your behalf without reviewing the diff — a forgotten commit of an experimental generation is hard to untangle later.</li>
+</ul>
+</section>
+<section id="related-pages-3" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages-3">Related pages</h2>
+<ul>
+<li><a href="iteration-and-selection.md"><code>iteration-and-selection.md</code></a> — what you’re tracking is the iteration history.</li>
+<li><a href="../practical/"><code>../practical/</code></a> — reproducibility at project scale (planned).</li>
+</ul>
+<hr>
+<p><em>Part II — Generative Media. Pages on producing images, video, audio, and spatial work with generative tools.</em></p>
+</section>
+</section>
+<section id="concepts" class="level1">
+<h1>Concepts</h1>
+<p>The conceptual spine of the media pillar. These pages describe <em>what the tools are</em> and <em>how they work</em>, independent of any specific product.</p>
+<section id="contents" class="level2">
+<h2 class="anchored" data-anchor-id="contents">Contents</h2>
+<ul>
+<li><a href="model-basics/"><code>model-basics/</code></a> — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.</li>
+<li><a href="modalities/"><code>modalities/</code></a> — one page per modality (image, video, audio, spatial) with sub-topics inline.</li>
+<li><a href="tools-and-vendors/"><code>tools-and-vendors/</code></a> — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.</li>
+</ul>
+</section>
+</section>
+<section id="model-basics" class="level1">
+<h1>Model Basics</h1>
+<p>The foundational vocabulary of generative media models. Read top-to-bottom for a first pass, or dip in for a specific term.</p>
+<section id="planned-topics" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics">Planned topics</h2>
+<ul>
+<li><strong>Diffusion intuition</strong> — how generation actually works, no math.</li>
+<li><strong>Seeds</strong> — the reproducibility lever. (<a href="seeds.md">page</a>)</li>
+<li><strong>Samplers &amp; schedulers</strong> — what they do, which to pick when.</li>
+<li><strong>Steps &amp; CFG</strong> — how much to think and how hard to listen to the prompt.</li>
+<li><strong>LoRAs</strong> — lightweight style/subject adapters.</li>
+<li><strong>Quantization &amp; file types</strong> — why the same model ships in many sizes.</li>
+<li><strong>Resolution &amp; aspect ratios</strong> — native sizes and why going off-spec breaks things.</li>
+<li><strong>Conditioning</strong> — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”</li>
+<li><strong>Embeddings &amp; textual inversion</strong> — teaching a model a new word.</li>
+<li><strong>Checkpoints vs LoRAs vs embeddings</strong> — disambiguation.</li>
+<li><strong>Fine-tuning vs LoRAs vs prompting</strong> — when to reach for which.</li>
+</ul>
+</section>
+</section>
+<section id="seeds" class="level1">
+<h1>Seeds</h1>
+<p><strong>In one sentence:</strong> A seed is a number that, combined with your prompt and model, makes a generation reproducible — change the seed and you get a different image from the same prompt; keep the seed and you get the same image.</p>
+<p><strong>Why it matters for filmmakers:</strong> Seeds are the reproducibility lever. Without them, a good generation is a lucky accident. With them, you can iterate on a specific look, match a previous shot, or hand a project to a collaborator and have them reproduce your work exactly.</p>
+<section id="key-ideas-4" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas-4">Key ideas</h2>
+<ul>
+<li><strong>The seed is a starting point for the noise.</strong> Diffusion models start from random noise and denoise it toward your prompt. The seed controls which random noise — same seed, same starting noise, same output (given identical prompt and settings).</li>
+<li><strong>Seeds are not magical quality knobs.</strong> A “good seed” for one prompt is arbitrary for another. Don’t chase seeds the way you might chase a prompt revision.</li>
+<li><strong>Locking the seed lets you iterate on the prompt.</strong> This is the main working use: lock the seed, change one word in the prompt, see what that word does. Without a locked seed, you can’t tell what’s a prompt effect and what’s seed variance.</li>
+<li><strong>Seeds only reproduce if everything else matches.</strong> Same model version, same sampler, same step count, same image size, same conditioning. Change any of these and the seed-level reproducibility breaks. This is why you also track model and settings, not just the seed.</li>
+<li><strong>Write down the seeds for final picks.</strong> If a generation makes it into the film, its seed belongs in your prompt book alongside the prompt and model version.</li>
+</ul>
+</section>
+<section id="common-mistakes-4" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-4">Common mistakes</h2>
+<ul>
+<li><strong>“Seed hunting.”</strong> Rolling random seeds with a static prompt, hoping for a magic output. This is the slot-machine failure mode.</li>
+<li><strong>Not recording seeds on final generations.</strong> You can’t extend, match, or recover a look if you didn’t write down the seed.</li>
+<li><strong>Assuming seed reproducibility across services.</strong> Two services can both accept a seed and still produce different output — they likely use different models, samplers, or precision. Reproducibility is per-tool.</li>
+</ul>
+</section>
+<section id="related-pages-4" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages-4">Related pages</h2>
+<ul>
+<li><a href="../../../foundations/tracking-your-work.md"><code>../../../foundations/tracking-your-work.md</code></a> — where seed logs live.</li>
+<li><a href="../../../foundations/iteration-and-selection.md"><code>../../../foundations/iteration-and-selection.md</code></a> — why locking a seed changes the loop.</li>
+<li><em>(Planned: samplers-and-schedulers, resolution, model-versions.)</em></li>
+</ul>
+</section>
+</section>
+<section id="modalities" class="level1">
+<h1>Modalities</h1>
+<p>One page per modality. Sub-topics live inline because the ideas cluster.</p>
+<section id="planned-pages" class="level2">
+<h2 class="anchored" data-anchor-id="planned-pages">Planned pages</h2>
+<ul>
+<li><strong>Image</strong> — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.</li>
+<li><strong>Video</strong> — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.</li>
+<li><strong>Audio</strong> — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.</li>
+<li><strong>Spatial</strong> — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction.</li>
+</ul>
+</section>
+</section>
+<section id="tools-and-vendors" class="level1">
+<h1>Tools and Vendors</h1>
+<p>The landscape, framed categorically so the pages age gracefully. This folder tells you <em>how to reason about</em> a tool, not which one to pick today.</p>
+<section id="planned-topics-1" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-1">Planned topics</h2>
+<ul>
+<li><strong>Open weights vs closed APIs vs open source</strong> — what each actually lets you do.</li>
+<li><strong>Service tiers</strong> — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.</li>
+<li><strong>Local vs cloud</strong> — privacy, cost, control, ceiling trade-offs.</li>
+<li><strong>Hardware realities</strong> — GPU/VRAM, Mac vs PC, minimum viable rig.</li>
+<li><strong>Cloud compute</strong> — Colab, RunPod, Modal, Replicate, Fal as categories.</li>
+<li><strong>Interfaces</strong> — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.</li>
+<li><strong>Cloud video tools</strong> — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.</li>
+<li><strong>Model zoos</strong> — Hugging Face, Civitai; reading a model card; spotting dubious uploads.</li>
+</ul>
+</section>
+</section>
+<section id="craft" class="level1">
+<h1>Craft</h1>
+<p>Media-specific technique and decision-making. These pages assume you’ve read the <a href="../../foundations/"><code>foundations/</code></a> — they refine the shared meta-skills for moving images and sound.</p>
+<section id="planned-topics-2" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-2">Planned topics</h2>
+<ul>
+<li><strong>Prompting for visual generation</strong> — positive/negative, weighting, syntax differences. Refines <a href="../../foundations/prompting-principles.md"><code>foundations/prompting-principles.md</code></a>.</li>
+<li><strong>Seeds and reproducibility as craft</strong> — directed versus discovered.</li>
+<li><strong>Character consistency across shots.</strong></li>
+<li><strong>Scene and location consistency.</strong></li>
+<li><strong>Shot-to-shot continuity</strong> — lighting, wardrobe, time-of-day.</li>
+<li><strong>Camera motion control</strong> in video models.</li>
+<li><strong>Temporal coherence</strong> — flicker, morphing, and how to fight it.</li>
+<li><strong>Directing AI: intention vs randomness.</strong></li>
+<li><strong>Blending generative with traditional</strong> — plates, comps, hybrid pipelines.</li>
+<li><strong>When <em>not</em> to use AI.</strong></li>
+</ul>
+</section>
+</section>
+<section id="lifecycle-crosswalk" class="level1">
+<h1>Lifecycle Crosswalk</h1>
+<p>A supplemental view, not the primary spine. Generative tools are collapsing traditional film-production stages — previs becomes production, post becomes production — so this page cross-references concepts to lifecycle stages rather than organizing them that way.</p>
+<p>Every bullet below links <em>into</em> a page elsewhere in the repo. Nothing is duplicated here.</p>
+<section id="planned-structure" class="level2">
+<h2 class="anchored" data-anchor-id="planned-structure">Planned structure</h2>
+<ol type="1">
+<li><strong>Preamble</strong> — why this is a crosswalk, not a spine.</li>
+<li><strong>Stages</strong> — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.</li>
+<li><strong>Collapsing seams</strong> — callouts where a tool genuinely dissolves a stage boundary.</li>
+</ol>
+<p><em>(Content to be written in a follow-on plan once the linked pages exist.)</em></p>
+<hr>
+<p><em>Part III — Vibe-coding for Filmmakers. Writing code with AI coding tools, treated as a first-class form of generative production.</em></p>
+</section>
+</section>
+<section id="foundations-vibe-coding" class="level1">
+<h1>Foundations (Vibe-coding)</h1>
+<p>Mental models for someone who’s coded little or not at all. These pages are the on-ramp before the setup and safety material.</p>
+<section id="planned-topics-3" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-3">Planned topics</h2>
+<ul>
+<li><strong>What is an agent?</strong> IDE vs chat vs autocomplete — different affordances for different jobs.</li>
+<li><strong>Where does code actually run?</strong> Local, cloud, hybrid — and why it matters for cost and trust.</li>
+<li><strong>Terminal literacy</strong> — <code>cd</code>, <code>ls</code>, what a shell is, why the agent drops you into one.</li>
+<li><strong>Git literacy</strong> — why version control matters <em>especially</em> for AI-generated code.</li>
+</ul>
+</section>
+</section>
+<section id="setup-and-safety" class="level1">
+<h1>Setup and Safety</h1>
+<p>The things that will hurt you if you skip them. Credentials, billing, and what not to push to git.</p>
+<section id="planned-topics-4" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-4">Planned topics</h2>
+<ul>
+<li><strong>Managing credentials</strong> — <code>.env</code> files, never committing secrets, password-manager patterns. (<a href="managing-credentials.md">page</a>)</li>
+<li><strong>API keys</strong> — what they are, how billing works, rate limits, spending caps.</li>
+<li><strong>Repos and <code>.gitignore</code></strong> — what <em>never</em> goes into a public repo.</li>
+<li><strong>Sandboxing</strong> — when to trust an agent to run commands.</li>
+</ul>
+</section>
+</section>
+<section id="managing-credentials" class="level1">
+<h1>Managing Credentials</h1>
+<p><strong>In one sentence:</strong> Credentials (API keys, passwords, tokens) are the secrets your code uses to access paid services; leak one and you pay for someone else’s bill, so they get handled differently from every other kind of configuration.</p>
+<p><strong>Why it matters for filmmakers:</strong> Every generative tool worth using is paid, and the way you tell your code how to pay is by giving it an API key. Key leaks are the single most common way beginner coders get burned — a public GitHub repo with a key in it gets scraped within minutes, and the first bill arrives before the day is over.</p>
+<section id="key-ideas-5" class="level2">
+<h2 class="anchored" data-anchor-id="key-ideas-5">Key ideas</h2>
+<ul>
+<li><strong>Never put a credential in a file you commit.</strong> Not in code, not in config, not in a comment, not “just temporarily.” Git remembers; once committed, even a later removal leaves the secret in history.</li>
+<li><strong>Use environment variables and <code>.env</code> files.</strong> A <code>.env</code> file holds <code>KEY=value</code> lines. Your code reads from the environment. You add <code>.env</code> to <code>.gitignore</code> so it never leaves your machine. Ship a <code>.env.example</code> that shows which keys are needed, with blank or fake values.</li>
+<li><strong><code>.env.example</code> is committed, <code>.env</code> is not.</strong> The example file lets a collaborator (or future-you) know which environment variables to fill in. The real file stays local.</li>
+<li><strong>Use a password manager as the source.</strong> 1Password, Bitwarden, Apple Passwords — pick one and store the real keys there. Your <code>.env</code> is a convenience cache; the manager is truth.</li>
+<li><strong>Rotate when something leaks.</strong> The response to “I accidentally committed a key” is not “delete the commit.” It’s “rotate the key at the vendor, <em>then</em> clean the repo.” A leaked key is compromised even if you deleted it a minute later.</li>
+<li><strong>Cap spending where you can.</strong> Most AI vendors let you set a hard monthly spending limit or a per-key rate limit. Set one. A leaked uncapped key has cost some beginners thousands of dollars in a day.</li>
+</ul>
+</section>
+<section id="common-mistakes-5" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes-5">Common mistakes</h2>
+<ul>
+<li><strong>Committing a <code>.env</code> file.</strong> By far the most common mistake. Set up <code>.gitignore</code> <em>first</em>, credentials <em>after</em>. Verify with <code>git status</code> before every commit.</li>
+<li><strong>Pasting a real key into a chat or a code example.</strong> Easy to forget, hard to undo. If you do it in an agent conversation, treat the key as compromised and rotate.</li>
+<li><strong>Reusing one key for everything.</strong> Per-project keys limit blast radius. If one project’s key leaks, only that project is compromised.</li>
+<li><strong>Leaving a leaked key live because “I deleted the commit.”</strong> Git history is distributed — you don’t know who cloned the repo in the window the key was public.</li>
+</ul>
+</section>
+<section id="try-this-1" class="level2">
+<h2 class="anchored" data-anchor-id="try-this-1">Try this</h2>
+<p>Before you write a single line of code that uses an API, do the full setup: create a <code>.env</code>, add it to <code>.gitignore</code>, create a <code>.env.example</code>, run <code>git status</code> to confirm <code>.env</code> is not tracked, and store the real key in your password manager with a note that links to the project. Do this even for a throwaway experiment — practice is what prevents mistakes.</p>
+</section>
+<section id="related-pages-5" class="level2">
+<h2 class="anchored" data-anchor-id="related-pages-5">Related pages</h2>
+<ul>
+<li><em>(Planned: <a href="./api-keys.md"><code>api-keys.md</code></a> — billing, rate limits, spending caps.)</em></li>
+<li><em>(Planned: <a href="../common-traps/committing-secrets.md"><code>../common-traps/committing-secrets.md</code></a> — a cautionary tale version.)</em></li>
+<li><a href="../../practical/"><code>../../practical/</code></a> — broader reproducibility and cost management.</li>
+</ul>
+</section>
+</section>
+<section id="working-with-models" class="level1">
+<h1>Working with Models</h1>
+<p>Choosing, prompting, and managing context with AI coding tools.</p>
+<section id="planned-topics-5" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-5">Planned topics</h2>
+<ul>
+<li><strong>Coding models compared</strong> — Claude Opus / Sonnet / Haiku, GPT-5, Gemini, local models. Strengths, context windows, cost.</li>
+<li><strong>Prompting for code</strong> — refines <a href="../../foundations/prompting-principles.md"><code>foundations/prompting-principles.md</code></a> for the coding case: constraints, examples, iterative refinement.</li>
+<li><strong>Context management</strong> — why “start a new chat” matters; <code>CLAUDE.md</code> / <code>AGENTS.md</code> / rules files.</li>
+<li><strong>Skills</strong> — what they are and when to build one.</li>
+<li><strong>MCP</strong> — what it is, when it’s worth wiring up.</li>
+<li><strong>Agents vs chat vs autocomplete</strong> — different affordances.</li>
+</ul>
+</section>
+</section>
+<section id="building-software" class="level1">
+<h1>Building Software</h1>
+<p>Sensible defaults for someone assembling their first non-trivial project.</p>
+<section id="planned-topics-6" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-6">Planned topics</h2>
+<ul>
+<li><strong>Reading API docs</strong> — REST basics, SDKs vs raw HTTP.</li>
+<li><strong>Frameworks vs rolling-your-own</strong> — when to trust a boring framework vs let the agent improvise.</li>
+<li><strong>Boring tech wins</strong> — why Rails, Next.js, and the other old standbys beat bespoke scaffolding.</li>
+<li><strong>Dependencies and package managers</strong> — why random packages are risky.</li>
+<li><strong>Reading error messages</strong> — understand before pasting to the model.</li>
+</ul>
+</section>
+</section>
+<section id="common-traps" class="level1">
+<h1>Common Traps</h1>
+<p>A named gallery of specific beginner mistakes with the fix for each, written as short cautionary tales. This is the “keep beginners safe” promise made concrete.</p>
+<section id="planned-pages-1" class="level2">
+<h2 class="anchored" data-anchor-id="planned-pages-1">Planned pages</h2>
+<ul>
+<li><strong>Committing secrets to git.</strong></li>
+<li><strong>Blindly running agent-suggested shell commands.</strong></li>
+<li><strong>Force-push disasters and losing work.</strong></li>
+<li><strong>Letting the agent refactor without review.</strong></li>
+<li><strong>Accepting the first thing that compiles.</strong></li>
+<li><strong>Scope-creep prompts.</strong></li>
+<li><strong>Building on sand</strong> — unreliable deps, beta APIs, deprecated models.</li>
+<li><strong>Runaway API bills.</strong></li>
+<li><strong>Deploying to production without testing.</strong></li>
+<li><strong>Trusting a local-running model demo</strong> when the finished product needs reliability.</li>
+<li><strong>“Works on my machine” illusions.</strong></li>
+</ul>
+<p>Cross-linked to <a href="../../practical/"><code>practical/</code></a> where topics overlap (licenses, reproducibility, cost).</p>
+<hr>
+<p><em>Part IV — Practical. The non-creative matters that sit under both pillars: licenses, cost, reproducibility, provenance, delivery.</em></p>
+</section>
+</section>
+<section id="practical" class="level1">
+<h1>Practical</h1>
+<p>The non-creative stuff that sinks projects. This folder sits at the top level because it applies to both pillars — licenses, cost, and reproducibility matter as much for code generation as for media generation.</p>
+<section id="planned-topics-7" class="level2">
+<h2 class="anchored" data-anchor-id="planned-topics-7">Planned topics</h2>
+<ul>
+<li><strong>Model and tool licenses</strong> — non-commercial vs permissive vs OSS; what “open weights” actually lets you do.</li>
+<li><strong>Copyright and training-data debates</strong> — written to age gracefully.</li>
+<li><strong>Likeness and consent</strong> — actors, real people, estates.</li>
+<li><strong>Provenance and labeling</strong> — C2PA, visible disclosure norms, platform requirements.</li>
+<li><strong>Cost management</strong> — API spend, cloud GPU hours, iteration budgets.</li>
+<li><strong>Reproducibility</strong> — archiving prompts, seeds, model versions, and for code: lockfiles and commits.</li>
+<li><strong>Delivery considerations</strong> — codecs, color space, frame rates.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="glossary" class="level1">
+<h1>Glossary</h1>
+<p>An A–Z index of terms used across the repo. Each entry is a one-line definition and a link to the fuller page.</p>
+<p><em>(This glossary will grow as pages are written. It is currently a stub with the terms already covered; new entries should be added as each page is authored.)</em></p>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">A</h2>
+</section>
+<section id="c" class="level2">
+<h2 class="anchored" data-anchor-id="c">C</h2>
+<ul>
+<li><strong>CFG (Classifier-Free Guidance)</strong> — a knob controlling how strictly the model follows the prompt. See <a href="generative-media/concepts/model-basics/"><code>generative-media/concepts/model-basics/</code></a> <em>(page planned)</em>.</li>
+</ul>
+</section>
+<section id="d" class="level2">
+<h2 class="anchored" data-anchor-id="d">D</h2>
+<ul>
+<li><strong>Diffusion</strong> — the process by which many image/video models turn noise into coherent output. See <a href="generative-media/concepts/model-basics/"><code>generative-media/concepts/model-basics/</code></a> <em>(page planned)</em>.</li>
+</ul>
+</section>
+<section id="g" class="level2">
+<h2 class="anchored" data-anchor-id="g">G</h2>
+<ul>
+<li><strong>Generative Production</strong> — the discipline this repo teaches. See <a href="./foundations/what-is-generative-production.html"><code>foundations/what-is-generative-production.md</code></a>.</li>
+</ul>
+</section>
+<section id="i" class="level2">
+<h2 class="anchored" data-anchor-id="i">I</h2>
+<ul>
+<li><strong>Iteration and selection</strong> — the core loop of working with generative tools. See <a href="./foundations/iteration-and-selection.html"><code>foundations/iteration-and-selection.md</code></a>.</li>
+</ul>
+</section>
+<section id="l" class="level2">
+<h2 class="anchored" data-anchor-id="l">L</h2>
+<ul>
+<li><strong>LoRA (Low-Rank Adaptation)</strong> — a lightweight adapter that teaches a base model a style, subject, or concept. See <a href="generative-media/concepts/model-basics/"><code>generative-media/concepts/model-basics/</code></a> <em>(page planned)</em>.</li>
+</ul>
+</section>
+<section id="p" class="level2">
+<h2 class="anchored" data-anchor-id="p">P</h2>
+<ul>
+<li><strong>Prompt</strong> — the instruction you give a generative model. See <a href="./foundations/prompting-principles.html"><code>foundations/prompting-principles.md</code></a>.</li>
+</ul>
+</section>
+<section id="s" class="level2">
+<h2 class="anchored" data-anchor-id="s">S</h2>
+<ul>
+<li><strong>Seed</strong> — a number that makes a generation reproducible. See <a href="./generative-media/concepts/model-basics/seeds.html"><code>generative-media/concepts/model-basics/seeds.md</code></a>.</li>
+</ul>
+</section>
+</section>
+<section id="learning-sources" class="level1">
+<h1>Learning Sources</h1>
+<p>Curated places to keep learning outside this repo.</p>
+<section id="youtube" class="level2">
+<h2 class="anchored" data-anchor-id="youtube">YouTube</h2>
+<ul>
+<li><strong>Curious Refuge</strong> — ongoing coverage of generative tooling for film.</li>
+</ul>
+</section>
+<section id="discord" class="level2">
+<h2 class="anchored" data-anchor-id="discord">Discord</h2>
+<ul>
+<li><strong>Banodoco</strong> — community for open-weight video tooling.</li>
+</ul>
+</section>
+<section id="in-person" class="level2">
+<h2 class="anchored" data-anchor-id="in-person">In person</h2>
+<ul>
+<li><strong>Local meetups</strong> — search for “AI filmmaking,” “generative film,” or “AI video” in your city.</li>
+</ul>
+</section>
+<section id="model-and-tool-directories" class="level2">
+<h2 class="anchored" data-anchor-id="model-and-tool-directories">Model and tool directories</h2>
+<ul>
+<li><strong>Hugging Face</strong> — models, datasets, demos. Read the model card before using anything.</li>
+<li><strong>Civitai</strong> — image-model hub with user-uploaded checkpoints and LoRAs. Higher signal-to-noise than it looks, but read the cards.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/generative-production\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
