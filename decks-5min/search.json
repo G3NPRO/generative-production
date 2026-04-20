@@ -75,5 +75,26 @@
     "title": "Prompting Principles — An Introduction",
     "section": "Where to go from here",
     "text": "Where to go from here\n\nFoundations: Prompting Principles\nFoundations: Iteration and Selection\nMedia-specific prompting — in generative-media/craft/ (planned).\nCode-specific prompting — in vibe-coding/working-with-models/ (planned)."
+  },
+  {
+    "objectID": "decks/index.html",
+    "href": "decks/index.html",
+    "title": "Decks",
+    "section": "",
+    "text": "Curated presentation decks built from the repo’s content using Quarto. Decks are pedagogical sequences, not 1:1 projections of topic pages — a topic page is a reference, a deck is an arc.\n\n\n\nOne .qmd file per deck.\nDecks pull excerpts from topic pages using Quarto’s {{&lt; include &gt;}} syntax, so the topic page stays the single source of truth.\nEvery slide carries data-duration, data-section, and data-level attributes on its heading. See CONTRIBUTING.md for the metadata standard.\nQuarto profiles (5min, 15min, 30min, 60min) build four duration variants of each deck at publish time.\n\n\n\n\n\nprompting-intro.qmd — exemplar deck introducing the universal prompting principles."
+  },
+  {
+    "objectID": "decks/index.html#how-decks-work",
+    "href": "decks/index.html#how-decks-work",
+    "title": "Decks",
+    "section": "",
+    "text": "One .qmd file per deck.\nDecks pull excerpts from topic pages using Quarto’s {{&lt; include &gt;}} syntax, so the topic page stays the single source of truth.\nEvery slide carries data-duration, data-section, and data-level attributes on its heading. See CONTRIBUTING.md for the metadata standard.\nQuarto profiles (5min, 15min, 30min, 60min) build four duration variants of each deck at publish time."
+  },
+  {
+    "objectID": "decks/index.html#decks-in-this-repo",
+    "href": "decks/index.html#decks-in-this-repo",
+    "title": "Decks",
+    "section": "",
+    "text": "prompting-intro.qmd — exemplar deck introducing the universal prompting principles."
   }
 ]

@@ -56,60 +56,88 @@
     "text": "Seed — a number that makes a generation reproducible. See generative-media/concepts/model-basics/seeds.md."
   },
   {
-    "objectID": "foundations/iteration-and-selection.html",
-    "href": "foundations/iteration-and-selection.html",
-    "title": "Iteration and Selection",
+    "objectID": "practical/index.html",
+    "href": "practical/index.html",
+    "title": "Practical",
     "section": "",
-    "text": "In one sentence: Generative tools produce candidates; the craft is in deciding which candidate to keep, which to iterate on, and when to stop.\nWhy it matters for filmmakers: Film has always been about selection — you shoot coverage, you cut the film. Generative tools dramatically cheapen the “coverage” step, which means selection becomes the rate-limiting skill. The filmmakers who do well with generative tools are the ones with taste and discipline in culling, not the ones with the best prompts.\n\n\n\nThe model is a coverage machine. A text-to-image model gives you four candidates per generation. A coding agent gives you several attempts at the same function. A video model gives you takes. In all three cases, your job is directing the model toward better candidates and editing them down.\nCull early, cull often. Keep every generation and you drown. Mark the one or two candidates worth building on, discard the rest, and iterate. This is the opposite of “save everything in case” — you want active selection.\nIterate on the best candidate, not the next idea. The temptation is to start over when the first batch disappoints. Usually the better move is to take the best of what you got and push in the direction it suggests. This is how working with a model becomes a conversation instead of a gamble.\nSet a budget before you start. “I’ll spend 20 minutes on this shot” or “I’ll give this function three attempts.” Without a budget, iteration becomes a slot machine.\nKnow when to stop. Generative tools are especially good at tempting you to keep iterating forever — the next batch might be perfect. A 75%-quality shot that ships beats a 95%-quality shot that never does.\n\n\n\n\n\nKeeping every generation. The archive becomes noise.\nStarting over after every disappointing batch. You lose the direction you were building toward.\nIterating without recording what changed. Without a log, you can’t reproduce the good attempts. See tracking-your-work.md.\n\n\n\n\n\nprompting-principles.md — how to aim the model in the first place.\ntracking-your-work.md — how to remember what worked."
+    "text": "The non-creative stuff that sinks projects. This folder sits at the top level because it applies to both pillars — licenses, cost, and reproducibility matter as much for code generation as for media generation.\n\n\n\nModel and tool licenses — non-commercial vs permissive vs OSS; what “open weights” actually lets you do.\nCopyright and training-data debates — written to age gracefully.\nLikeness and consent — actors, real people, estates.\nProvenance and labeling — C2PA, visible disclosure norms, platform requirements.\nCost management — API spend, cloud GPU hours, iteration budgets.\nReproducibility — archiving prompts, seeds, model versions, and for code: lockfiles and commits.\nDelivery considerations — codecs, color space, frame rates."
   },
   {
-    "objectID": "foundations/iteration-and-selection.html#key-ideas",
-    "href": "foundations/iteration-and-selection.html#key-ideas",
-    "title": "Iteration and Selection",
+    "objectID": "practical/index.html#planned-topics",
+    "href": "practical/index.html#planned-topics",
+    "title": "Practical",
     "section": "",
-    "text": "The model is a coverage machine. A text-to-image model gives you four candidates per generation. A coding agent gives you several attempts at the same function. A video model gives you takes. In all three cases, your job is directing the model toward better candidates and editing them down.\nCull early, cull often. Keep every generation and you drown. Mark the one or two candidates worth building on, discard the rest, and iterate. This is the opposite of “save everything in case” — you want active selection.\nIterate on the best candidate, not the next idea. The temptation is to start over when the first batch disappoints. Usually the better move is to take the best of what you got and push in the direction it suggests. This is how working with a model becomes a conversation instead of a gamble.\nSet a budget before you start. “I’ll spend 20 minutes on this shot” or “I’ll give this function three attempts.” Without a budget, iteration becomes a slot machine.\nKnow when to stop. Generative tools are especially good at tempting you to keep iterating forever — the next batch might be perfect. A 75%-quality shot that ships beats a 95%-quality shot that never does."
+    "text": "Model and tool licenses — non-commercial vs permissive vs OSS; what “open weights” actually lets you do.\nCopyright and training-data debates — written to age gracefully.\nLikeness and consent — actors, real people, estates.\nProvenance and labeling — C2PA, visible disclosure norms, platform requirements.\nCost management — API spend, cloud GPU hours, iteration budgets.\nReproducibility — archiving prompts, seeds, model versions, and for code: lockfiles and commits.\nDelivery considerations — codecs, color space, frame rates."
   },
   {
-    "objectID": "foundations/iteration-and-selection.html#common-mistakes",
-    "href": "foundations/iteration-and-selection.html#common-mistakes",
-    "title": "Iteration and Selection",
+    "objectID": "learning-sources/index.html",
+    "href": "learning-sources/index.html",
+    "title": "Learning Sources",
     "section": "",
-    "text": "Keeping every generation. The archive becomes noise.\nStarting over after every disappointing batch. You lose the direction you were building toward.\nIterating without recording what changed. Without a log, you can’t reproduce the good attempts. See tracking-your-work.md."
+    "text": "Curated places to keep learning outside this repo.\n\n\n\nCurious Refuge — ongoing coverage of generative tooling for film.\n\n\n\n\n\nBanodoco — community for open-weight video tooling.\n\n\n\n\n\nLocal meetups — search for “AI filmmaking,” “generative film,” or “AI video” in your city.\n\n\n\n\n\nHugging Face — models, datasets, demos. Read the model card before using anything.\nCivitai — image-model hub with user-uploaded checkpoints and LoRAs. Higher signal-to-noise than it looks, but read the cards."
   },
   {
-    "objectID": "foundations/iteration-and-selection.html#related-pages",
-    "href": "foundations/iteration-and-selection.html#related-pages",
-    "title": "Iteration and Selection",
+    "objectID": "learning-sources/index.html#youtube",
+    "href": "learning-sources/index.html#youtube",
+    "title": "Learning Sources",
     "section": "",
-    "text": "prompting-principles.md — how to aim the model in the first place.\ntracking-your-work.md — how to remember what worked."
+    "text": "Curious Refuge — ongoing coverage of generative tooling for film."
   },
   {
-    "objectID": "foundations/what-is-generative-production.html",
-    "href": "foundations/what-is-generative-production.html",
-    "title": "What is Generative Production?",
+    "objectID": "learning-sources/index.html#discord",
+    "href": "learning-sources/index.html#discord",
+    "title": "Learning Sources",
     "section": "",
-    "text": "In one sentence: Generative Production is the discipline of making creative work — films, images, sound, and the code that assembles them — by collaborating with models that generate candidates from your prompts.\nWhy it matters for filmmakers: Generative tools are not a new kind of camera or a new kind of codec. They’re a new kind of collaborator, and the skills that make the collaboration work are the same across media and code. Treating them as one discipline keeps you from re-learning the same lessons in four different contexts.\n\n\n\nBoth pillars of this repo are Generative Production. Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.\nThe meta-skills are universal. Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you’re allowed to do with the result — these apply to every generative tool.\nOutputs differ, workflows rhyme. A video model and a coding agent look nothing alike on the surface. But the rhythm of try, read, refine, commit is the same.\nThe collapsing middle. Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better.\n\n\n\n\n\nTreating media generation and code generation as unrelated hobbies. They reinforce each other.\nAssuming the skill is “getting the tool to work.” The skill is getting the collaboration to work — the tool is a starting point.\nExpecting a single prompt to produce a final product. Generative Production is iterative; your first output is almost never your best.\n\n\n\n\n\nprompting-principles.md — the universal skill.\niteration-and-selection.md — how to work with the fact that the tool gives you many candidates.\ntracking-your-work.md — staying reproducible across months."
+    "text": "Banodoco — community for open-weight video tooling."
   },
   {
-    "objectID": "foundations/what-is-generative-production.html#key-ideas",
-    "href": "foundations/what-is-generative-production.html#key-ideas",
-    "title": "What is Generative Production?",
+    "objectID": "learning-sources/index.html#in-person",
+    "href": "learning-sources/index.html#in-person",
+    "title": "Learning Sources",
     "section": "",
-    "text": "Both pillars of this repo are Generative Production. Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.\nThe meta-skills are universal. Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you’re allowed to do with the result — these apply to every generative tool.\nOutputs differ, workflows rhyme. A video model and a coding agent look nothing alike on the surface. But the rhythm of try, read, refine, commit is the same.\nThe collapsing middle. Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better."
+    "text": "Local meetups — search for “AI filmmaking,” “generative film,” or “AI video” in your city."
   },
   {
-    "objectID": "foundations/what-is-generative-production.html#common-mistakes",
-    "href": "foundations/what-is-generative-production.html#common-mistakes",
-    "title": "What is Generative Production?",
+    "objectID": "learning-sources/index.html#model-and-tool-directories",
+    "href": "learning-sources/index.html#model-and-tool-directories",
+    "title": "Learning Sources",
     "section": "",
-    "text": "Treating media generation and code generation as unrelated hobbies. They reinforce each other.\nAssuming the skill is “getting the tool to work.” The skill is getting the collaboration to work — the tool is a starting point.\nExpecting a single prompt to produce a final product. Generative Production is iterative; your first output is almost never your best."
+    "text": "Hugging Face — models, datasets, demos. Read the model card before using anything.\nCivitai — image-model hub with user-uploaded checkpoints and LoRAs. Higher signal-to-noise than it looks, but read the cards."
   },
   {
-    "objectID": "foundations/what-is-generative-production.html#related-pages",
-    "href": "foundations/what-is-generative-production.html#related-pages",
-    "title": "What is Generative Production?",
+    "objectID": "foundations/tracking-your-work.html",
+    "href": "foundations/tracking-your-work.html",
+    "title": "Tracking Your Work",
     "section": "",
-    "text": "prompting-principles.md — the universal skill.\niteration-and-selection.md — how to work with the fact that the tool gives you many candidates.\ntracking-your-work.md — staying reproducible across months."
+    "text": "In one sentence: Generative work is only as reproducible as your records of it; a prompt book for media and a git history for code are the same discipline with different files.\nWhy it matters for filmmakers: Without records, a great generation is unrepeatable — you can’t extend it, match it, or recover it if a file goes missing. And a project that can’t be rebuilt in six months is effectively disposable. Tracking your work is what turns generative output from a trick into a craft.\n\n\n\nCapture the inputs, not just the outputs. For media: prompt, seed, sampler, model, reference images, tool version. For code: the conversation that produced it, the prompt or rules file, the model. The output alone is not enough — you need to know how to get back to it.\nOne source of truth per project. For media work, keep a prompt book (a spreadsheet or a markdown file) alongside the finished frames. For code, the git repository is the prompt book — commit messages carry the why. Either way, the record lives next to the work.\nSave seeds and commits, not just final picks. The abandoned attempts carry information about what almost worked. A commit you revert is still a record; a seed you noted is still a recipe.\nModels change under you. A model version that produced a look last year may no longer exist. Note the exact version when you use it and, for production work, consider whether you need to archive the model itself.\n\n\n\n\n\nTrusting the cloud tool to remember for you. Most generative services retain history for some window and then discard it — or change the retention policy without warning. Export locally.\nLosing the prompt when keeping the image. A folder of PNGs with no prompts attached is a gallery, not a record.\nMixing commits and generations. For code projects, don’t let the agent commit on your behalf without reviewing the diff — a forgotten commit of an experimental generation is hard to untangle later.\n\n\n\n\n\niteration-and-selection.md — what you’re tracking is the iteration history.\n../practical/ — reproducibility at project scale (planned)."
+  },
+  {
+    "objectID": "foundations/tracking-your-work.html#key-ideas",
+    "href": "foundations/tracking-your-work.html#key-ideas",
+    "title": "Tracking Your Work",
+    "section": "",
+    "text": "Capture the inputs, not just the outputs. For media: prompt, seed, sampler, model, reference images, tool version. For code: the conversation that produced it, the prompt or rules file, the model. The output alone is not enough — you need to know how to get back to it.\nOne source of truth per project. For media work, keep a prompt book (a spreadsheet or a markdown file) alongside the finished frames. For code, the git repository is the prompt book — commit messages carry the why. Either way, the record lives next to the work.\nSave seeds and commits, not just final picks. The abandoned attempts carry information about what almost worked. A commit you revert is still a record; a seed you noted is still a recipe.\nModels change under you. A model version that produced a look last year may no longer exist. Note the exact version when you use it and, for production work, consider whether you need to archive the model itself."
+  },
+  {
+    "objectID": "foundations/tracking-your-work.html#common-mistakes",
+    "href": "foundations/tracking-your-work.html#common-mistakes",
+    "title": "Tracking Your Work",
+    "section": "",
+    "text": "Trusting the cloud tool to remember for you. Most generative services retain history for some window and then discard it — or change the retention policy without warning. Export locally.\nLosing the prompt when keeping the image. A folder of PNGs with no prompts attached is a gallery, not a record.\nMixing commits and generations. For code projects, don’t let the agent commit on your behalf without reviewing the diff — a forgotten commit of an experimental generation is hard to untangle later."
+  },
+  {
+    "objectID": "foundations/tracking-your-work.html#related-pages",
+    "href": "foundations/tracking-your-work.html#related-pages",
+    "title": "Tracking Your Work",
+    "section": "",
+    "text": "iteration-and-selection.md — what you’re tracking is the iteration history.\n../practical/ — reproducibility at project scale (planned)."
+  },
+  {
+    "objectID": "foundations/index.html",
+    "href": "foundations/index.html",
+    "title": "Foundations",
+    "section": "",
+    "text": "Foundations\nThe umbrella claim of this repo is that media generation and code generation are the same discipline. These four pages earn that claim — they’re the meta-skills both pillars refine in their own pages.\nRead in order for a first pass; each page is short.\n\nWhat is Generative Production? — the umbrella concept.\nPrompting Principles — the universal input skill.\nIteration and Selection — working with a tool that produces candidates.\nTracking Your Work — staying reproducible.\n\nEach of the two pillars — generative-media/ and vibe-coding/ — has pages that refine these foundations for its specific medium. Cross-links appear wherever a refinement exists."
   },
   {
     "objectID": "decks/prompting-intro.html#why-prompting-is-the-skill",
@@ -189,34 +217,6 @@
     "text": "Where to go from here\n\nFoundations: Prompting Principles\nFoundations: Iteration and Selection\nMedia-specific prompting — in generative-media/craft/ (planned).\nCode-specific prompting — in vibe-coding/working-with-models/ (planned)."
   },
   {
-    "objectID": "generative-media/concepts/model-basics/seeds.html",
-    "href": "generative-media/concepts/model-basics/seeds.html",
-    "title": "Seeds",
-    "section": "",
-    "text": "In one sentence: A seed is a number that, combined with your prompt and model, makes a generation reproducible — change the seed and you get a different image from the same prompt; keep the seed and you get the same image.\nWhy it matters for filmmakers: Seeds are the reproducibility lever. Without them, a good generation is a lucky accident. With them, you can iterate on a specific look, match a previous shot, or hand a project to a collaborator and have them reproduce your work exactly.\n\n\n\nThe seed is a starting point for the noise. Diffusion models start from random noise and denoise it toward your prompt. The seed controls which random noise — same seed, same starting noise, same output (given identical prompt and settings).\nSeeds are not magical quality knobs. A “good seed” for one prompt is arbitrary for another. Don’t chase seeds the way you might chase a prompt revision.\nLocking the seed lets you iterate on the prompt. This is the main working use: lock the seed, change one word in the prompt, see what that word does. Without a locked seed, you can’t tell what’s a prompt effect and what’s seed variance.\nSeeds only reproduce if everything else matches. Same model version, same sampler, same step count, same image size, same conditioning. Change any of these and the seed-level reproducibility breaks. This is why you also track model and settings, not just the seed.\nWrite down the seeds for final picks. If a generation makes it into the film, its seed belongs in your prompt book alongside the prompt and model version.\n\n\n\n\n\n“Seed hunting.” Rolling random seeds with a static prompt, hoping for a magic output. This is the slot-machine failure mode.\nNot recording seeds on final generations. You can’t extend, match, or recover a look if you didn’t write down the seed.\nAssuming seed reproducibility across services. Two services can both accept a seed and still produce different output — they likely use different models, samplers, or precision. Reproducibility is per-tool.\n\n\n\n\n\n../../../foundations/tracking-your-work.md — where seed logs live.\n../../../foundations/iteration-and-selection.md — why locking a seed changes the loop.\n(Planned: samplers-and-schedulers, resolution, model-versions.)"
-  },
-  {
-    "objectID": "generative-media/concepts/model-basics/seeds.html#key-ideas",
-    "href": "generative-media/concepts/model-basics/seeds.html#key-ideas",
-    "title": "Seeds",
-    "section": "",
-    "text": "The seed is a starting point for the noise. Diffusion models start from random noise and denoise it toward your prompt. The seed controls which random noise — same seed, same starting noise, same output (given identical prompt and settings).\nSeeds are not magical quality knobs. A “good seed” for one prompt is arbitrary for another. Don’t chase seeds the way you might chase a prompt revision.\nLocking the seed lets you iterate on the prompt. This is the main working use: lock the seed, change one word in the prompt, see what that word does. Without a locked seed, you can’t tell what’s a prompt effect and what’s seed variance.\nSeeds only reproduce if everything else matches. Same model version, same sampler, same step count, same image size, same conditioning. Change any of these and the seed-level reproducibility breaks. This is why you also track model and settings, not just the seed.\nWrite down the seeds for final picks. If a generation makes it into the film, its seed belongs in your prompt book alongside the prompt and model version."
-  },
-  {
-    "objectID": "generative-media/concepts/model-basics/seeds.html#common-mistakes",
-    "href": "generative-media/concepts/model-basics/seeds.html#common-mistakes",
-    "title": "Seeds",
-    "section": "",
-    "text": "“Seed hunting.” Rolling random seeds with a static prompt, hoping for a magic output. This is the slot-machine failure mode.\nNot recording seeds on final generations. You can’t extend, match, or recover a look if you didn’t write down the seed.\nAssuming seed reproducibility across services. Two services can both accept a seed and still produce different output — they likely use different models, samplers, or precision. Reproducibility is per-tool."
-  },
-  {
-    "objectID": "generative-media/concepts/model-basics/seeds.html#related-pages",
-    "href": "generative-media/concepts/model-basics/seeds.html#related-pages",
-    "title": "Seeds",
-    "section": "",
-    "text": "../../../foundations/tracking-your-work.md — where seed logs live.\n../../../foundations/iteration-and-selection.md — why locking a seed changes the loop.\n(Planned: samplers-and-schedulers, resolution, model-versions.)"
-  },
-  {
     "objectID": "vibe-coding/setup-and-safety/managing-credentials.html",
     "href": "vibe-coding/setup-and-safety/managing-credentials.html",
     "title": "Managing Credentials",
@@ -250,6 +250,237 @@
     "title": "Managing Credentials",
     "section": "",
     "text": "(Planned: api-keys.md — billing, rate limits, spending caps.)\n(Planned: ../common-traps/committing-secrets.md — a cautionary tale version.)\n../../practical/ — broader reproducibility and cost management."
+  },
+  {
+    "objectID": "vibe-coding/common-traps/index.html",
+    "href": "vibe-coding/common-traps/index.html",
+    "title": "Common Traps",
+    "section": "",
+    "text": "A named gallery of specific beginner mistakes with the fix for each, written as short cautionary tales. This is the “keep beginners safe” promise made concrete.\n\n\n\nCommitting secrets to git.\nBlindly running agent-suggested shell commands.\nForce-push disasters and losing work.\nLetting the agent refactor without review.\nAccepting the first thing that compiles.\nScope-creep prompts.\nBuilding on sand — unreliable deps, beta APIs, deprecated models.\nRunaway API bills.\nDeploying to production without testing.\nTrusting a local-running model demo when the finished product needs reliability.\n“Works on my machine” illusions.\n\nCross-linked to practical/ where topics overlap (licenses, reproducibility, cost)."
+  },
+  {
+    "objectID": "vibe-coding/common-traps/index.html#planned-pages",
+    "href": "vibe-coding/common-traps/index.html#planned-pages",
+    "title": "Common Traps",
+    "section": "",
+    "text": "Committing secrets to git.\nBlindly running agent-suggested shell commands.\nForce-push disasters and losing work.\nLetting the agent refactor without review.\nAccepting the first thing that compiles.\nScope-creep prompts.\nBuilding on sand — unreliable deps, beta APIs, deprecated models.\nRunaway API bills.\nDeploying to production without testing.\nTrusting a local-running model demo when the finished product needs reliability.\n“Works on my machine” illusions.\n\nCross-linked to practical/ where topics overlap (licenses, reproducibility, cost)."
+  },
+  {
+    "objectID": "vibe-coding/foundations/index.html",
+    "href": "vibe-coding/foundations/index.html",
+    "title": "Foundations (Vibe-coding)",
+    "section": "",
+    "text": "Mental models for someone who’s coded little or not at all. These pages are the on-ramp before the setup and safety material.\n\n\n\nWhat is an agent? IDE vs chat vs autocomplete — different affordances for different jobs.\nWhere does code actually run? Local, cloud, hybrid — and why it matters for cost and trust.\nTerminal literacy — cd, ls, what a shell is, why the agent drops you into one.\nGit literacy — why version control matters especially for AI-generated code."
+  },
+  {
+    "objectID": "vibe-coding/foundations/index.html#planned-topics",
+    "href": "vibe-coding/foundations/index.html#planned-topics",
+    "title": "Foundations (Vibe-coding)",
+    "section": "",
+    "text": "What is an agent? IDE vs chat vs autocomplete — different affordances for different jobs.\nWhere does code actually run? Local, cloud, hybrid — and why it matters for cost and trust.\nTerminal literacy — cd, ls, what a shell is, why the agent drops you into one.\nGit literacy — why version control matters especially for AI-generated code."
+  },
+  {
+    "objectID": "vibe-coding/working-with-models/index.html",
+    "href": "vibe-coding/working-with-models/index.html",
+    "title": "Working with Models",
+    "section": "",
+    "text": "Choosing, prompting, and managing context with AI coding tools.\n\n\n\nCoding models compared — Claude Opus / Sonnet / Haiku, GPT-5, Gemini, local models. Strengths, context windows, cost.\nPrompting for code — refines foundations/prompting-principles.md for the coding case: constraints, examples, iterative refinement.\nContext management — why “start a new chat” matters; CLAUDE.md / AGENTS.md / rules files.\nSkills — what they are and when to build one.\nMCP — what it is, when it’s worth wiring up.\nAgents vs chat vs autocomplete — different affordances."
+  },
+  {
+    "objectID": "vibe-coding/working-with-models/index.html#planned-topics",
+    "href": "vibe-coding/working-with-models/index.html#planned-topics",
+    "title": "Working with Models",
+    "section": "",
+    "text": "Coding models compared — Claude Opus / Sonnet / Haiku, GPT-5, Gemini, local models. Strengths, context windows, cost.\nPrompting for code — refines foundations/prompting-principles.md for the coding case: constraints, examples, iterative refinement.\nContext management — why “start a new chat” matters; CLAUDE.md / AGENTS.md / rules files.\nSkills — what they are and when to build one.\nMCP — what it is, when it’s worth wiring up.\nAgents vs chat vs autocomplete — different affordances."
+  },
+  {
+    "objectID": "generative-media/concepts/tools-and-vendors/index.html",
+    "href": "generative-media/concepts/tools-and-vendors/index.html",
+    "title": "Tools and Vendors",
+    "section": "",
+    "text": "The landscape, framed categorically so the pages age gracefully. This folder tells you how to reason about a tool, not which one to pick today.\n\n\n\nOpen weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads."
+  },
+  {
+    "objectID": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
+    "href": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
+    "title": "Tools and Vendors",
+    "section": "",
+    "text": "Open weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads."
+  },
+  {
+    "objectID": "generative-media/concepts/modalities/index.html",
+    "href": "generative-media/concepts/modalities/index.html",
+    "title": "Modalities",
+    "section": "",
+    "text": "One page per modality. Sub-topics live inline because the ideas cluster.\n\n\n\nImage — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction."
+  },
+  {
+    "objectID": "generative-media/concepts/modalities/index.html#planned-pages",
+    "href": "generative-media/concepts/modalities/index.html#planned-pages",
+    "title": "Modalities",
+    "section": "",
+    "text": "Image — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction."
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/index.html",
+    "href": "generative-media/concepts/model-basics/index.html",
+    "title": "Model Basics",
+    "section": "",
+    "text": "The foundational vocabulary of generative media models. Read top-to-bottom for a first pass, or dip in for a specific term.\n\n\n\nDiffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which."
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/index.html#planned-topics",
+    "href": "generative-media/concepts/model-basics/index.html#planned-topics",
+    "title": "Model Basics",
+    "section": "",
+    "text": "Diffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which."
+  },
+  {
+    "objectID": "generative-media/index.html",
+    "href": "generative-media/index.html",
+    "title": "Generative Media",
+    "section": "",
+    "text": "One of the two pillars of Generative Production. This pillar covers producing images, video, audio, and spatial work with generative AI tools.\nIf you’re new here, start with foundations/ — the shared meta-skills that make both pillars one discipline. Then come back here for media-specific concepts and craft.\n\n\n\nconcepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine."
+  },
+  {
+    "objectID": "generative-media/index.html#contents",
+    "href": "generative-media/index.html#contents",
+    "title": "Generative Media",
+    "section": "",
+    "text": "concepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine."
+  },
+  {
+    "objectID": "generative-media/lifecycle/index.html",
+    "href": "generative-media/lifecycle/index.html",
+    "title": "Lifecycle Crosswalk",
+    "section": "",
+    "text": "A supplemental view, not the primary spine. Generative tools are collapsing traditional film-production stages — previs becomes production, post becomes production — so this page cross-references concepts to lifecycle stages rather than organizing them that way.\nEvery bullet below links into a page elsewhere in the repo. Nothing is duplicated here.\n\n\n\nPreamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)"
+  },
+  {
+    "objectID": "generative-media/lifecycle/index.html#planned-structure",
+    "href": "generative-media/lifecycle/index.html#planned-structure",
+    "title": "Lifecycle Crosswalk",
+    "section": "",
+    "text": "Preamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)"
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/seeds.html",
+    "href": "generative-media/concepts/model-basics/seeds.html",
+    "title": "Seeds",
+    "section": "",
+    "text": "In one sentence: A seed is a number that, combined with your prompt and model, makes a generation reproducible — change the seed and you get a different image from the same prompt; keep the seed and you get the same image.\nWhy it matters for filmmakers: Seeds are the reproducibility lever. Without them, a good generation is a lucky accident. With them, you can iterate on a specific look, match a previous shot, or hand a project to a collaborator and have them reproduce your work exactly.\n\n\n\nThe seed is a starting point for the noise. Diffusion models start from random noise and denoise it toward your prompt. The seed controls which random noise — same seed, same starting noise, same output (given identical prompt and settings).\nSeeds are not magical quality knobs. A “good seed” for one prompt is arbitrary for another. Don’t chase seeds the way you might chase a prompt revision.\nLocking the seed lets you iterate on the prompt. This is the main working use: lock the seed, change one word in the prompt, see what that word does. Without a locked seed, you can’t tell what’s a prompt effect and what’s seed variance.\nSeeds only reproduce if everything else matches. Same model version, same sampler, same step count, same image size, same conditioning. Change any of these and the seed-level reproducibility breaks. This is why you also track model and settings, not just the seed.\nWrite down the seeds for final picks. If a generation makes it into the film, its seed belongs in your prompt book alongside the prompt and model version.\n\n\n\n\n\n“Seed hunting.” Rolling random seeds with a static prompt, hoping for a magic output. This is the slot-machine failure mode.\nNot recording seeds on final generations. You can’t extend, match, or recover a look if you didn’t write down the seed.\nAssuming seed reproducibility across services. Two services can both accept a seed and still produce different output — they likely use different models, samplers, or precision. Reproducibility is per-tool.\n\n\n\n\n\n../../../foundations/tracking-your-work.md — where seed logs live.\n../../../foundations/iteration-and-selection.md — why locking a seed changes the loop.\n(Planned: samplers-and-schedulers, resolution, model-versions.)"
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/seeds.html#key-ideas",
+    "href": "generative-media/concepts/model-basics/seeds.html#key-ideas",
+    "title": "Seeds",
+    "section": "",
+    "text": "The seed is a starting point for the noise. Diffusion models start from random noise and denoise it toward your prompt. The seed controls which random noise — same seed, same starting noise, same output (given identical prompt and settings).\nSeeds are not magical quality knobs. A “good seed” for one prompt is arbitrary for another. Don’t chase seeds the way you might chase a prompt revision.\nLocking the seed lets you iterate on the prompt. This is the main working use: lock the seed, change one word in the prompt, see what that word does. Without a locked seed, you can’t tell what’s a prompt effect and what’s seed variance.\nSeeds only reproduce if everything else matches. Same model version, same sampler, same step count, same image size, same conditioning. Change any of these and the seed-level reproducibility breaks. This is why you also track model and settings, not just the seed.\nWrite down the seeds for final picks. If a generation makes it into the film, its seed belongs in your prompt book alongside the prompt and model version."
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/seeds.html#common-mistakes",
+    "href": "generative-media/concepts/model-basics/seeds.html#common-mistakes",
+    "title": "Seeds",
+    "section": "",
+    "text": "“Seed hunting.” Rolling random seeds with a static prompt, hoping for a magic output. This is the slot-machine failure mode.\nNot recording seeds on final generations. You can’t extend, match, or recover a look if you didn’t write down the seed.\nAssuming seed reproducibility across services. Two services can both accept a seed and still produce different output — they likely use different models, samplers, or precision. Reproducibility is per-tool."
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/seeds.html#related-pages",
+    "href": "generative-media/concepts/model-basics/seeds.html#related-pages",
+    "title": "Seeds",
+    "section": "",
+    "text": "../../../foundations/tracking-your-work.md — where seed logs live.\n../../../foundations/iteration-and-selection.md — why locking a seed changes the loop.\n(Planned: samplers-and-schedulers, resolution, model-versions.)"
+  },
+  {
+    "objectID": "generative-media/concepts/index.html",
+    "href": "generative-media/concepts/index.html",
+    "title": "Concepts",
+    "section": "",
+    "text": "The conceptual spine of the media pillar. These pages describe what the tools are and how they work, independent of any specific product.\n\n\n\nmodel-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos."
+  },
+  {
+    "objectID": "generative-media/concepts/index.html#contents",
+    "href": "generative-media/concepts/index.html#contents",
+    "title": "Concepts",
+    "section": "",
+    "text": "model-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos."
+  },
+  {
+    "objectID": "generative-media/craft/index.html",
+    "href": "generative-media/craft/index.html",
+    "title": "Craft",
+    "section": "",
+    "text": "Media-specific technique and decision-making. These pages assume you’ve read the foundations/ — they refine the shared meta-skills for moving images and sound.\n\n\n\nPrompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI."
+  },
+  {
+    "objectID": "generative-media/craft/index.html#planned-topics",
+    "href": "generative-media/craft/index.html#planned-topics",
+    "title": "Craft",
+    "section": "",
+    "text": "Prompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI."
+  },
+  {
+    "objectID": "vibe-coding/building-software/index.html",
+    "href": "vibe-coding/building-software/index.html",
+    "title": "Building Software",
+    "section": "",
+    "text": "Sensible defaults for someone assembling their first non-trivial project.\n\n\n\nReading API docs — REST basics, SDKs vs raw HTTP.\nFrameworks vs rolling-your-own — when to trust a boring framework vs let the agent improvise.\nBoring tech wins — why Rails, Next.js, and the other old standbys beat bespoke scaffolding.\nDependencies and package managers — why random packages are risky.\nReading error messages — understand before pasting to the model."
+  },
+  {
+    "objectID": "vibe-coding/building-software/index.html#planned-topics",
+    "href": "vibe-coding/building-software/index.html#planned-topics",
+    "title": "Building Software",
+    "section": "",
+    "text": "Reading API docs — REST basics, SDKs vs raw HTTP.\nFrameworks vs rolling-your-own — when to trust a boring framework vs let the agent improvise.\nBoring tech wins — why Rails, Next.js, and the other old standbys beat bespoke scaffolding.\nDependencies and package managers — why random packages are risky.\nReading error messages — understand before pasting to the model."
+  },
+  {
+    "objectID": "vibe-coding/index.html",
+    "href": "vibe-coding/index.html",
+    "title": "Vibe-coding for Filmmakers",
+    "section": "",
+    "text": "The second pillar of Generative Production — writing code with AI coding tools. Treated as a peer to media generation because both pillars share the same underlying skill: prompting, iterating, selecting, tracking, and paying for generations.\nThis pillar is organized around one question: how do we keep beginner coders from making big mistakes?\n\n\n\nfoundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each."
+  },
+  {
+    "objectID": "vibe-coding/index.html#contents",
+    "href": "vibe-coding/index.html#contents",
+    "title": "Vibe-coding for Filmmakers",
+    "section": "",
+    "text": "foundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each."
+  },
+  {
+    "objectID": "vibe-coding/setup-and-safety/index.html",
+    "href": "vibe-coding/setup-and-safety/index.html",
+    "title": "Setup and Safety",
+    "section": "",
+    "text": "The things that will hurt you if you skip them. Credentials, billing, and what not to push to git.\n\n\n\nManaging credentials — .env files, never committing secrets, password-manager patterns. (page)\nAPI keys — what they are, how billing works, rate limits, spending caps.\nRepos and .gitignore — what never goes into a public repo.\nSandboxing — when to trust an agent to run commands."
+  },
+  {
+    "objectID": "vibe-coding/setup-and-safety/index.html#planned-topics",
+    "href": "vibe-coding/setup-and-safety/index.html#planned-topics",
+    "title": "Setup and Safety",
+    "section": "",
+    "text": "Managing credentials — .env files, never committing secrets, password-manager patterns. (page)\nAPI keys — what they are, how billing works, rate limits, spending caps.\nRepos and .gitignore — what never goes into a public repo.\nSandboxing — when to trust an agent to run commands."
+  },
+  {
+    "objectID": "decks/index.html",
+    "href": "decks/index.html",
+    "title": "Decks",
+    "section": "",
+    "text": "Curated presentation decks built from the repo’s content using Quarto. Decks are pedagogical sequences, not 1:1 projections of topic pages — a topic page is a reference, a deck is an arc.\n\n\n\nOne .qmd file per deck.\nDecks pull excerpts from topic pages using Quarto’s {{&lt; include &gt;}} syntax, so the topic page stays the single source of truth.\nEvery slide carries data-duration, data-section, and data-level attributes on its heading. See CONTRIBUTING.md for the metadata standard.\nQuarto profiles (5min, 15min, 30min, 60min) build four duration variants of each deck at publish time.\n\n\n\n\n\nprompting-intro.qmd — exemplar deck introducing the universal prompting principles."
+  },
+  {
+    "objectID": "decks/index.html#how-decks-work",
+    "href": "decks/index.html#how-decks-work",
+    "title": "Decks",
+    "section": "",
+    "text": "One .qmd file per deck.\nDecks pull excerpts from topic pages using Quarto’s {{&lt; include &gt;}} syntax, so the topic page stays the single source of truth.\nEvery slide carries data-duration, data-section, and data-level attributes on its heading. See CONTRIBUTING.md for the metadata standard.\nQuarto profiles (5min, 15min, 30min, 60min) build four duration variants of each deck at publish time."
+  },
+  {
+    "objectID": "decks/index.html#decks-in-this-repo",
+    "href": "decks/index.html#decks-in-this-repo",
+    "title": "Decks",
+    "section": "",
+    "text": "prompting-intro.qmd — exemplar deck introducing the universal prompting principles."
   },
   {
     "objectID": "foundations/prompting-principles.html",
@@ -287,32 +518,102 @@
     "text": "iteration-and-selection.md — what to do once you have candidates.\n../generative-media/craft/ — prompting refinements for media (planned).\n../vibe-coding/working-with-models/ — prompting refinements for code (planned)."
   },
   {
-    "objectID": "foundations/tracking-your-work.html",
-    "href": "foundations/tracking-your-work.html",
-    "title": "Tracking Your Work",
+    "objectID": "foundations/what-is-generative-production.html",
+    "href": "foundations/what-is-generative-production.html",
+    "title": "What is Generative Production?",
     "section": "",
-    "text": "In one sentence: Generative work is only as reproducible as your records of it; a prompt book for media and a git history for code are the same discipline with different files.\nWhy it matters for filmmakers: Without records, a great generation is unrepeatable — you can’t extend it, match it, or recover it if a file goes missing. And a project that can’t be rebuilt in six months is effectively disposable. Tracking your work is what turns generative output from a trick into a craft.\n\n\n\nCapture the inputs, not just the outputs. For media: prompt, seed, sampler, model, reference images, tool version. For code: the conversation that produced it, the prompt or rules file, the model. The output alone is not enough — you need to know how to get back to it.\nOne source of truth per project. For media work, keep a prompt book (a spreadsheet or a markdown file) alongside the finished frames. For code, the git repository is the prompt book — commit messages carry the why. Either way, the record lives next to the work.\nSave seeds and commits, not just final picks. The abandoned attempts carry information about what almost worked. A commit you revert is still a record; a seed you noted is still a recipe.\nModels change under you. A model version that produced a look last year may no longer exist. Note the exact version when you use it and, for production work, consider whether you need to archive the model itself.\n\n\n\n\n\nTrusting the cloud tool to remember for you. Most generative services retain history for some window and then discard it — or change the retention policy without warning. Export locally.\nLosing the prompt when keeping the image. A folder of PNGs with no prompts attached is a gallery, not a record.\nMixing commits and generations. For code projects, don’t let the agent commit on your behalf without reviewing the diff — a forgotten commit of an experimental generation is hard to untangle later.\n\n\n\n\n\niteration-and-selection.md — what you’re tracking is the iteration history.\n../practical/ — reproducibility at project scale (planned)."
+    "text": "In one sentence: Generative Production is the discipline of making creative work — films, images, sound, and the code that assembles them — by collaborating with models that generate candidates from your prompts.\nWhy it matters for filmmakers: Generative tools are not a new kind of camera or a new kind of codec. They’re a new kind of collaborator, and the skills that make the collaboration work are the same across media and code. Treating them as one discipline keeps you from re-learning the same lessons in four different contexts.\n\n\n\nBoth pillars of this repo are Generative Production. Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.\nThe meta-skills are universal. Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you’re allowed to do with the result — these apply to every generative tool.\nOutputs differ, workflows rhyme. A video model and a coding agent look nothing alike on the surface. But the rhythm of try, read, refine, commit is the same.\nThe collapsing middle. Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better.\n\n\n\n\n\nTreating media generation and code generation as unrelated hobbies. They reinforce each other.\nAssuming the skill is “getting the tool to work.” The skill is getting the collaboration to work — the tool is a starting point.\nExpecting a single prompt to produce a final product. Generative Production is iterative; your first output is almost never your best.\n\n\n\n\n\nprompting-principles.md — the universal skill.\niteration-and-selection.md — how to work with the fact that the tool gives you many candidates.\ntracking-your-work.md — staying reproducible across months."
   },
   {
-    "objectID": "foundations/tracking-your-work.html#key-ideas",
-    "href": "foundations/tracking-your-work.html#key-ideas",
-    "title": "Tracking Your Work",
+    "objectID": "foundations/what-is-generative-production.html#key-ideas",
+    "href": "foundations/what-is-generative-production.html#key-ideas",
+    "title": "What is Generative Production?",
     "section": "",
-    "text": "Capture the inputs, not just the outputs. For media: prompt, seed, sampler, model, reference images, tool version. For code: the conversation that produced it, the prompt or rules file, the model. The output alone is not enough — you need to know how to get back to it.\nOne source of truth per project. For media work, keep a prompt book (a spreadsheet or a markdown file) alongside the finished frames. For code, the git repository is the prompt book — commit messages carry the why. Either way, the record lives next to the work.\nSave seeds and commits, not just final picks. The abandoned attempts carry information about what almost worked. A commit you revert is still a record; a seed you noted is still a recipe.\nModels change under you. A model version that produced a look last year may no longer exist. Note the exact version when you use it and, for production work, consider whether you need to archive the model itself."
+    "text": "Both pillars of this repo are Generative Production. Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.\nThe meta-skills are universal. Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you’re allowed to do with the result — these apply to every generative tool.\nOutputs differ, workflows rhyme. A video model and a coding agent look nothing alike on the surface. But the rhythm of try, read, refine, commit is the same.\nThe collapsing middle. Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better."
   },
   {
-    "objectID": "foundations/tracking-your-work.html#common-mistakes",
-    "href": "foundations/tracking-your-work.html#common-mistakes",
-    "title": "Tracking Your Work",
+    "objectID": "foundations/what-is-generative-production.html#common-mistakes",
+    "href": "foundations/what-is-generative-production.html#common-mistakes",
+    "title": "What is Generative Production?",
     "section": "",
-    "text": "Trusting the cloud tool to remember for you. Most generative services retain history for some window and then discard it — or change the retention policy without warning. Export locally.\nLosing the prompt when keeping the image. A folder of PNGs with no prompts attached is a gallery, not a record.\nMixing commits and generations. For code projects, don’t let the agent commit on your behalf without reviewing the diff — a forgotten commit of an experimental generation is hard to untangle later."
+    "text": "Treating media generation and code generation as unrelated hobbies. They reinforce each other.\nAssuming the skill is “getting the tool to work.” The skill is getting the collaboration to work — the tool is a starting point.\nExpecting a single prompt to produce a final product. Generative Production is iterative; your first output is almost never your best."
   },
   {
-    "objectID": "foundations/tracking-your-work.html#related-pages",
-    "href": "foundations/tracking-your-work.html#related-pages",
-    "title": "Tracking Your Work",
+    "objectID": "foundations/what-is-generative-production.html#related-pages",
+    "href": "foundations/what-is-generative-production.html#related-pages",
+    "title": "What is Generative Production?",
     "section": "",
-    "text": "iteration-and-selection.md — what you’re tracking is the iteration history.\n../practical/ — reproducibility at project scale (planned)."
+    "text": "prompting-principles.md — the universal skill.\niteration-and-selection.md — how to work with the fact that the tool gives you many candidates.\ntracking-your-work.md — staying reproducible across months."
+  },
+  {
+    "objectID": "foundations/iteration-and-selection.html",
+    "href": "foundations/iteration-and-selection.html",
+    "title": "Iteration and Selection",
+    "section": "",
+    "text": "In one sentence: Generative tools produce candidates; the craft is in deciding which candidate to keep, which to iterate on, and when to stop.\nWhy it matters for filmmakers: Film has always been about selection — you shoot coverage, you cut the film. Generative tools dramatically cheapen the “coverage” step, which means selection becomes the rate-limiting skill. The filmmakers who do well with generative tools are the ones with taste and discipline in culling, not the ones with the best prompts.\n\n\n\nThe model is a coverage machine. A text-to-image model gives you four candidates per generation. A coding agent gives you several attempts at the same function. A video model gives you takes. In all three cases, your job is directing the model toward better candidates and editing them down.\nCull early, cull often. Keep every generation and you drown. Mark the one or two candidates worth building on, discard the rest, and iterate. This is the opposite of “save everything in case” — you want active selection.\nIterate on the best candidate, not the next idea. The temptation is to start over when the first batch disappoints. Usually the better move is to take the best of what you got and push in the direction it suggests. This is how working with a model becomes a conversation instead of a gamble.\nSet a budget before you start. “I’ll spend 20 minutes on this shot” or “I’ll give this function three attempts.” Without a budget, iteration becomes a slot machine.\nKnow when to stop. Generative tools are especially good at tempting you to keep iterating forever — the next batch might be perfect. A 75%-quality shot that ships beats a 95%-quality shot that never does.\n\n\n\n\n\nKeeping every generation. The archive becomes noise.\nStarting over after every disappointing batch. You lose the direction you were building toward.\nIterating without recording what changed. Without a log, you can’t reproduce the good attempts. See tracking-your-work.md.\n\n\n\n\n\nprompting-principles.md — how to aim the model in the first place.\ntracking-your-work.md — how to remember what worked."
+  },
+  {
+    "objectID": "foundations/iteration-and-selection.html#key-ideas",
+    "href": "foundations/iteration-and-selection.html#key-ideas",
+    "title": "Iteration and Selection",
+    "section": "",
+    "text": "The model is a coverage machine. A text-to-image model gives you four candidates per generation. A coding agent gives you several attempts at the same function. A video model gives you takes. In all three cases, your job is directing the model toward better candidates and editing them down.\nCull early, cull often. Keep every generation and you drown. Mark the one or two candidates worth building on, discard the rest, and iterate. This is the opposite of “save everything in case” — you want active selection.\nIterate on the best candidate, not the next idea. The temptation is to start over when the first batch disappoints. Usually the better move is to take the best of what you got and push in the direction it suggests. This is how working with a model becomes a conversation instead of a gamble.\nSet a budget before you start. “I’ll spend 20 minutes on this shot” or “I’ll give this function three attempts.” Without a budget, iteration becomes a slot machine.\nKnow when to stop. Generative tools are especially good at tempting you to keep iterating forever — the next batch might be perfect. A 75%-quality shot that ships beats a 95%-quality shot that never does."
+  },
+  {
+    "objectID": "foundations/iteration-and-selection.html#common-mistakes",
+    "href": "foundations/iteration-and-selection.html#common-mistakes",
+    "title": "Iteration and Selection",
+    "section": "",
+    "text": "Keeping every generation. The archive becomes noise.\nStarting over after every disappointing batch. You lose the direction you were building toward.\nIterating without recording what changed. Without a log, you can’t reproduce the good attempts. See tracking-your-work.md."
+  },
+  {
+    "objectID": "foundations/iteration-and-selection.html#related-pages",
+    "href": "foundations/iteration-and-selection.html#related-pages",
+    "title": "Iteration and Selection",
+    "section": "",
+    "text": "prompting-principles.md — how to aim the model in the first place.\ntracking-your-work.md — how to remember what worked."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Generative Production",
+    "section": "",
+    "text": "A study guide and curriculum-ready resource for filmmakers learning to work with generative AI tools. Organized around the claim that producing moving images with diffusion models and writing the code that glues a project together are two tracks of the same discipline.\nThis site assumes you know the basics of filmmaking but are new to generative tools — and often, to coding.\n\n\n\nFoundations — the shared meta-skills that unify the two pillars. If you read one thing, read this.\n\n\n\n\n\nGenerative Media — image, video, audio, and spatial production with generative tools. Covers model basics, modalities, the tools-and-vendors landscape, and media-specific craft.\nVibe-coding for Filmmakers — writing code with AI coding tools, treated as a first-class form of generative production. Organized around keeping beginner coders safe from common mistakes.\n\n\n\n\n\nPractical — licenses, cost, reproducibility, likeness, provenance, delivery. Applies to both pillars.\nGlossary — flat A–Z vocabulary.\nLearning sources — curated places to keep learning.\nLifecycle crosswalk — a supplemental view mapping media topics to traditional production stages. Supplemental because generative tools are collapsing these boundaries.\n\n\n\n\nEvery page follows a consistent template (see CONTRIBUTING.md in the source repository) so any sub-folder can be lifted into a lesson module. The Decks section contains presentation-ready versions of selected content, each available at 5/15/30/60-minute durations.\n\n\n\nAll content lives in one Git repository as markdown. The same source renders three ways:\n\nGitHub repo — browse the markdown directly at github.com/G3NPRO/generative-production.\nThis site at generative-production.com — static HTML generated by Quarto.\nDecks — curated presentations on this domain, each with 5/15/30/60-minute variants.\n\nOne source of truth, three outputs."
+  },
+  {
+    "objectID": "index.html#start-here",
+    "href": "index.html#start-here",
+    "title": "Generative Production",
+    "section": "",
+    "text": "Foundations — the shared meta-skills that unify the two pillars. If you read one thing, read this."
+  },
+  {
+    "objectID": "index.html#the-two-pillars",
+    "href": "index.html#the-two-pillars",
+    "title": "Generative Production",
+    "section": "",
+    "text": "Generative Media — image, video, audio, and spatial production with generative tools. Covers model basics, modalities, the tools-and-vendors landscape, and media-specific craft.\nVibe-coding for Filmmakers — writing code with AI coding tools, treated as a first-class form of generative production. Organized around keeping beginner coders safe from common mistakes."
+  },
+  {
+    "objectID": "index.html#shared-sections",
+    "href": "index.html#shared-sections",
+    "title": "Generative Production",
+    "section": "",
+    "text": "Practical — licenses, cost, reproducibility, likeness, provenance, delivery. Applies to both pillars.\nGlossary — flat A–Z vocabulary.\nLearning sources — curated places to keep learning.\nLifecycle crosswalk — a supplemental view mapping media topics to traditional production stages. Supplemental because generative tools are collapsing these boundaries."
+  },
+  {
+    "objectID": "index.html#how-to-use-this-as-a-teacher",
+    "href": "index.html#how-to-use-this-as-a-teacher",
+    "title": "Generative Production",
+    "section": "",
+    "text": "Every page follows a consistent template (see CONTRIBUTING.md in the source repository) so any sub-folder can be lifted into a lesson module. The Decks section contains presentation-ready versions of selected content, each available at 5/15/30/60-minute durations."
+  },
+  {
+    "objectID": "index.html#how-this-is-published",
+    "href": "index.html#how-this-is-published",
+    "title": "Generative Production",
+    "section": "",
+    "text": "All content lives in one Git repository as markdown. The same source renders three ways:\n\nGitHub repo — browse the markdown directly at github.com/G3NPRO/generative-production.\nThis site at generative-production.com — static HTML generated by Quarto.\nDecks — curated presentations on this domain, each with 5/15/30/60-minute variants.\n\nOne source of truth, three outputs."
   },
   {
     "objectID": "CONTRIBUTING.html",
