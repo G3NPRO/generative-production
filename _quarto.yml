@@ -7,8 +7,8 @@ project:
 website:
   title: "Generative Production"
   description: "A study guide for filmmakers working with generative AI tools."
-  site-url: https://generativeproduction.com
-  repo-url: https://github.com/fountainhead/vibin
+  site-url: https://generative-production.com
+  repo-url: https://github.com/G3NPRO/vibin
   navbar:
     left:
       - text: Foundations

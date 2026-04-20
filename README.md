@@ -29,7 +29,7 @@ Every page follows a consistent template (see [`CONTRIBUTING.md`](CONTRIBUTING.m
 All content lives in this repository as markdown. The same source renders three ways:
 
 - **This GitHub repo** — browse the markdown directly.
-- **[generativeproduction.com](https://generativeproduction.com)** — a static HTML site generated from the same files.
+- **[generative-production.com](https://generative-production.com)** — a static HTML site generated from the same files.
 - **Decks** — curated presentations on the same domain, each with 5/15/30/60-minute variants.
 
 One source of truth, three outputs.
