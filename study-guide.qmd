@@ -1,0 +1,84 @@
+---
+title: "Generative Production"
+subtitle: "A Study Guide for Filmmakers Learning Generative AI"
+date: today
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  pdf:
+    toc: true
+    toc-depth: 2
+    documentclass: scrbook
+    papersize: letter
+    geometry:
+      - margin=1in
+  epub:
+    toc: true
+    toc-depth: 2
+---
+
+# Introduction {.unnumbered}
+
+This is a single-document version of the Generative Production curriculum — foundations, generative media, vibe-coding for filmmakers, and the practical matters that sit under both. It is assembled from the same markdown source that powers the website at [generative-production.com](https://generative-production.com). Read straight through for a complete pass, or jump to any section via the table of contents.
+
+A note on the reading order: this bundle is flat on purpose. Each chapter below is the same short explainer you would find on a topic page of the site, in the order a teacher would assign them. Internal cross-references use the site URLs, so some links will take you out of this file to the web version.
+
+---
+
+*Part I — Foundations. The umbrella claim: media generation and code generation are the same discipline. The following four chapters earn that claim.*
+
+{{< include foundations/what-is-generative-production.md >}}
+
+{{< include foundations/prompting-principles.md >}}
+
+{{< include foundations/iteration-and-selection.md >}}
+
+{{< include foundations/tracking-your-work.md >}}
+
+---
+
+*Part II — Generative Media. Pages on producing images, video, audio, and spatial work with generative tools.*
+
+{{< include generative-media/concepts/index.md >}}
+
+{{< include generative-media/concepts/model-basics/index.md >}}
+
+{{< include generative-media/concepts/model-basics/seeds.md >}}
+
+{{< include generative-media/concepts/modalities/index.md >}}
+
+{{< include generative-media/concepts/tools-and-vendors/index.md >}}
+
+{{< include generative-media/craft/index.md >}}
+
+{{< include generative-media/lifecycle/index.md >}}
+
+---
+
+*Part III — Vibe-coding for Filmmakers. Writing code with AI coding tools, treated as a first-class form of generative production.*
+
+{{< include vibe-coding/foundations/index.md >}}
+
+{{< include vibe-coding/setup-and-safety/index.md >}}
+
+{{< include vibe-coding/setup-and-safety/managing-credentials.md >}}
+
+{{< include vibe-coding/working-with-models/index.md >}}
+
+{{< include vibe-coding/building-software/index.md >}}
+
+{{< include vibe-coding/common-traps/index.md >}}
+
+---
+
+*Part IV — Practical. The non-creative matters that sit under both pillars: licenses, cost, reproducibility, provenance, delivery.*
+
+{{< include practical/index.md >}}
+
+---
+
+{{< include glossary.md >}}
+
+{{< include learning-sources/index.md >}}

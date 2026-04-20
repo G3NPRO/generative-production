@@ -19,10 +19,21 @@ website:
         href: vibe-coding/
       - text: Practical
         href: practical/
-      - text: Decks
-        href: decks/
       - text: Glossary
         href: glossary.md
+    right:
+      - text: Present
+        icon: easel
+        href: decks/
+      - text: Download
+        icon: download
+        menu:
+          - text: PDF (full study guide)
+            href: study-guide.pdf
+          - text: EPUB (full study guide)
+            href: study-guide.epub
+          - text: Single-page HTML
+            href: study-guide.html
   sidebar:
     style: floating
     collapse-level: 2
@@ -32,6 +43,7 @@ format:
     theme: cosmo
     toc: true
     toc-depth: 2
+    toc-location: left
     code-copy: true
 
 # Duration profiles for decks. Each profile is activated at render time with
