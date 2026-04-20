@@ -46,13 +46,11 @@ format:
     toc-location: left
     code-copy: true
 
-# Duration profiles for decks. Each profile is activated at render time with
-# `quarto render --profile 15min` and is read by filters/slide-duration.lua
-# to elide slides whose `data-duration` attribute doesn't include the matching
-# number.
-profile:
-  group:
-    - [5min, 15min, 30min, 60min]
-
+# Duration profiles (`5min`, `15min`, `30min`, `60min`) for decks are activated
+# per render via `quarto render --profile Xmin`; no main-config declaration is
+# needed (Quarto treats any --profile NAME as valid). A `profile.group` was
+# tried and removed because it silently activates the first profile as default,
+# which would filter the main render. filters/slide-duration.lua reads
+# QUARTO_PROFILE to decide what to elide.
 filters:
   - filters/slide-duration.lua
