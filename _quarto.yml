@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - "CNAME"
+
+website:
+  title: "Generative Production"
+  description: "A study guide for filmmakers working with generative AI tools."
+  site-url: https://generativeproduction.com
+  repo-url: https://github.com/fountainhead/vibin
+  navbar:
+    left:
+      - text: Foundations
+        href: foundations/
+      - text: Generative Media
+        href: generative-media/
+      - text: Vibe-coding
+        href: vibe-coding/
+      - text: Practical
+        href: practical/
+      - text: Decks
+        href: decks/
+      - text: Glossary
+        href: glossary.md
+  sidebar:
+    style: floating
+    collapse-level: 2
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    code-copy: true
+
+# Duration profiles for decks. Each profile is activated at render time with
+# `quarto render --profile 15min` and is read by filters/slide-duration.lua
+# to elide slides whose `data-duration` attribute doesn't include the matching
+# number.
+profile:
+  group:
+    - [5min, 15min, 30min, 60min]
+
+filters:
+  - filters/slide-duration.lua
