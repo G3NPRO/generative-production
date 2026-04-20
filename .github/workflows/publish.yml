@@ -25,10 +25,10 @@ jobs:
       - name: Render site
         run: quarto render
 
-      - name: Render deck variants (5/15/30/60)
+      - name: Render deck duration variants (5/15/30/60)
         run: |
           for profile in 5min 15min 30min 60min; do
-            quarto render decks/ --profile "$profile" --output-dir "_site/decks-$profile"
+            quarto render decks/prompting-intro.qmd --profile "$profile" --output "prompting-intro-$profile.html"
           done
 
       - name: Publish to GitHub Pages

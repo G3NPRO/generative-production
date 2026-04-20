@@ -8,10 +8,11 @@ Curated presentation decks built from the repo's content using Quarto. Decks are
 
 An exemplar deck covering the universal prompting skill. Pick a duration:
 
-- [5 minutes](../decks-5min/prompting-intro.html)
-- [15 minutes](../decks-15min/prompting-intro.html)
-- [30 minutes](../decks-30min/prompting-intro.html)
-- [60 minutes](../decks-60min/prompting-intro.html)
+- [5 minutes](prompting-intro-5min.html)
+- [15 minutes](prompting-intro-15min.html)
+- [30 minutes](prompting-intro-30min.html)
+- [60 minutes](prompting-intro-60min.html)
+- [Full deck (all slides)](prompting-intro.html)
 
 **To present:** open any variant in a browser, then `f` = fullscreen, arrow keys = navigate, `s` = speaker view, `Esc` = overview, `?` = help.
 
