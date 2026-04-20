@@ -27,13 +27,19 @@ jobs:
 
       - name: Render deck duration variants (5/15/30/60)
         run: |
+          mkdir -p _variants
           for profile in 5min 15min 30min 60min; do
-            quarto render decks/prompting-intro.qmd --profile "$profile" --output "prompting-intro-$profile.html"
-            # Quarto's --output drops the file at _site root; move it into decks/
-            if [ -f "_site/prompting-intro-$profile.html" ]; then
-              mv "_site/prompting-intro-$profile.html" "_site/decks/prompting-intro-$profile.html"
-            fi
+            quarto render decks/prompting-intro.qmd --profile "$profile" --output-dir "_variants/$profile"
           done
+          for profile in 5min 15min 30min 60min; do
+            src=$(find "_variants/$profile" -name 'prompting-intro.html' -type f | head -1)
+            if [ -z "$src" ]; then
+              echo "ERROR: deck render for $profile not found"
+              exit 1
+            fi
+            cp "$src" "_site/decks/prompting-intro-$profile.html"
+          done
+          rm -rf _variants
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
