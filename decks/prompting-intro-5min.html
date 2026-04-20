@@ -150,41 +150,6 @@
 <p>“A medium shot, 35mm, golden-hour backlight, shallow depth of field, subject in profile” narrows the space.</p>
 <p><strong>Narrow spaces produce useful outputs.</strong></p>
 </section>
-<section id="tell-it-what-not-how-unless-the-how-matters" class="slide level2" data-duration="15,30,60" data-section="prompting" data-level="working">
-<h2>Tell it <em>what</em>, not <em>how</em> — unless the how matters</h2>
-<ul>
-<li>For open creative work: describe the outcome. Let the model choose the approach.</li>
-<li>For technical work: describe the approach. The outcome depends on it.</li>
-</ul>
-<p>Rule of thumb: the more downstream work depends on the details, the more you specify them.</p>
-</section>
-<section id="show-dont-only-tell" class="slide level2" data-duration="15,30,60" data-section="prompting" data-level="working">
-<h2>Show, don’t only tell</h2>
-<p>Reference images, code examples, prior outputs — usually teach the model faster than adjectives.</p>
-<p>Modern tools accept multiple modalities of reference. Use them.</p>
-</section>
-<section id="constrain-to-create" class="slide level2" data-duration="30,60" data-section="prompting" data-level="working">
-<h2>Constrain to create</h2>
-<p>Counter-intuitively: adding constraints improves output.</p>
-<ul>
-<li>A time budget.</li>
-<li>A palette.</li>
-<li>A rule: “no text in image.”</li>
-</ul>
-<p>Constraints give the model edges to push against.</p>
-</section>
-<section id="iterate-in-small-moves" class="slide level2" data-duration="15,30,60" data-section="prompting" data-level="working">
-<h2>Iterate in small moves</h2>
-<p>Change one thing per attempt.</p>
-<p>Rewrite half the prompt between generations and you won’t know which change helped.</p>
-<p>Same discipline as debugging code.</p>
-</section>
-<section id="the-prompt-is-not-the-whole-context" class="slide level2" data-duration="30,60" data-section="prompting" data-level="deep">
-<h2>The prompt is not the whole context</h2>
-<p>In media: seeds, samplers, reference images shape the output alongside the prompt.</p>
-<p>In code: project files, <code>CLAUDE.md</code>, conversation history shape it.</p>
-<p>The prompt is one input among several.</p>
-</section>
 <section id="common-mistakes" class="slide level2" data-duration="5,15,30,60" data-section="prompting" data-level="intro">
 <h2>Common mistakes</h2>
 <ul>
@@ -192,28 +157,6 @@
 <li><strong>Over-stuffing adjectives.</strong> “Epic, cinematic, masterpiece, 8K” usually adds noise, not signal.</li>
 <li><strong>Ignoring the tool’s own prompting guide.</strong> Every major tool publishes one. Read it.</li>
 </ul>
-</section>
-<section id="a-tiny-exercise" class="slide level2" data-duration="30,60" data-section="prompting" data-level="working">
-<h2>A tiny exercise</h2>
-<p>Pick a tool you’ve used. Write three prompts for the same outcome:</p>
-<ol type="1">
-<li>Vague.</li>
-<li>Specific.</li>
-<li>Specific with constraints.</li>
-</ol>
-<p>Compare results. This recalibrates what “specific” actually means faster than any list of tips.</p>
-</section>
-<section id="a-deeper-look-at-constraint-stacking" class="slide level2" data-duration="60" data-section="prompting" data-level="deep">
-<h2>A deeper look at constraint stacking</h2>
-<p>When a prompt feels “done” but results are middling, add one more constraint — not more description.</p>
-<p>Example progression for a single shot:</p>
-<ol type="1">
-<li><em>A street at night.</em></li>
-<li><em>A street at night, 35mm, low angle.</em></li>
-<li><em>A street at night, 35mm, low angle, wet pavement, neon signage only as light source.</em></li>
-<li><em>A street at night, 35mm, low angle, wet pavement, neon signage only as light source, no visible pedestrians.</em></li>
-</ol>
-<p>Each step narrows. Each step improves. Notice that #4’s constraint is <em>subtractive</em> — removing a default.</p>
 </section>
 <section id="where-to-go-from-here" class="slide level2" data-duration="5,15,30,60" data-section="prompting" data-level="intro">
 <h2>Where to go from here</h2>
