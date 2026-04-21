@@ -1,6 +1,10 @@
 ---
 title: "Generative Production"
 subtitle: "The study guide, presented"
+title-slide-attributes:
+  data-background-image: assets/filmmaker-editing-suite.png
+  data-background-size: cover
+  data-background-opacity: "0.35"
 ---
 
 <!--
@@ -14,7 +18,220 @@ Authoring convention for this deck:
 
   Edit wiki page substantively? Skim the matching slide and its notes — sync them.
   Edit a slide? Follow its Source: link back to the wiki and confirm.
+
+Structural convention:
+
+  `# Section`  = new horizontal column (one per top-level site section).
+  `## Slide`   = vertical sub-slide under the section it follows.
 -->
+
+# Foundations
+
+[The meta-skills every section refines.]{.fragment}
+
+::: {.notes}
+**Source:** `foundations/index.md`
+
+The umbrella claim: *media generation and code generation are the same
+discipline.* These four pages earn that claim — they are the shared
+meta-skills that every other section in the site refines for its medium.
+
+Read in order for a first pass; each page is short.
+:::
+
+## What is Generative Production?
+
+### *A new kind of collaborator — not a new camera.* {.fragment}
+
+::: {.notes}
+**Source:** `foundations/what-is-generative-production.md`
+
+Key ideas:
+
+- Media generation and code generation are the same move — prompt,
+  candidates, select, iterate — with different outputs.
+- The meta-skills are universal: specificity, iteration, tracking,
+  knowing what you're allowed to do with the result.
+- Outputs differ, workflows rhyme.
+- The "collapsing middle" — generative tools dissolve the traditional
+  production stages, so organize learning around the *tools*, not the
+  stages.
+
+Common mistakes to name:
+
+- Treating media and code generation as unrelated hobbies.
+- Assuming the skill is "getting the tool to work" rather than getting
+  the *collaboration* to work.
+- Expecting a single prompt to produce a final product.
+:::
+
+## Prompting Principles
+
+### *Specificity beats cleverness.* {.fragment}
+
+[Constrain to create. Iterate in small moves.]{.fragment}
+
+::: {.notes}
+**Source:** `foundations/prompting-principles.md`
+
+Key ideas:
+
+- Specificity beats cleverness — narrow the space the model can produce.
+- Tell it *what*, not *how* — unless the how matters.
+- Show, don't only tell — reference images, code examples, prior outputs.
+- Constrain to create — edges to push against.
+- Iterate in small moves — one change per attempt.
+- The prompt is not the whole context — seeds, rules files, project
+  history all shape the output alongside the prompt.
+
+Common mistakes: prompt-and-pray; over-stuffing adjectives;
+ignoring the tool's own prompting guide.
+:::
+
+## Iteration and Selection
+
+### *The model is a coverage machine.* {.fragment}
+
+[Your job is deciding what to keep.]{.fragment}
+
+::: {.notes}
+**Source:** `foundations/iteration-and-selection.md`
+
+Film has always been about selection — you shoot coverage, you cut.
+Generative tools cheapen coverage, which means *selection* becomes
+the rate-limiting skill.
+
+Key ideas:
+
+- The model is a coverage machine — text-to-image gives you four
+  candidates, a coding agent gives you several attempts, a video model
+  gives you takes.
+- Cull early, cull often — keep every generation and you drown.
+- Iterate on the best candidate, not the next idea.
+- Set a budget before you start — iteration becomes a slot machine
+  without one.
+- Know when to stop — a 75%-quality shot that ships beats a 95%-quality
+  shot that never does.
+:::
+
+## Tracking Your Work
+
+### *Prompt book. Git history. Same discipline.* {.fragment}
+
+::: {.notes}
+**Source:** `foundations/tracking-your-work.md`
+
+Without records, a great generation is unrepeatable — you can't extend
+it, match it, or recover it. A project that can't be rebuilt in six
+months is effectively disposable.
+
+Key ideas:
+
+- Capture inputs, not just outputs — prompt, seed, sampler, model,
+  references, tool version. For code: the conversation, the rules file,
+  the model.
+- One source of truth per project — a prompt book for media; the git
+  repo for code.
+- Save seeds and commits, not just final picks.
+- Models change under you — note exact versions; archive models for
+  production work.
+
+Common mistakes: trusting the cloud tool to remember; a folder of PNGs
+with no prompts attached; mixing commits and experimental generations.
+:::
+
+# Generative Media
+
+[Images, video, audio, spatial.]{.fragment}
+
+::: {.notes}
+**Source:** `generative-media/index.md`
+
+Producing images, video, audio, and spatial work with generative AI tools.
+Assumes the audience has been through `foundations/` — this section is
+where those meta-skills get their media-specific skin.
+
+Three sub-sections, in order:
+
+- `concepts/` — what the tools are and how they work.
+- `craft/` — media-specific technique and decision-making.
+- `lifecycle/` — a crosswalk, not a spine, mapping pages to film-production
+  stages.
+:::
+
+## Concepts
+
+### Model basics · modalities · tools and vendors {.fragment}
+
+::: {.notes}
+**Source:** `generative-media/concepts/index.md`
+
+The conceptual spine of the section — describes *what the tools are*
+and *how they work*, independent of any specific product.
+
+Sub-pages:
+
+- **Model basics** — diffusion intuition, LoRAs, seeds, CFG, samplers,
+  conditioning. The vocabulary every media generator hits.
+- **Modalities** — one page per modality (image, video, audio, spatial)
+  with sub-topics inline.
+- **Tools and vendors** — local vs cloud, hardware realities, cloud
+  compute providers, interfaces, model zoos.
+
+Framing guidance: describe concepts and categories, not current products.
+Pages should age gracefully.
+:::
+
+## Craft
+
+### *Consistency, camera motion, temporal coherence — and when not to use AI.* {.fragment}
+
+::: {.notes}
+**Source:** `generative-media/craft/index.md`
+
+Media-specific technique. Assumes the audience has the foundations;
+this page is where those refine for moving image and sound.
+
+Planned topics:
+
+- Prompting for visual generation — positive/negative, weighting, syntax
+  differences. Refines `foundations/prompting-principles.md`.
+- Seeds and reproducibility as craft — directed vs discovered.
+- Character consistency across shots.
+- Scene and location consistency.
+- Shot-to-shot continuity — lighting, wardrobe, time-of-day.
+- Camera motion control in video models.
+- Temporal coherence — flicker, morphing, how to fight them.
+- Directing AI: intention vs randomness.
+- Blending generative with traditional — plates, comps, hybrid pipelines.
+- When *not* to use AI.
+:::
+
+## Lifecycle Crosswalk
+
+### *Dev · Pre · Production · Post · Delivery.* {.fragment}
+
+[A crosswalk, not a spine.]{.fragment}
+
+::: {.notes}
+**Source:** `generative-media/lifecycle/index.md`
+
+A supplemental view. Generative tools are collapsing traditional stages —
+previs becomes production; post becomes production — so this page
+cross-references concepts to stages rather than organizing the site
+that way.
+
+Planned structure:
+
+1. Preamble — why this is a crosswalk.
+2. Stages — Development, Pre-production, Production, Post, Delivery.
+   Each a short paragraph + bulleted links.
+3. Collapsing seams — callouts where a tool genuinely dissolves a
+   stage boundary.
+
+Speaker note: this slide pulls the audience back to the wiki. Use it to
+show the crosswalk view once the underlying pages exist.
+:::
 
 # Vibe-coding for Filmmakers
 
@@ -31,166 +248,643 @@ model — prompt, get candidates, select, iterate, track — with different
 outputs. This section covers the code-specific skin over that shared skill.
 :::
 
-## Working with Models
+## Foundations (Vibe-coding) {.divider}
 
-:::: {.columns}
-::: {.column width="55%"}
-### Prompting, context, the right model for the job. {.fragment}
-:::
-::: {.column width="45%"}
-![](assets/model-constellation.svg){fig-alt="A central prompt node connected to four candidate outputs by dashed lines." width="100%"}
-:::
-::::
-
-::: {.notes}
-**Source:** `vibe-coding/working-with-models/index.md`
-
-Topics to cover:
-
-- Coding models compared — Opus / Sonnet / Haiku, GPT-5, Gemini, local models.
-  Strengths, context windows, cost.
-- Prompting for code — refines the universal prompting principles for the
-  coding case: constraints, examples, iterative refinement.
-- Context management — why "start a new chat" matters; `CLAUDE.md` /
-  `AGENTS.md` / rules files.
-- Skills — what they are, when to build one.
-- MCP — what it is, when it's worth wiring up.
-- Agents vs chat vs autocomplete — different affordances.
-
-Key takeaway: the chat window is an *environment*, not a prompt box.
-Curate it.
-:::
-
-## Building Software
-
-### Boring tech wins. {.fragment}
-
-::: {.notes}
-**Source:** `vibe-coding/building-software/index.md`
-
-Sensible defaults for someone assembling their first non-trivial project.
-
-- Reading API docs — REST basics, SDKs vs raw HTTP.
-- Frameworks vs rolling-your-own — when to trust a boring framework
-  vs let the agent improvise.
-- Boring tech wins — Rails, Next.js, and the other old standbys beat
-  bespoke scaffolding.
-- Dependencies and package managers — why random packages are risky.
-- Reading error messages — understand before pasting to the model.
-
-Key takeaway: the framework you didn't invent is almost always better than
-the framework the agent improvised in the last ten minutes.
-:::
-
-## Common Traps
-
-### *Commit a secret. Force-push. Trust the demo.* {.fragment}
-
-A named gallery of specific beginner mistakes, with the fix for each.
-
-::: {.notes}
-**Source:** `vibe-coding/common-traps/index.md`
-
-The "keep beginners safe" promise made concrete. Each trap is a short
-cautionary tale ending with the fix.
-
-Planned pages:
-
-- Committing secrets to git.
-- Blindly running agent-suggested shell commands.
-- Force-push disasters and losing work.
-- Letting the agent refactor without review.
-- Accepting the first thing that compiles.
-- Scope-creep prompts.
-- Building on sand — unreliable deps, beta APIs, deprecated models.
-- Runaway API bills.
-- Deploying to production without testing.
-- Trusting a local-running model demo when the finished product needs
-  reliability.
-- "Works on my machine" illusions.
-
-Cross-linked to `practical/` where topics overlap.
-:::
-
-## Foundations (Vibe-coding)
-
-### Agents · Code · Terminal · Git {.fragment}
+*Agents · Code · Terminal · Git*
 
 ::: {.notes}
 **Source:** `vibe-coding/foundations/index.md`
 
-Mental models for someone who's coded little or not at all.
-The on-ramp before the setup and safety material.
-
-- What is an agent? — IDE vs chat vs autocomplete; different affordances
-  for different jobs.
-- Where does code actually run? — local, cloud, hybrid, and why it matters
-  for cost and trust.
-- Terminal literacy — `cd`, `ls`, what a shell is, why the agent drops you
-  into one.
-- Git literacy — why version control matters *especially* for AI-generated
-  code.
+Subsection divider. Mental models for someone who's coded little or not
+at all — the on-ramp before setup and safety.
 :::
 
-## Setup and Safety
+## What is an agent?
 
-### The things that hurt you if you skip them. {.fragment}
+[*A model that takes actions, not just produces text.*]{.fragment}
 
-Credentials. Billing. What never goes into git.
+- **Autocomplete** — suggests next few lines; you stay in control.
+- **Chat** — ask, answer, copy into your project.
+- **Agent** — reads and writes your project directly.
+
+[Pick the shape that matches how much trust the task deserves.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md#what-is-an-agent`
+
+The crucial distinction from a chat window: an agent takes actions on
+your behalf — read files, run commands, edit code — not just produces
+text about them.
+
+Three shapes, three trust levels:
+
+- **Autocomplete** (Copilot-style): keystroke-saving, you review each suggestion.
+- **Chat**: you ask, model answers, you decide what to paste back.
+- **Agent**: full read/write on your project, often running commands in a terminal.
+
+Each has different affordances and different failure modes. Match the
+shape to the task's trust level.
+:::
+
+## Where does code actually run?
+
+[*Local, cloud, hybrid — the difference matters more than it looks.*]{.fragment}
+
+- **Local** — fast, free, private, hardware-bound.
+- **Cloud** — scalable, costly, less private.
+- Even "local" agents often use cloud models on your behalf.
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md#where-does-code-actually-run`
+
+Code has to run *somewhere*, and where it runs shapes cost, privacy, and
+reliability.
+
+Beginners trip on "free" agents that turn out to call paid cloud models
+on your behalf — your project is local but the inference is not. Before
+starting a project, know where each part of it will execute.
+:::
+
+## Terminal literacy
+
+[*The shell verbs an agent drops you into constantly.*]{.fragment}
+
+- `cd` · `ls` · `cat` · `git`
+- Spot dangerous commands: `rm -rf`, `sudo`, history rewrites.
+- Read every command before approving.
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md#terminal-literacy`
+
+No icons, no mouse — just text commands. Agents use the terminal because
+it's the fastest way to manipulate files and run commands.
+
+You don't need fluency. You need enough comfort to recognize a dangerous
+command when the agent proposes one — anything with `rm -rf`, anything
+with `sudo`, anything that rewrites history, anything you didn't ask for.
+:::
+
+## Git literacy
+
+[*The undo button for AI-generated code.*]{.fragment}
+
+- Remembers every version you commit.
+- Commit small, commit often.
+- Short message describing *why*.
+- Review before pushing.
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md#git-literacy`
+
+For filmmakers: like keeping every take. You can always return to an
+earlier version, compare two versions, or branch a new experiment
+without losing the main line.
+
+Git matters *especially* with AI-generated code: the agent will
+sometimes produce changes you don't want, and revert only works if
+you've been committing along the way.
+:::
+
+## Setup and Safety {.divider}
+
+*The things that hurt you if you skip them.*
 
 ::: {.notes}
 **Source:** `vibe-coding/setup-and-safety/index.md`
 
-Planned topics:
-
-- Managing credentials — `.env` files, never committing secrets,
-  password-manager patterns.
-- API keys — what they are, how billing works, rate limits, spending caps.
-- Repos and `.gitignore` — what *never* goes into a public repo.
-- Sandboxing — when to trust an agent to run commands.
-
-Key takeaway: set up `.gitignore` *before* you put a credential in a file.
+Subsection divider. Credentials, billing, what never goes into git, and
+how to let an agent run commands without letting it ruin your afternoon.
 :::
 
-## Managing Credentials
+## Managing credentials
 
-### *Leak one and you pay for someone else's bill.* {.fragment}
+[*Password manager → `.env` → `.gitignore`.*]{.fragment}
 
-[**Password manager → .env → .gitignore.**]{.fragment}
+- Real keys live in a password manager.
+- `.env` is a local cache; `.env` is gitignored.
+- Ship `.env.example` with blank values.
+- Set up `.gitignore` *before* adding a credential.
 
 ::: {.notes}
-**Source:** `vibe-coding/setup-and-safety/managing-credentials.md`
+**Source:** `vibe-coding/setup-and-safety/index.md#managing-credentials`
 
-Credentials are the secrets your code uses to access paid services.
-Key leaks are the single most common way beginner coders get burned —
-a public GitHub repo with a key in it gets scraped within minutes.
+API keys, passwords, tokens — the secrets your code uses to access paid
+services. A leaked key gets scraped from a public repo within minutes
+and billed to you until you rotate it.
 
-Key ideas to walk through:
+If it happens anyway: rotate at the vendor immediately. Don't just delete
+the commit — git history is distributed, you can't unshare a secret.
+:::
 
-- **Never commit a credential.** Not in code, not in config, not in a
-  comment, not "just temporarily." Git remembers.
-- **`.env` + environment variables.** `KEY=value` lines. Code reads from
-  the environment. `.env` is gitignored; ship a `.env.example` with blank
-  values.
-- **Password manager is source of truth.** 1Password, Bitwarden, Apple
-  Passwords. `.env` is a convenience cache.
-- **Rotate on leak — don't just delete the commit.** Git history is
-  distributed; you don't know who cloned the repo in the window the key
-  was public.
-- **Cap spending at the vendor.** Most AI vendors let you set a hard
-  monthly limit. Set one. Leaked uncapped keys have cost beginners
-  thousands of dollars in a day.
+## API keys, billing, spending caps
 
-Common mistakes to name:
+[*Treat the key like a credit card.*]{.fragment}
 
-- Committing a `.env` file.
-- Pasting a real key into a chat or example.
-- Reusing one key for everything.
-- Leaving a leaked key live because "I deleted the commit."
+- One key per project (blast-radius control).
+- Hard monthly spending cap at the vendor dashboard.
+- Email alerts at 50% and 90%.
 
-Exercise: before writing a line of API-using code, do the full setup —
-`.env`, `.gitignore`, `.env.example`, `git status` to confirm, store the
-real key in the password manager.
+[A leaked uncapped key has cost beginners thousands in a day.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/setup-and-safety/index.md#api-keys-billing-and-spending-caps`
+
+Every paid generative tool authenticates you with an API key attached to
+a billing account.
+
+Two things bite a beginner: rate limits (requests start failing) and
+uncapped spend (a runaway loop or a leaked key burns through your card).
+Caps cap the damage.
+:::
+
+## Repos and `.gitignore`
+
+[*What never goes into a public repo.*]{.fragment}
+
+- Credentials (`.env`).
+- Build artifacts (`node_modules/`, `_site/`).
+- Generated media, large binaries.
+- Anything personal or secret.
+
+[`git status` before every commit.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/setup-and-safety/index.md#repos-and-gitignore`
+
+A public repo is visible to everyone, including bots scanning GitHub for
+leaked secrets. "What goes in the repo" is a load-bearing decision.
+
+Every new project starts with a `.gitignore` tailored to its language
+or framework. Most hosts offer a starter file.
+:::
+
+## Sandboxing
+
+[*Trust the agent like a well-meaning intern.*]{.fragment}
+
+- Bounded project directory.
+- No full home or system access.
+- Review filesystem-touching commands.
+
+::: {.notes}
+**Source:** `vibe-coding/setup-and-safety/index.md#sandboxing`
+
+An agent executes commands. An agent that's been tricked, confused, or
+compromised can do real damage.
+
+Capable but supervised — that's the model. Use permission prompts where
+the tool supports them; review each command before approving when speed
+matters less than safety.
+:::
+
+## Working with Models {.divider}
+
+*Prompting, context, the right model for the job.*
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md`
+
+Subsection divider. Refines `foundations/prompting-principles.md` for
+the coding case, and adds the code-specific environment — rules files,
+skills, MCP — that shapes what the model actually sees.
+:::
+
+## Coding models compared
+
+[*Capability · context window · cost per token.*]{.fragment}
+
+- Claude (Opus / Sonnet / Haiku), GPT, Gemini, local open models.
+- Cheaper + three attempts ≠ cheaper.
+- Default: the most capable model in your budget tier.
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#coding-models-compared`
+
+Several families dominate. They differ on three axes that matter:
+
+- Raw capability — how hard a problem can it solve.
+- Context window — how much of your project it holds at once.
+- Cost per token.
+
+Reach for smaller models only for genuinely small tasks (a rename, a
+syntax question) or when running locally for privacy.
+:::
+
+## Prompting for code
+
+[*Specificity beats cleverness — especially here.*]{.fragment}
+
+- Name the language, framework, version.
+- Show example input → expected output.
+- Say what you already tried.
+
+[Anti-pattern: asking for a "complete implementation" with vague requirements.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#prompting-for-code`
+
+Refines the universal prompting principles for the coding case:
+specificity, constraints, one change per iteration, reference examples.
+
+Code-specific moves: name the stack and versions (`Rails 8.1`, `Python
+3.12`, `Node 22`); describe the existing code style if you want
+consistency; give the model a small example to match.
+:::
+
+## Context management
+
+[*The chat window is an environment, not a prompt box.*]{.fragment}
+
+- Everything the agent has read shapes the next response.
+- Rules files (`CLAUDE.md`, `AGENTS.md`) pin stable context.
+- Start a new chat when it drifts.
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#context-management`
+
+Files the agent read, commands it ran, earlier Q&A — all shape the next
+response. When the environment fills with irrelevant detail, a fresh
+conversation is faster than steering the polluted one.
+
+Rules files let you pin the things you don't want to re-type every
+session: conventions, domain knowledge, gotchas.
+
+The skill is curating the environment, not just writing prompts into it.
+:::
+
+## Skills
+
+[*Reusable instruction packages for specific tasks.*]{.fragment}
+
+- "Review a PR." "Create a migration." "Debug a failing test."
+- One step up from rules files — follow you across projects.
+- Build one after re-explaining a workflow for the third time.
+
+[A good skill is a recipe, not a personality.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#skills`
+
+Rules files live in the project; skills live in the tool and travel
+with you.
+
+Don't build skills speculatively — premature skills become stale
+instructions you have to maintain.
+:::
+
+## MCP
+
+[*Standard protocol for agent ↔ external tools.*]{.fragment}
+
+- Filesystem · database · browser · image APIs.
+- Without MCP, every integration is one-off.
+- Wire up when copy-paste becomes the bottleneck.
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#mcp`
+
+Model Context Protocol. Lets an agent plug into any compatible tool
+without custom code.
+
+Don't wire servers speculatively — each one adds surface area for
+mistakes. Heuristic: if you're copy-pasting between the agent and
+another service repeatedly, that's the trigger.
+:::
+
+## Agents vs chat vs autocomplete
+
+[*Three shapes, three right jobs.*]{.fragment}
+
+- **Autocomplete** — routine code; saves keystrokes.
+- **Chat** — explanations, isolated functions.
+- **Agent** — multi-file changes, refactors, debugging.
+
+[Mixing them is normal. Using one shape for every job is wrong.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#agents-vs-chat-vs-autocomplete`
+
+Typical day: autocomplete while typing, pop out to chat to understand an
+error, dispatch an agent to implement the change.
+
+Beginners tend to pick one shape and use it for everything. The cost is
+speed and quality — each task has a shape it fits best.
+:::
+
+## Building Software {.divider}
+
+*Sensible defaults for your first non-trivial project.*
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md`
+
+Subsection divider. The theme: prefer the boringest credible choice,
+and read things before pasting them.
+:::
+
+## Reading API docs
+
+[*Auth · endpoints · a working example.*]{.fragment}
+
+- REST + HTTP is the common vocabulary.
+- `GET`, `POST`, `PUT`, `DELETE` to a URL with JSON.
+- SDKs wrap the raw calls; raw HTTP works when no SDK exists.
+
+[Read the docs before asking the model — the agent invents plausible calls that don't exist.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#reading-api-docs`
+
+Skim for the three things that matter: authentication method, endpoint
+shape, working example. Confirm you read the first two correctly by
+running the third.
+:::
+
+## Frameworks vs rolling-your-own
+
+[*Pre-built scaffolding vs inventing it yourself.*]{.fragment}
+
+- Frameworks — battle-tested patterns, shared vocabulary, community.
+- Rolling your own — freedom, at the cost of solved problems you resolve.
+- Beginner default: the framework almost always wins.
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#frameworks-vs-rolling-your-own`
+
+An agent will gladly help you roll your own — that's the trap. Spend
+your learning on *your* problem, not on everyone else's problems the
+framework already solved.
+
+Conforming to framework conventions is a feature, not a bug.
+:::
+
+## Boring tech wins
+
+[*Older stacks have millions of projects of training data.*]{.fragment}
+
+- Rails, Django, Next.js, plain Postgres, plain HTML.
+- The shiny framework from last quarter — thin training coverage.
+- The model improvises; it looks right, it isn't.
+
+[Boring tech has docs, tutorials, Stack Overflow for when the model is wrong.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#boring-tech-wins`
+
+Counter-intuitive rule of AI coding: older and more established
+technologies produce better results than trendy ones.
+
+Reach for the cutting edge only when the problem genuinely requires it.
+:::
+
+## Dependencies and package managers
+
+[*Someone else's code your project uses.*]{.fragment}
+
+- npm, pip, bundler, cargo — the package manager installs and tracks.
+- Prefer well-known packages with active maintenance.
+- Pin versions in a lockfile.
+- Read what a package does before adding it.
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#dependencies-and-package-managers`
+
+Powerful because you skip work someone else did. Dangerous because
+you're trusting code you didn't write and often didn't read.
+
+Two beginner failures: installing random packages the agent suggests
+without vetting them, and letting versions drift so "works on my
+machine" stops reproducing anywhere else.
+:::
+
+## Reading error messages
+
+[*Read, hypothesize — then ask the model.*]{.fragment}
+
+- First line usually tells you what went wrong and where.
+- "I think X is happening because Y — is that right?"
+- Stack traces read bottom-up.
+- The real bug is near the top, in *your* code.
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#reading-error-messages`
+
+The beginner move is paste-and-ask. The better move is diagnose-then-ask.
+
+Collaborating on a diagnosis produces better help than asking the model
+to guess.
+:::
+
+## Common Traps {.divider}
+
+*A named gallery of specific beginner mistakes.*
+
+[Each trap is its own short page in the wiki.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/index.md`
+
+Subsection divider. The "keep beginners safe" promise made concrete.
+Each trap is a short cautionary tale ending with the fix.
+
+Cross-linked to `practical/` where topics overlap (licenses,
+reproducibility, cost).
+
+Walk through the traps that match the audience; the full gallery lives
+in the wiki for self-study.
+:::
+
+## Committing secrets to git
+
+[*The single most common way beginners get burned.*]{.fragment}
+
+- Bots scrape public repos within minutes.
+- Set up `.gitignore` *first*, credentials after.
+- If leaked: rotate at the vendor — don't just delete the commit.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/committing-secrets.md`
+
+Git history is distributed — you can't unshare a leaked secret.
+
+Prevention is `.gitignore` before the credential. Recovery is rotation,
+not deletion.
+:::
+
+## Blindly running agent-suggested shell commands
+
+[*Most are fine. Once in a while, catastrophic.*]{.fragment}
+
+- Read every command before approving.
+- Flag `rm -rf`, `sudo`, unexpected redirects.
+- Never run unfamiliar commands where you don't want loss.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/blindly-running-commands.md`
+
+The agent will propose the right command most of the time. The cost of
+reading it is trivial compared to the cost of a mistake.
+:::
+
+## Force-push disasters
+
+[*One flag, whole branch gone.*]{.fragment}
+
+- `git push --force` overwrites remote with your local state.
+- Never force-push to `main`.
+- Prefer `--force-with-lease` when you must.
+- To undo a commit: `git revert`, not force-push.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/force-push-disasters.md`
+
+Beginners reach for force-push to "fix" a messy history and erase work —
+sometimes their own, sometimes a collaborator's.
+
+Revert adds a new commit that cancels the old one. Safer, and the
+history still tells the truth.
+:::
+
+## Letting the agent refactor without review
+
+[*A 300-line diff you didn't read.*]{.fragment}
+
+- Treat a large refactor as three small ones.
+- One change at a time; review each.
+- Ask for a summary before approving sweeping changes.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/refactor-without-review.md`
+
+Two weeks later, a subtle bug surfaces and you can't tell what changed
+vs. what was always wrong. Rollback is expensive by then.
+
+Constrain the agent explicitly: "rename this, extract that, inline the
+other" — one thing per diff.
+:::
+
+## Accepting the first thing that compiles
+
+[*"Compiles" ≠ "works."*]{.fragment}
+
+- Try the empty input.
+- Try the wrong type.
+- Try the oversized input.
+- Try the obvious adversarial input.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/first-thing-that-compiles.md`
+
+Coverage of the golden path alone has always been a trap. With AI-
+generated code, where the model optimizes for "looks plausible," it's
+worse.
+
+The fix is a small checklist for every function before you declare it done.
+:::
+
+## Scope-creep prompts
+
+[*You asked for one change. You got six.*]{.fragment}
+
+- Constrain the agent in the prompt explicitly.
+- "Change only the `authenticate` function; do not modify other files."
+- If the agent oversteps: reject the whole change and re-prompt.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/scope-creep-prompts.md`
+
+Reformatting six other files, renaming three functions, "improving" a
+module you didn't mention — the diff becomes unreadable.
+
+Redoing is cheaper than untangling. Cherry-picking from a sprawling
+diff is where mistakes hide.
+:::
+
+## Building on sand
+
+[*Unreliable deps, beta APIs, deprecated models.*]{.fragment}
+
+- A beta API changes its response format — your pipeline breaks.
+- A model gets deprecated — your shot no longer renders.
+- Know what's unstable. Document it. Have a fallback.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/building-on-sand.md`
+
+For anything production-critical, prefer the oldest stable version of
+the tool that does what you need.
+
+Cross-links to `practical/` on reproducibility — how to keep a project
+working six months from now.
+:::
+
+## Runaway API bills
+
+[*Loops, retries, leaks — always set a ceiling.*]{.fragment}
+
+- Per-key spending cap at the vendor.
+- Per-request timeouts in your code.
+- Circuit breaker after N consecutive failures.
+- Email alerts above a threshold.
+
+[Set these up *before* you need them — 3am is too late.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/runaway-api-bills.md`
+
+A script stuck in a loop, a misconfigured retry, a leaked key in
+someone else's hands — the common thread is no ceiling.
+:::
+
+## Deploying to production without testing
+
+[*Works on my machine, at scale.*]{.fragment}
+
+- A staging environment that mirrors production.
+- An automated test suite that runs before every deploy.
+- A deploy that's reversible in one command.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/deploy-without-testing.md`
+
+Different env vars, different database state, different traffic. "Works
+in dev" covers none of these.
+
+Small projects don't need elaborate infrastructure, but every project
+needs *a way* to deploy safely and *a way* to undo a deploy.
+:::
+
+## Trusting a local-running model demo
+
+[*A clever trick is not a pipeline.*]{.fragment}
+
+- A demo proves a look is possible.
+- Not that a pipeline is viable at a hundred shots.
+- Budget the real cost of scaling the approach before committing.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/local-model-demo-trap.md`
+
+Local-model demos don't scale. What feels like a clever trick on one
+shot becomes a serious infrastructure project at production volume.
+
+Cross-links to `practical/` on cost and reproducibility.
+:::
+
+## "Works on my machine" illusions
+
+[*Reproducibility is a practice, not a hope.*]{.fragment}
+
+- Pin every version in a lockfile.
+- Document required env vars in `.env.example`.
+- Check in a working setup script.
+- Test the fresh-clone scenario before declaring a project done.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/works-on-my-machine.md`
+
+A project that can't run on a new machine from a git clone plus a
+documented setup step isn't really shareable.
 :::
 
 # Practical
@@ -203,6 +897,17 @@ real key in the password manager.
 Licenses, cost, reproducibility, likeness, provenance, delivery.
 Applies across the whole site, not just one section.
 
-This chapter's slides are not authored yet — pull audience attention back
-to the wiki for these topics, or add slide pages as the prose solidifies.
+Planned topics (slides not yet authored — pull the audience back to
+the wiki for now, or add slides as the prose solidifies):
+
+- Model and tool licenses — non-commercial vs permissive vs OSS; what
+  "open weights" actually lets you do.
+- Copyright and training-data debates — written to age gracefully.
+- Likeness and consent — actors, real people, estates.
+- Provenance and labeling — C2PA, visible disclosure norms, platform
+  requirements.
+- Cost management — API spend, cloud GPU hours, iteration budgets.
+- Reproducibility — archiving prompts, seeds, model versions, and for
+  code: lockfiles and commits.
+- Delivery considerations — codecs, color space, frame rates.
 :::

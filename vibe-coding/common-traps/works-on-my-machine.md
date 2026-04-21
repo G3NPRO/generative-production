@@ -1,0 +1,3 @@
+# "Works on My Machine" Illusions
+
+Your project runs fine locally. On a collaborator's machine, or on the server, or on GitHub Actions, it breaks — because your machine has a specific Python version, a specific env var, a file that exists only locally, or a tool you installed and forgot. The fix is reproducibility as a practice: pin every version in a lockfile, document every required env var in `.env.example`, check in a working setup script, and test the "fresh clone" scenario at least once before calling a project done. If a project can't run on a new machine from a git clone plus a documented setup step, it's not really shareable.

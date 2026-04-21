@@ -3,7 +3,7 @@ format:
     theme: [simple, theme.scss]
     slide-number: c/t
     progress: true
-    incremental: false
+    incremental: true
     hash-type: title
     transition: fade
     background-transition: fade

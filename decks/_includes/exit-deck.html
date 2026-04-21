@@ -62,5 +62,15 @@
       e.preventDefault();
       window.location.href = exitHref;
     });
+
+    // Escape in overview view exits the deck (overriding Reveal's default of closing overview).
+    // Runs in the capture phase so it fires before Reveal's own Escape handler.
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+      if (!window.Reveal || typeof window.Reveal.isOverview !== 'function' || !window.Reveal.isOverview()) return;
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = exitHref;
+    }, true);
   })();
 </script>

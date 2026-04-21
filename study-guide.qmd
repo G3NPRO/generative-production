@@ -63,13 +63,33 @@ A note on the reading order: this bundle is flat on purpose. Each chapter below 
 
 {{< include vibe-coding/setup-and-safety/index.md >}}
 
-{{< include vibe-coding/setup-and-safety/managing-credentials.md >}}
-
 {{< include vibe-coding/working-with-models/index.md >}}
 
 {{< include vibe-coding/building-software/index.md >}}
 
 {{< include vibe-coding/common-traps/index.md >}}
+
+{{< include vibe-coding/common-traps/committing-secrets.md >}}
+
+{{< include vibe-coding/common-traps/blindly-running-commands.md >}}
+
+{{< include vibe-coding/common-traps/force-push-disasters.md >}}
+
+{{< include vibe-coding/common-traps/refactor-without-review.md >}}
+
+{{< include vibe-coding/common-traps/first-thing-that-compiles.md >}}
+
+{{< include vibe-coding/common-traps/scope-creep-prompts.md >}}
+
+{{< include vibe-coding/common-traps/building-on-sand.md >}}
+
+{{< include vibe-coding/common-traps/runaway-api-bills.md >}}
+
+{{< include vibe-coding/common-traps/deploy-without-testing.md >}}
+
+{{< include vibe-coding/common-traps/local-model-demo-trap.md >}}
+
+{{< include vibe-coding/common-traps/works-on-my-machine.md >}}
 
 ---
 
