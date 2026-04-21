@@ -44,12 +44,5 @@ format:
     code-copy: true
     include-after-body: _includes/smart-present.html
 
-# Duration profiles (`5min`, `15min`, `30min`, `60min`) for decks are activated
-# per render via `quarto render --profile Xmin`; no main-config declaration is
-# needed (Quarto treats any --profile NAME as valid). A `profile.group` was
-# tried and removed because it silently activates the first profile as default,
-# which would filter the main render. filters/slide-duration.lua reads
-# QUARTO_PROFILE to decide what to elide.
 filters:
-  - filters/slide-duration.lua
   - filters/chapter-bg.lua

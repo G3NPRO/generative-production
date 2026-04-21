@@ -77,20 +77,6 @@ Describe *categories* and *concepts*, not current product rankings. A page about
 
 Every page that refines a `foundations/` concept should link back to it. Every foundation page should link forward to its refinements where they exist. Deep-dive pages always link back to their section page.
 
-## Slide metadata standard
-
-Every slide in every deck carries these three attributes on its heading:
-
-```markdown
-## What is a prompt? {data-duration="5,15,30,60" data-section="prompting" data-level="intro"}
-```
-
-- **`data-duration`** — comma-separated list of profiles this slide appears in. The build-time filter uses this.
-- **`data-section`** — thematic section: `prompting`, `iteration`, `licenses`, etc. Future filtering will use this.
-- **`data-level`** — `intro`, `working`, `deep`. For progressive decks.
-
-All three are required on every slide. Missing metadata will fail the build once the check script lands.
-
 ## Committing
 
 Small commits. One page or one cohesive change per commit. Commit messages follow the pattern `<family>: <short description>` — e.g., `foundations: tracking-your-work` or `vibe-coding: add managing-credentials`.

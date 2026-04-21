@@ -22,7 +22,7 @@ This repo assumes you know the basics of filmmaking but are new to generative to
 
 ## How to use this repo as a teacher
 
-Every page follows a consistent template (see [`CONTRIBUTING.md`](CONTRIBUTING.md)) so any sub-folder can be lifted into a lesson module. The [`decks/`](decks/) folder contains presentation-ready versions of selected content, each available at 5/15/30/60-minute durations.
+Every page follows a consistent template (see [`CONTRIBUTING.md`](CONTRIBUTING.md)) so any sub-folder can be lifted into a lesson module. The [`decks/`](decks/) folder contains a presentation-ready version of the material.
 
 ## How this is published
 
@@ -30,6 +30,6 @@ All content lives in this repository as markdown. The same source renders three 
 
 - **This GitHub repo** — browse the markdown directly.
 - **[generative-production.com](https://generative-production.com)** — a static HTML site generated from the same files.
-- **Decks** — curated presentations on the same domain, each with 5/15/30/60-minute variants.
+- **Decks** — curated presentation of the material on the same domain.
 
 One source of truth, three outputs.

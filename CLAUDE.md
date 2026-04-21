@@ -32,19 +32,9 @@ The same markdown source renders three ways, from one repo:
 
 - GitHub browsing (source rendered directly by GitHub).
 - Static site at `generative-production.com`, built by Quarto.
-- Reveal.js decks in `decks/` at 5/15/30/60-minute duration variants, built by Quarto using the profile config in `_quarto.yml` plus `filters/slide-duration.lua`.
+- Reveal.js decks in `decks/` (currently one: `decks/site-deck.qmd`), built by Quarto.
 
 Deploy is automated by `.github/workflows/publish.yml` on push to `main`.
-
-## Slide metadata
-
-Every slide heading in a `decks/*.qmd` file must carry three attributes:
-
-```
-## Some slide {data-duration="5,15,30,60" data-section="prompting" data-level="intro"}
-```
-
-See `CONTRIBUTING.md` for the full rules. Missing metadata breaks the duration filter.
 
 ## Generating media assets
 
