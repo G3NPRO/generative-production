@@ -61,6 +61,8 @@ A note on the reading order: this bundle is flat on purpose. Each chapter below 
 
 {{< include vibe-coding/foundations/index.md >}}
 
+{{< include vibe-coding/platforms/index.md >}}
+
 {{< include vibe-coding/setup-and-safety/index.md >}}
 
 {{< include vibe-coding/working-with-models/index.md >}}

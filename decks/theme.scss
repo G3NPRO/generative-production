@@ -86,9 +86,18 @@ $selection-color: $body-color;
   font-weight: 500;
 }
 
-// Section-title slides come from H1 markdown headings. Quarto tags them
-// as `.slide.level1` — scope the oversize heading here so we don't hit
-// the YAML title slide (which uses `.quarto-title-block`).
+// Section-index (`# Section`) and divider (`## X {.divider}`) slides are
+// interstitials — format them as title cards: centered content, extra
+// top padding, and title-sized typography. The background color is
+// applied at the Reveal level (filters/chapter-bg.lua) so it spans
+// the full viewport rather than just the section element.
+.reveal .slides section.slide.level1,
+.reveal .slides section.slide.level2.divider {
+  padding-top: 14vh;
+  text-align: center;
+}
+
+// Level-1 (`#`) title-card typography.
 .reveal section.slide.level1 h1 {
   font-size: 2.6em;
   letter-spacing: -0.03em;
@@ -96,15 +105,28 @@ $selection-color: $body-color;
   font-weight: 700;
 }
 
-.reveal section.slide.level1 {
-  padding-top: 10vh;
-}
-
 .reveal section.slide.level1 p {
   font-size: 1.15em;
   color: #c9c5d8;
-  margin-top: 1em;
+  margin: 1em auto 0;
   max-width: 44rem;
+}
+
+// Level-2 divider typography — slightly smaller than level-1 so the
+// hierarchy reads: # is the section, ## {.divider} is a subsection
+// within it.
+.reveal section.slide.level2.divider h2 {
+  font-size: 2.3em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.7em;
+}
+
+.reveal section.slide.level2.divider p {
+  font-size: 1.1em;
+  color: #c9c5d8;
+  max-width: 42rem;
+  margin-inline: auto;
 }
 
 .reveal p,
@@ -264,11 +286,36 @@ $selection-color: $body-color;
   background: transparent;
 }
 
-// When an image is the only visual element in a column, vertically center it.
+// Lay .columns out as a horizontal flex row; each .column is itself a
+// vertical flex column (so image + caption stack and center).
+.reveal .slides .columns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
+}
+
 .reveal .slides .columns > .column {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+// Monochrome logo SVGs (from Simple Icons) are black — invert to white
+// so they read on the dark theme. Drop the default image rounded-corner
+// + background since logos aren't figures.
+.reveal .slides img.logo {
+  filter: invert(1);
+  background: transparent;
+  border-radius: 0;
+  margin-block: 0.4em;
+}
+
+// Shrink the caption paragraph ("Rails · Ruby" etc.) in any column that
+// contains a logo image. Keeps the label proportional to the logo.
+.reveal .slides .columns .column:has(img.logo) p {
+  font-size: 0.75em;
+  margin-block: 0.25em;
 }
 
 .slide-menu-toolbar [data-role="deck-exit"] {

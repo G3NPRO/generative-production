@@ -25,3 +25,7 @@ MCP (Model Context Protocol) is a standard way for an agent to talk to external 
 ### Agents vs chat vs autocomplete
 
 These three shapes of AI coding assistance each have a right job. **Autocomplete** (Copilot-style inline suggestions) is fastest for routine code — you stay in control, the model saves keystrokes. **Chat** is best for explanations, design questions, and small isolated functions you'll paste in yourself. **Agents** shine on multi-file changes, refactors, and debugging sessions where reading and writing the project is half the work. Mixing them is normal: use autocomplete while typing, pop out to chat to understand an error message, dispatch an agent to implement the change. The wrong move is using one shape for every job.
+
+### Prompting tips
+
+Models tuned to be helpful can be sycophantic — they'll agree with the framing of your question rather than push back on it, especially when the question implies a preferred answer. "Is this a good idea?" invites a pat on the back; the model reads your framing and tends to confirm it. "What are the pros and cons of this approach?" forces a more balanced analysis. The same move applies elsewhere: instead of "Is this code clean?" try "What would a senior engineer criticize about this code?"; instead of "Should I use Rails here?" try "What are the trade-offs between Rails and a lighter framework for this use case?" Frame questions to invite critique, not agreement, and the model becomes a more useful collaborator.

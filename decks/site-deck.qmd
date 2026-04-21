@@ -307,11 +307,21 @@ starting a project, know where each part of it will execute.
 
 ## Terminal literacy
 
-[*The shell verbs an agent drops you into constantly.*]{.fragment}
+[*Agents live in the terminal — know a few basic commands.*]{.fragment}
 
 - `cd` · `ls` · `cat` · `git`
-- Spot dangerous commands: `rm -rf`, `sudo`, history rewrites.
 - Read every command before approving.
+
+::: {.fragment}
+```bash
+$ cd ~/my-project
+$ ls
+README.md   src/   package.json
+
+$ cat README.md
+# My Project
+```
+:::
 
 ::: {.notes}
 **Source:** `vibe-coding/foundations/index.md#terminal-literacy`
@@ -320,8 +330,8 @@ No icons, no mouse — just text commands. Agents use the terminal because
 it's the fastest way to manipulate files and run commands.
 
 You don't need fluency. You need enough comfort to recognize a dangerous
-command when the agent proposes one — anything with `rm -rf`, anything
-with `sudo`, anything that rewrites history, anything you didn't ask for.
+command when the agent proposes one — anything with `sudo`, anything
+that rewrites history, anything you didn't ask for.
 :::
 
 ## Git literacy
@@ -343,6 +353,109 @@ without losing the main line.
 Git matters *especially* with AI-generated code: the agent will
 sometimes produce changes you don't want, and revert only works if
 you've been committing along the way.
+:::
+
+## Git literacy
+
+[*The everyday loop.*]{.fragment}
+
+::: {.fragment}
+```bash
+$ git status
+modified:  src/auth.js
+
+$ git diff src/auth.js
+
+$ git add src/auth.js
+$ git commit -m "fix: handle expired tokens"
+$ git push
+```
+:::
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md#git-literacy`
+
+Walk through the everyday loop:
+
+- `git status` — what's changed.
+- `git diff` — review the exact lines before committing.
+- `git add` — stage the change.
+- `git commit -m "..."` — save it with a short message about the *why*.
+- `git push` — publish to the remote.
+
+The key habit: *diff before commit, commit before push*.
+:::
+
+## Platforms {.divider}
+
+*Where you actually write code with a model.*
+
+::: {.notes}
+**Source:** `vibe-coding/platforms/index.md`
+
+Subsection divider. A sibling of Foundations — once you've got the
+mental models, the next question is *where* you vibe-code. The options
+span a spectrum from fully-hosted browser tools to command-line agents
+on your own machine.
+:::
+
+## Platforms
+
+[*A spectrum — hosted to local.*]{.fragment}
+
+- **In-browser** — Lovable · Bolt · v0 · Replit.
+- **Native desktop** — Claude (Anthropic) · ChatGPT (OpenAI).
+- **AI-integrated IDEs** — Cursor · Windsurf · VS Code + Copilot · JetBrains AI.
+- **Command-line agents** — Claude Code · Codex CLI · Aider.
+
+[More hosted = less setup. More local = more control.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/platforms/index.md`
+
+Spectrum goes from fully hosted (your browser runs the whole thing) to
+fully local (a CLI agent working on your machine).
+
+- **In-browser environments** — fastest to start, least customizable.
+  Lovable, Bolt, v0, Replit. Right place to prototype.
+- **Native desktop apps from model makers** — chat-first tools.
+  Claude Desktop, ChatGPT Desktop. Good for explanations and snippets,
+  not for building a project over weeks.
+- **AI-integrated IDEs** — the day-to-day tool for serious work.
+  Cursor and Windsurf (VS Code forks), VS Code + Copilot, JetBrains AI.
+- **Command-line agents** — most powerful, least beginner-friendly.
+  Claude Code, Codex CLI, Aider. Right tool for multi-step work across
+  many files.
+
+For a first project, start further up the hosted end. Most early
+frustration is setup, not code.
+:::
+
+## Typical pricing
+
+[*Most platforms cluster in a few tiers.*]{.fragment}
+
+- **Free** — limited usage, slower models, rate caps.
+- **~$20/month** — Claude Pro · ChatGPT Plus · Cursor Pro · GitHub Copilot · Replit Core.
+- **Usage-based API** — pay per token (Anthropic, OpenAI, Google).
+- **Team / enterprise** — typically $50–100+/seat with admin features.
+
+[Confirm which tier your real workflow needs *before* committing.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/platforms/index.md#typical-pricing`
+
+- **Free** — enough to try the tool, rarely enough to rely on.
+- **~$20/month** — the default for serious single-user work. Most
+  beginners land here and stay.
+- **Usage-based API** — powers custom scripts and apps. Cheap for
+  occasional calls, can get expensive fast when a coding agent is
+  burning tokens.
+- **Team / enterprise** — for orgs needing admin controls, SSO, etc.
+
+Common trap: "the monthly tier is enough for most people." True until
+you're doing real agent work, at which point usage-based API costs can
+dwarf the subscription. Budget intentionally.
 :::
 
 ## Setup and Safety {.divider}
@@ -571,6 +684,37 @@ Beginners tend to pick one shape and use it for everything. The cost is
 speed and quality — each task has a shape it fits best.
 :::
 
+## Prompting tips
+
+[*Frame questions to invite critique, not agreement.*]{.fragment}
+
+- Models tuned to be helpful can be sycophantic.
+- Questions with a preferred answer tend to get confirmed, not examined.
+
+::: {.fragment}
+> **Bad:** "Is this a good idea?"
+>
+> **Better:** "What are the pros and cons of this approach?"
+:::
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md#prompting-tips`
+
+Models tuned to be helpful often agree with the framing in your question
+rather than push back on it. "Is this a good idea?" invites a pat on
+the back; the model reads your framing and tends to confirm it. "What
+are the pros and cons of this approach?" forces a more balanced analysis.
+
+The same move applies elsewhere:
+
+- "Is this code clean?" → "What would a senior engineer criticize about
+  this code?"
+- "Should I use Rails here?" → "What are the trade-offs between Rails
+  and a lighter framework for this use case?"
+
+Frame questions to invite critique, not agreement.
+:::
+
 ## Building Software {.divider}
 
 *Sensible defaults for your first non-trivial project.*
@@ -600,6 +744,47 @@ shape, working example. Confirm you read the first two correctly by
 running the third.
 :::
 
+## Reading API docs
+
+[*A `curl` call shows all three at once.*]{.fragment}
+
+::: {.fragment}
+```bash
+$ curl https://queue.fal.run/fal-ai/nano-banana-2 \
+    -H "Authorization: Key $FAL_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "prompt": "a cinematic golden-hour portrait",
+      "aspect_ratio": "16:9"
+    }'
+
+{
+  "request_id": "019db209-11c5-7762-9c58-14e378bdbe44",
+  "status": "IN_QUEUE"
+}
+```
+:::
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#reading-api-docs`
+
+Walk through the three parts this single call demonstrates:
+
+- **Authentication** — the `Authorization` header carries the key. It
+  comes from `$FAL_KEY`, an environment variable, not a literal string
+  — the key stays out of the code and out of git.
+- **Endpoint** — the URL says *what* service and *which* model. Every
+  API's docs are organized around this.
+- **Body** — JSON with the inputs the model wants. Different models
+  accept different shapes; the docs spell them out.
+
+The response is also JSON. This one returns a `request_id` because the
+job runs async in a queue; other APIs return the result directly.
+
+Once a `curl` call works, translating to an SDK (Python, JS, etc.) is
+mechanical. But the `curl` version is the ground truth.
+:::
+
 ## Frameworks vs rolling-your-own
 
 [*Pre-built scaffolding vs inventing it yourself.*]{.fragment}
@@ -616,6 +801,96 @@ your learning on *your* problem, not on everyone else's problems the
 framework already solved.
 
 Conforming to framework conventions is a feature, not a bug.
+:::
+
+## Frameworks vs rolling-your-own
+
+*Each one has thousands of projects behind it — the agent is fluent in all of them.*
+
+:::: {.columns}
+::: {.column width="33%"}
+![](../assets/logos/rails.svg){.logo fig-alt="Ruby on Rails logo" width="90"}
+
+**Rails** · Ruby
+:::
+::: {.column width="34%"}
+![](../assets/logos/django.svg){.logo fig-alt="Django logo" width="90"}
+
+**Django** · Python
+:::
+::: {.column width="33%"}
+![](../assets/logos/nextjs.svg){.logo fig-alt="Next.js logo" width="90"}
+
+**Next.js** · JavaScript
+:::
+::::
+
+:::: {.columns}
+::: {.column width="33%"}
+![](../assets/logos/laravel.svg){.logo fig-alt="Laravel logo" width="90"}
+
+**Laravel** · PHP
+:::
+::: {.column width="34%"}
+![](../assets/logos/phoenix.svg){.logo fig-alt="Phoenix logo" width="90"}
+
+**Phoenix** · Elixir
+:::
+::: {.column width="33%"}
+![](../assets/logos/svelte.svg){.logo fig-alt="Svelte logo" width="90"}
+
+**SvelteKit** · JavaScript
+:::
+::::
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#frameworks-vs-rolling-your-own`
+
+A taste of the landscape — not a ranked list. Each of these is a
+battle-tested framework with a strong community and deep training-data
+coverage.
+
+- **Rails** (Ruby) — the archetype of "convention over configuration."
+- **Django** (Python) — same philosophy, different language; batteries
+  included.
+- **Next.js** (JavaScript/TypeScript) — modern React on the server.
+- **Laravel** (PHP) — Rails-like ergonomics for the PHP ecosystem.
+- **Phoenix** (Elixir) — functional, distributed, excellent for real-time.
+- **SvelteKit** (JavaScript/TypeScript) — lighter, compiler-first
+  alternative to Next.js.
+
+Pick one that fits the project and the language you want to learn;
+the agent will be competent in all of them.
+:::
+
+## Native development
+
+[*iOS, Android, desktop — more powerful, more costly.*]{.fragment}
+
+- Price of admission to become a developer: Apple $99/year, Google Play $25, code-signing certs.
+- Approvals now become an issue — platform review can take days to weeks, and rejections happen.
+- Not your first project — ship on the web first.
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md#native-development`
+
+Native apps run on a specific platform (iOS, Android, macOS, Windows)
+rather than in a browser. More powerful — hardware access, platform
+APIs, offline use — but costly in ways beginners don't see.
+
+- **Cost to become a developer.** Apple Developer Program: $99/year.
+  Google Play: $25 one-time. Windows and macOS code-signing
+  certificates add recurring fees. These are invisible from the outside
+  but block any app from reaching users.
+- **Approvals as a gatekeeper.** Every update to an iOS or Android app
+  goes through platform review. Days to weeks. Rejections for reasons
+  you didn't anticipate. Your web project has none of this.
+- **Per-platform toolchains.** Each platform is its own ecosystem —
+  Xcode for iOS, Android Studio for Android, different languages,
+  different patterns. iOS development also requires a Mac.
+
+For a first project, the web wins: free to publish, instant to update,
+no gatekeepers. Come back to native after you've shipped something.
 :::
 
 ## Boring tech wins

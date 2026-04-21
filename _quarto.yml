@@ -29,7 +29,33 @@ website:
     contents:
       - auto: foundations
       - auto: generative-media
-      - auto: vibe-coding
+      - section: Vibe-coding
+        href: vibe-coding/index.md
+        contents:
+          - text: Foundations
+            href: vibe-coding/foundations/index.md
+          - text: Platforms
+            href: vibe-coding/platforms/index.md
+          - text: Setup and Safety
+            href: vibe-coding/setup-and-safety/index.md
+          - text: Working with Models
+            href: vibe-coding/working-with-models/index.md
+          - text: Building Software
+            href: vibe-coding/building-software/index.md
+          - section: Common Traps
+            href: vibe-coding/common-traps/index.md
+            contents:
+              - vibe-coding/common-traps/committing-secrets.md
+              - vibe-coding/common-traps/blindly-running-commands.md
+              - vibe-coding/common-traps/force-push-disasters.md
+              - vibe-coding/common-traps/refactor-without-review.md
+              - vibe-coding/common-traps/first-thing-that-compiles.md
+              - vibe-coding/common-traps/scope-creep-prompts.md
+              - vibe-coding/common-traps/building-on-sand.md
+              - vibe-coding/common-traps/runaway-api-bills.md
+              - vibe-coding/common-traps/deploy-without-testing.md
+              - vibe-coding/common-traps/local-model-demo-trap.md
+              - vibe-coding/common-traps/works-on-my-machine.md
       - text: Practical
         href: practical/index.md
       - text: Glossary

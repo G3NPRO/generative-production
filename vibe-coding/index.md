@@ -7,6 +7,7 @@ This section is organized around one question: *how do we keep beginner coders f
 ## Contents
 
 - [`foundations/`](foundations/) — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.
+- [`platforms/`](platforms/) — the spectrum of places you actually write code with a model, from in-browser environments to command-line agents.
 - [`setup-and-safety/`](setup-and-safety/) — credentials, API keys, sandboxing, what not to push to git.
 - [`working-with-models/`](working-with-models/) — choosing models, prompting code, context management, skills, MCP.
 - [`building-software/`](building-software/) — APIs, frameworks vs rolling-your-own, dependencies, reading errors.
