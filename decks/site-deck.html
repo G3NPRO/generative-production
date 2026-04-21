@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <title>Generative Production</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-629a6f8c9b010f34f4ce51f97f8a6545.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="assets/filmmaker-editing-suite.png" data-background-opacity="0.35" data-background-size="cover" class="quarto-title-block center">
+  <h1 class="title">Generative Production</h1>
+  <p class="subtitle">The study guide, presented</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section class="slide level2">
+
+<!--
+Authoring convention for this deck:
+
+  Slide body     = the audience view — condensed, visual, memorable.
+  ::: {.notes}   = presenter notes — the full detail, organized as talking points.
+                   Always start with `**Source:** <relative path to the wiki page>`
+                   so the speaker can jump to the long-form version and the editor
+                   of either file knows where the other one lives.
+
+  Edit wiki page substantively? Skim the matching slide and its notes — sync them.
+  Edit a slide? Follow its Source: link back to the wiki and confirm.
+
+Structural convention:
+
+  `# Section`  = new horizontal column (one per top-level site section).
+  `## Slide`   = vertical sub-slide under the section it follows.
+-->
+</section>
+<section>
+<section id="foundations" class="title-slide slide level1 center" data-background-color="#1a1532">
+<h1>Foundations</h1>
+<p><span class="fragment">The meta-skills every section refines.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>foundations/index.md</code></p>
+<p>The umbrella claim: <em>media generation and code generation are the same discipline.</em> These four pages earn that claim — they are the shared meta-skills that every other section in the site refines for its medium.</p>
+<p>Read in order for a first pass; each page is short.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-generative-production" class="slide level2">
+<h2>What is Generative Production?</h2>
+<h3 class="fragment" id="a-new-kind-of-collaborator-not-a-new-camera."><em>A new kind of collaborator — not a new camera.</em></h3>
+<aside class="notes">
+<p><strong>Source:</strong> <code>foundations/what-is-generative-production.md</code></p>
+<p>Key ideas:</p>
+<ul>
+<li>Media generation and code generation are the same move — prompt, candidates, select, iterate — with different outputs.</li>
+<li>The meta-skills are universal: specificity, iteration, tracking, knowing what you’re allowed to do with the result.</li>
+<li>Outputs differ, workflows rhyme.</li>
+<li>The “collapsing middle” — generative tools dissolve the traditional production stages, so organize learning around the <em>tools</em>, not the stages.</li>
+</ul>
+<p>Common mistakes to name:</p>
+<ul>
+<li>Treating media and code generation as unrelated hobbies.</li>
+<li>Assuming the skill is “getting the tool to work” rather than getting the <em>collaboration</em> to work.</li>
+<li>Expecting a single prompt to produce a final product.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="prompting-principles" class="slide level2">
+<h2>Prompting Principles</h2>
+<h3 class="fragment" id="specificity-beats-cleverness."><em>Specificity beats cleverness.</em></h3>
+<p><span class="fragment">Constrain to create. Iterate in small moves.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>foundations/prompting-principles.md</code></p>
+<p>Key ideas:</p>
+<ul>
+<li>Specificity beats cleverness — narrow the space the model can produce.</li>
+<li>Tell it <em>what</em>, not <em>how</em> — unless the how matters.</li>
+<li>Show, don’t only tell — reference images, code examples, prior outputs.</li>
+<li>Constrain to create — edges to push against.</li>
+<li>Iterate in small moves — one change per attempt.</li>
+<li>The prompt is not the whole context — seeds, rules files, project history all shape the output alongside the prompt.</li>
+</ul>
+<p>Common mistakes: prompt-and-pray; over-stuffing adjectives; ignoring the tool’s own prompting guide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="iteration-and-selection" class="slide level2">
+<h2>Iteration and Selection</h2>
+<h3 class="fragment" id="the-model-is-a-coverage-machine."><em>The model is a coverage machine.</em></h3>
+<p><span class="fragment">Your job is deciding what to keep.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>foundations/iteration-and-selection.md</code></p>
+<p>Film has always been about selection — you shoot coverage, you cut. Generative tools cheapen coverage, which means <em>selection</em> becomes the rate-limiting skill.</p>
+<p>Key ideas:</p>
+<ul>
+<li>The model is a coverage machine — text-to-image gives you four candidates, a coding agent gives you several attempts, a video model gives you takes.</li>
+<li>Cull early, cull often — keep every generation and you drown.</li>
+<li>Iterate on the best candidate, not the next idea.</li>
+<li>Set a budget before you start — iteration becomes a slot machine without one.</li>
+<li>Know when to stop — a 75%-quality shot that ships beats a 95%-quality shot that never does.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tracking-your-work" class="slide level2">
+<h2>Tracking Your Work</h2>
+<h3 class="fragment" id="prompt-book.-git-history.-same-discipline."><em>Prompt book. Git history. Same discipline.</em></h3>
+<aside class="notes">
+<p><strong>Source:</strong> <code>foundations/tracking-your-work.md</code></p>
+<p>Without records, a great generation is unrepeatable — you can’t extend it, match it, or recover it. A project that can’t be rebuilt in six months is effectively disposable.</p>
+<p>Key ideas:</p>
+<ul>
+<li>Capture inputs, not just outputs — prompt, seed, sampler, model, references, tool version. For code: the conversation, the rules file, the model.</li>
+<li>One source of truth per project — a prompt book for media; the git repo for code.</li>
+<li>Save seeds and commits, not just final picks.</li>
+<li>Models change under you — note exact versions; archive models for production work.</li>
+</ul>
+<p>Common mistakes: trusting the cloud tool to remember; a folder of PNGs with no prompts attached; mixing commits and experimental generations.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="generative-media" class="title-slide slide level1 center" data-background-color="#1a1532">
+<h1>Generative Media</h1>
+<p><span class="fragment">Images, video, audio, spatial.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>generative-media/index.md</code></p>
+<p>Producing images, video, audio, and spatial work with generative AI tools. Assumes the audience has been through <code>foundations/</code> — this section is where those meta-skills get their media-specific skin.</p>
+<p>Three sub-sections, in order:</p>
+<ul>
+<li><code>concepts/</code> — what the tools are and how they work.</li>
+<li><code>craft/</code> — media-specific technique and decision-making.</li>
+<li><code>lifecycle/</code> — a crosswalk, not a spine, mapping pages to film-production stages.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="concepts" class="slide level2">
+<h2>Concepts</h2>
+<h3 class="fragment" id="model-basics-modalities-tools-and-vendors">Model basics · modalities · tools and vendors</h3>
+<aside class="notes">
+<p><strong>Source:</strong> <code>generative-media/concepts/index.md</code></p>
+<p>The conceptual spine of the section — describes <em>what the tools are</em> and <em>how they work</em>, independent of any specific product.</p>
+<p>Sub-pages:</p>
+<ul>
+<li><strong>Model basics</strong> — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning. The vocabulary every media generator hits.</li>
+<li><strong>Modalities</strong> — one page per modality (image, video, audio, spatial) with sub-topics inline.</li>
+<li><strong>Tools and vendors</strong> — local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.</li>
+</ul>
+<p>Framing guidance: describe concepts and categories, not current products. Pages should age gracefully.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="craft" class="slide level2">
+<h2>Craft</h2>
+<h3 class="fragment" id="consistency-camera-motion-temporal-coherence-and-when-not-to-use-ai."><em>Consistency, camera motion, temporal coherence — and when not to use AI.</em></h3>
+<aside class="notes">
+<p><strong>Source:</strong> <code>generative-media/craft/index.md</code></p>
+<p>Media-specific technique. Assumes the audience has the foundations; this page is where those refine for moving image and sound.</p>
+<p>Planned topics:</p>
+<ul>
+<li>Prompting for visual generation — positive/negative, weighting, syntax differences. Refines <code>foundations/prompting-principles.md</code>.</li>
+<li>Seeds and reproducibility as craft — directed vs discovered.</li>
+<li>Character consistency across shots.</li>
+<li>Scene and location consistency.</li>
+<li>Shot-to-shot continuity — lighting, wardrobe, time-of-day.</li>
+<li>Camera motion control in video models.</li>
+<li>Temporal coherence — flicker, morphing, how to fight them.</li>
+<li>Directing AI: intention vs randomness.</li>
+<li>Blending generative with traditional — plates, comps, hybrid pipelines.</li>
+<li>When <em>not</em> to use AI.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lifecycle-crosswalk" class="slide level2">
+<h2>Lifecycle Crosswalk</h2>
+<h3 class="fragment" id="dev-pre-production-post-delivery."><em>Dev · Pre · Production · Post · Delivery.</em></h3>
+<p><span class="fragment">A crosswalk, not a spine.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>generative-media/lifecycle/index.md</code></p>
+<p>A supplemental view. Generative tools are collapsing traditional stages — previs becomes production; post becomes production — so this page cross-references concepts to stages rather than organizing the site that way.</p>
+<p>Planned structure:</p>
+<ol type="1">
+<li>Preamble — why this is a crosswalk.</li>
+<li>Stages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph + bulleted links.</li>
+<li>Collapsing seams — callouts where a tool genuinely dissolves a stage boundary.</li>
+</ol>
+<p>Speaker note: this slide pulls the audience back to the wiki. Use it to show the crosswalk view once the underlying pages exist.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="vibe-coding-for-filmmakers" class="title-slide slide level1 center" data-background-color="#1a1532">
+<h1>Vibe-coding for Filmmakers</h1>
+<p><span class="fragment">Code is generative production, too.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/index.md</code></p>
+<p>The umbrella of the section. One question organizes everything here: <em>how do we keep beginner coders from making big mistakes?</em></p>
+<p>Writing code with AI coding tools is the same move as prompting an image model — prompt, get candidates, select, iterate, track — with different outputs. This section covers the code-specific skin over that shared skill.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="foundations-vibe-coding" class="slide level2 divider">
+<h2>Foundations (Vibe-coding)</h2>
+<p><em>Agents · Code · Terminal · Git</em></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/foundations/index.md</code></p>
+<p>Subsection divider. Mental models for someone who’s coded little or not at all — the on-ramp before setup and safety.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-an-agent" class="slide level2">
+<h2>What is an agent?</h2>
+<p><span class="fragment"><em>A model that takes actions, not just produces text.</em></span></p>
+<ul>
+<li class="fragment"><strong>Autocomplete</strong> — suggests next few lines; you stay in control.</li>
+<li class="fragment"><strong>Chat</strong> — ask, answer, copy into your project.</li>
+<li class="fragment"><strong>Agent</strong> — reads and writes your project directly.</li>
+</ul>
+<p><span class="fragment">Pick the shape that matches how much trust the task deserves.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/foundations/index.md#what-is-an-agent</code></p>
+<p>The crucial distinction from a chat window: an agent takes actions on your behalf — read files, run commands, edit code — not just produces text about them.</p>
+<p>Three shapes, three trust levels:</p>
+<ul>
+<li><strong>Autocomplete</strong> (Copilot-style): keystroke-saving, you review each suggestion.</li>
+<li><strong>Chat</strong>: you ask, model answers, you decide what to paste back.</li>
+<li><strong>Agent</strong>: full read/write on your project, often running commands in a terminal.</li>
+</ul>
+<p>Each has different affordances and different failure modes. Match the shape to the task’s trust level.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="where-does-code-actually-run" class="slide level2">
+<h2>Where does code actually run?</h2>
+<p><span class="fragment"><em>Local, cloud, hybrid — the difference matters more than it looks.</em></span></p>
+<ul>
+<li class="fragment"><strong>Local</strong> — fast, free, private, hardware-bound.</li>
+<li class="fragment"><strong>Cloud</strong> — scalable, costly, less private.</li>
+<li class="fragment">Even “local” agents often use cloud models on your behalf.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/foundations/index.md#where-does-code-actually-run</code></p>
+<p>Code has to run <em>somewhere</em>, and where it runs shapes cost, privacy, and reliability.</p>
+<p>Beginners trip on “free” agents that turn out to call paid cloud models on your behalf — your project is local but the inference is not. Before starting a project, know where each part of it will execute.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="terminal-literacy" class="slide level2">
+<h2>Terminal literacy</h2>
+<p><span class="fragment"><em>The shell verbs an agent drops you into constantly.</em></span></p>
+<ul>
+<li class="fragment"><code>cd</code> · <code>ls</code> · <code>cat</code> · <code>git</code></li>
+<li class="fragment">Spot dangerous commands: <code>rm -rf</code>, <code>sudo</code>, history rewrites.</li>
+<li class="fragment">Read every command before approving.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/foundations/index.md#terminal-literacy</code></p>
+<p>No icons, no mouse — just text commands. Agents use the terminal because it’s the fastest way to manipulate files and run commands.</p>
+<p>You don’t need fluency. You need enough comfort to recognize a dangerous command when the agent proposes one — anything with <code>rm -rf</code>, anything with <code>sudo</code>, anything that rewrites history, anything you didn’t ask for.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="git-literacy" class="slide level2">
+<h2>Git literacy</h2>
+<p><span class="fragment"><em>The undo button for AI-generated code.</em></span></p>
+<ul>
+<li class="fragment">Remembers every version you commit.</li>
+<li class="fragment">Commit small, commit often.</li>
+<li class="fragment">Short message describing <em>why</em>.</li>
+<li class="fragment">Review before pushing.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/foundations/index.md#git-literacy</code></p>
+<p>For filmmakers: like keeping every take. You can always return to an earlier version, compare two versions, or branch a new experiment without losing the main line.</p>
+<p>Git matters <em>especially</em> with AI-generated code: the agent will sometimes produce changes you don’t want, and revert only works if you’ve been committing along the way.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="setup-and-safety" class="slide level2 divider">
+<h2>Setup and Safety</h2>
+<p><em>The things that hurt you if you skip them.</em></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/setup-and-safety/index.md</code></p>
+<p>Subsection divider. Credentials, billing, what never goes into git, and how to let an agent run commands without letting it ruin your afternoon.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="managing-credentials" class="slide level2">
+<h2>Managing credentials</h2>
+<p><span class="fragment"><em>Password manager → <code>.env</code> → <code>.gitignore</code>.</em></span></p>
+<ul>
+<li class="fragment">Real keys live in a password manager.</li>
+<li class="fragment"><code>.env</code> is a local cache; <code>.env</code> is gitignored.</li>
+<li class="fragment">Ship <code>.env.example</code> with blank values.</li>
+<li class="fragment">Set up <code>.gitignore</code> <em>before</em> adding a credential.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/setup-and-safety/index.md#managing-credentials</code></p>
+<p>API keys, passwords, tokens — the secrets your code uses to access paid services. A leaked key gets scraped from a public repo within minutes and billed to you until you rotate it.</p>
+<p>If it happens anyway: rotate at the vendor immediately. Don’t just delete the commit — git history is distributed, you can’t unshare a secret.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="api-keys-billing-spending-caps" class="slide level2">
+<h2>API keys, billing, spending caps</h2>
+<p><span class="fragment"><em>Treat the key like a credit card.</em></span></p>
+<ul>
+<li class="fragment">One key per project (blast-radius control).</li>
+<li class="fragment">Hard monthly spending cap at the vendor dashboard.</li>
+<li class="fragment">Email alerts at 50% and 90%.</li>
+</ul>
+<p><span class="fragment">A leaked uncapped key has cost beginners thousands in a day.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/setup-and-safety/index.md#api-keys-billing-and-spending-caps</code></p>
+<p>Every paid generative tool authenticates you with an API key attached to a billing account.</p>
+<p>Two things bite a beginner: rate limits (requests start failing) and uncapped spend (a runaway loop or a leaked key burns through your card). Caps cap the damage.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="repos-and-.gitignore" class="slide level2">
+<h2>Repos and <code>.gitignore</code></h2>
+<p><span class="fragment"><em>What never goes into a public repo.</em></span></p>
+<ul>
+<li class="fragment">Credentials (<code>.env</code>).</li>
+<li class="fragment">Build artifacts (<code>node_modules/</code>, <code>_site/</code>).</li>
+<li class="fragment">Generated media, large binaries.</li>
+<li class="fragment">Anything personal or secret.</li>
+</ul>
+<p><span class="fragment"><code>git status</code> before every commit.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/setup-and-safety/index.md#repos-and-gitignore</code></p>
+<p>A public repo is visible to everyone, including bots scanning GitHub for leaked secrets. “What goes in the repo” is a load-bearing decision.</p>
+<p>Every new project starts with a <code>.gitignore</code> tailored to its language or framework. Most hosts offer a starter file.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sandboxing" class="slide level2">
+<h2>Sandboxing</h2>
+<p><span class="fragment"><em>Trust the agent like a well-meaning intern.</em></span></p>
+<ul>
+<li class="fragment">Bounded project directory.</li>
+<li class="fragment">No full home or system access.</li>
+<li class="fragment">Review filesystem-touching commands.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/setup-and-safety/index.md#sandboxing</code></p>
+<p>An agent executes commands. An agent that’s been tricked, confused, or compromised can do real damage.</p>
+<p>Capable but supervised — that’s the model. Use permission prompts where the tool supports them; review each command before approving when speed matters less than safety.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="working-with-models" class="slide level2 divider">
+<h2>Working with Models</h2>
+<p><em>Prompting, context, the right model for the job.</em></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md</code></p>
+<p>Subsection divider. Refines <code>foundations/prompting-principles.md</code> for the coding case, and adds the code-specific environment — rules files, skills, MCP — that shapes what the model actually sees.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="coding-models-compared" class="slide level2">
+<h2>Coding models compared</h2>
+<p><span class="fragment"><em>Capability · context window · cost per token.</em></span></p>
+<ul>
+<li class="fragment">Claude (Opus / Sonnet / Haiku), GPT, Gemini, local open models.</li>
+<li class="fragment">Cheaper + three attempts ≠ cheaper.</li>
+<li class="fragment">Default: the most capable model in your budget tier.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#coding-models-compared</code></p>
+<p>Several families dominate. They differ on three axes that matter:</p>
+<ul>
+<li>Raw capability — how hard a problem can it solve.</li>
+<li>Context window — how much of your project it holds at once.</li>
+<li>Cost per token.</li>
+</ul>
+<p>Reach for smaller models only for genuinely small tasks (a rename, a syntax question) or when running locally for privacy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="prompting-for-code" class="slide level2">
+<h2>Prompting for code</h2>
+<p><span class="fragment"><em>Specificity beats cleverness — especially here.</em></span></p>
+<ul>
+<li class="fragment">Name the language, framework, version.</li>
+<li class="fragment">Show example input → expected output.</li>
+<li class="fragment">Say what you already tried.</li>
+</ul>
+<p><span class="fragment">Anti-pattern: asking for a “complete implementation” with vague requirements.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#prompting-for-code</code></p>
+<p>Refines the universal prompting principles for the coding case: specificity, constraints, one change per iteration, reference examples.</p>
+<p>Code-specific moves: name the stack and versions (<code>Rails 8.1</code>, <code>Python 3.12</code>, <code>Node 22</code>); describe the existing code style if you want consistency; give the model a small example to match.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="context-management" class="slide level2">
+<h2>Context management</h2>
+<p><span class="fragment"><em>The chat window is an environment, not a prompt box.</em></span></p>
+<ul>
+<li class="fragment">Everything the agent has read shapes the next response.</li>
+<li class="fragment">Rules files (<code>CLAUDE.md</code>, <code>AGENTS.md</code>) pin stable context.</li>
+<li class="fragment">Start a new chat when it drifts.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#context-management</code></p>
+<p>Files the agent read, commands it ran, earlier Q&amp;A — all shape the next response. When the environment fills with irrelevant detail, a fresh conversation is faster than steering the polluted one.</p>
+<p>Rules files let you pin the things you don’t want to re-type every session: conventions, domain knowledge, gotchas.</p>
+<p>The skill is curating the environment, not just writing prompts into it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="skills" class="slide level2">
+<h2>Skills</h2>
+<p><span class="fragment"><em>Reusable instruction packages for specific tasks.</em></span></p>
+<ul>
+<li class="fragment">“Review a PR.” “Create a migration.” “Debug a failing test.”</li>
+<li class="fragment">One step up from rules files — follow you across projects.</li>
+<li class="fragment">Build one after re-explaining a workflow for the third time.</li>
+</ul>
+<p><span class="fragment">A good skill is a recipe, not a personality.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#skills</code></p>
+<p>Rules files live in the project; skills live in the tool and travel with you.</p>
+<p>Don’t build skills speculatively — premature skills become stale instructions you have to maintain.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mcp" class="slide level2">
+<h2>MCP</h2>
+<p><span class="fragment"><em>Standard protocol for agent ↔︎ external tools.</em></span></p>
+<ul>
+<li class="fragment">Filesystem · database · browser · image APIs.</li>
+<li class="fragment">Without MCP, every integration is one-off.</li>
+<li class="fragment">Wire up when copy-paste becomes the bottleneck.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#mcp</code></p>
+<p>Model Context Protocol. Lets an agent plug into any compatible tool without custom code.</p>
+<p>Don’t wire servers speculatively — each one adds surface area for mistakes. Heuristic: if you’re copy-pasting between the agent and another service repeatedly, that’s the trigger.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="agents-vs-chat-vs-autocomplete" class="slide level2">
+<h2>Agents vs chat vs autocomplete</h2>
+<p><span class="fragment"><em>Three shapes, three right jobs.</em></span></p>
+<ul>
+<li class="fragment"><strong>Autocomplete</strong> — routine code; saves keystrokes.</li>
+<li class="fragment"><strong>Chat</strong> — explanations, isolated functions.</li>
+<li class="fragment"><strong>Agent</strong> — multi-file changes, refactors, debugging.</li>
+</ul>
+<p><span class="fragment">Mixing them is normal. Using one shape for every job is wrong.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/working-with-models/index.md#agents-vs-chat-vs-autocomplete</code></p>
+<p>Typical day: autocomplete while typing, pop out to chat to understand an error, dispatch an agent to implement the change.</p>
+<p>Beginners tend to pick one shape and use it for everything. The cost is speed and quality — each task has a shape it fits best.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="building-software" class="slide level2 divider">
+<h2>Building Software</h2>
+<p><em>Sensible defaults for your first non-trivial project.</em></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md</code></p>
+<p>Subsection divider. The theme: prefer the boringest credible choice, and read things before pasting them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reading-api-docs" class="slide level2">
+<h2>Reading API docs</h2>
+<p><span class="fragment"><em>Auth · endpoints · a working example.</em></span></p>
+<ul>
+<li class="fragment">REST + HTTP is the common vocabulary.</li>
+<li class="fragment"><code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> to a URL with JSON.</li>
+<li class="fragment">SDKs wrap the raw calls; raw HTTP works when no SDK exists.</li>
+</ul>
+<p><span class="fragment">Read the docs before asking the model — the agent invents plausible calls that don’t exist.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md#reading-api-docs</code></p>
+<p>Skim for the three things that matter: authentication method, endpoint shape, working example. Confirm you read the first two correctly by running the third.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="frameworks-vs-rolling-your-own" class="slide level2">
+<h2>Frameworks vs rolling-your-own</h2>
+<p><span class="fragment"><em>Pre-built scaffolding vs inventing it yourself.</em></span></p>
+<ul>
+<li class="fragment">Frameworks — battle-tested patterns, shared vocabulary, community.</li>
+<li class="fragment">Rolling your own — freedom, at the cost of solved problems you resolve.</li>
+<li class="fragment">Beginner default: the framework almost always wins.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md#frameworks-vs-rolling-your-own</code></p>
+<p>An agent will gladly help you roll your own — that’s the trap. Spend your learning on <em>your</em> problem, not on everyone else’s problems the framework already solved.</p>
+<p>Conforming to framework conventions is a feature, not a bug.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="boring-tech-wins" class="slide level2">
+<h2>Boring tech wins</h2>
+<p><span class="fragment"><em>Older stacks have millions of projects of training data.</em></span></p>
+<ul>
+<li class="fragment">Rails, Django, Next.js, plain Postgres, plain HTML.</li>
+<li class="fragment">The shiny framework from last quarter — thin training coverage.</li>
+<li class="fragment">The model improvises; it looks right, it isn’t.</li>
+</ul>
+<p><span class="fragment">Boring tech has docs, tutorials, Stack Overflow for when the model is wrong.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md#boring-tech-wins</code></p>
+<p>Counter-intuitive rule of AI coding: older and more established technologies produce better results than trendy ones.</p>
+<p>Reach for the cutting edge only when the problem genuinely requires it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dependencies-and-package-managers" class="slide level2">
+<h2>Dependencies and package managers</h2>
+<p><span class="fragment"><em>Someone else’s code your project uses.</em></span></p>
+<ul>
+<li class="fragment">npm, pip, bundler, cargo — the package manager installs and tracks.</li>
+<li class="fragment">Prefer well-known packages with active maintenance.</li>
+<li class="fragment">Pin versions in a lockfile.</li>
+<li class="fragment">Read what a package does before adding it.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md#dependencies-and-package-managers</code></p>
+<p>Powerful because you skip work someone else did. Dangerous because you’re trusting code you didn’t write and often didn’t read.</p>
+<p>Two beginner failures: installing random packages the agent suggests without vetting them, and letting versions drift so “works on my machine” stops reproducing anywhere else.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="reading-error-messages" class="slide level2">
+<h2>Reading error messages</h2>
+<p><span class="fragment"><em>Read, hypothesize — then ask the model.</em></span></p>
+<ul>
+<li class="fragment">First line usually tells you what went wrong and where.</li>
+<li class="fragment">“I think X is happening because Y — is that right?”</li>
+<li class="fragment">Stack traces read bottom-up.</li>
+<li class="fragment">The real bug is near the top, in <em>your</em> code.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/building-software/index.md#reading-error-messages</code></p>
+<p>The beginner move is paste-and-ask. The better move is diagnose-then-ask.</p>
+<p>Collaborating on a diagnosis produces better help than asking the model to guess.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="common-traps" class="slide level2 divider">
+<h2>Common Traps</h2>
+<p><em>A named gallery of specific beginner mistakes.</em></p>
+<p><span class="fragment">Each trap is its own short page in the wiki.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/index.md</code></p>
+<p>Subsection divider. The “keep beginners safe” promise made concrete. Each trap is a short cautionary tale ending with the fix.</p>
+<p>Cross-linked to <code>practical/</code> where topics overlap (licenses, reproducibility, cost).</p>
+<p>Walk through the traps that match the audience; the full gallery lives in the wiki for self-study.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="committing-secrets-to-git" class="slide level2">
+<h2>Committing secrets to git</h2>
+<p><span class="fragment"><em>The single most common way beginners get burned.</em></span></p>
+<ul>
+<li class="fragment">Bots scrape public repos within minutes.</li>
+<li class="fragment">Set up <code>.gitignore</code> <em>first</em>, credentials after.</li>
+<li class="fragment">If leaked: rotate at the vendor — don’t just delete the commit.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/committing-secrets.md</code></p>
+<p>Git history is distributed — you can’t unshare a leaked secret.</p>
+<p>Prevention is <code>.gitignore</code> before the credential. Recovery is rotation, not deletion.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="blindly-running-agent-suggested-shell-commands" class="slide level2">
+<h2>Blindly running agent-suggested shell commands</h2>
+<p><span class="fragment"><em>Most are fine. Once in a while, catastrophic.</em></span></p>
+<ul>
+<li class="fragment">Read every command before approving.</li>
+<li class="fragment">Flag <code>rm -rf</code>, <code>sudo</code>, unexpected redirects.</li>
+<li class="fragment">Never run unfamiliar commands where you don’t want loss.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/blindly-running-commands.md</code></p>
+<p>The agent will propose the right command most of the time. The cost of reading it is trivial compared to the cost of a mistake.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="force-push-disasters" class="slide level2">
+<h2>Force-push disasters</h2>
+<p><span class="fragment"><em>One flag, whole branch gone.</em></span></p>
+<ul>
+<li class="fragment"><code>git push --force</code> overwrites remote with your local state.</li>
+<li class="fragment">Never force-push to <code>main</code>.</li>
+<li class="fragment">Prefer <code>--force-with-lease</code> when you must.</li>
+<li class="fragment">To undo a commit: <code>git revert</code>, not force-push.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/force-push-disasters.md</code></p>
+<p>Beginners reach for force-push to “fix” a messy history and erase work — sometimes their own, sometimes a collaborator’s.</p>
+<p>Revert adds a new commit that cancels the old one. Safer, and the history still tells the truth.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="letting-the-agent-refactor-without-review" class="slide level2">
+<h2>Letting the agent refactor without review</h2>
+<p><span class="fragment"><em>A 300-line diff you didn’t read.</em></span></p>
+<ul>
+<li class="fragment">Treat a large refactor as three small ones.</li>
+<li class="fragment">One change at a time; review each.</li>
+<li class="fragment">Ask for a summary before approving sweeping changes.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/refactor-without-review.md</code></p>
+<p>Two weeks later, a subtle bug surfaces and you can’t tell what changed vs.&nbsp;what was always wrong. Rollback is expensive by then.</p>
+<p>Constrain the agent explicitly: “rename this, extract that, inline the other” — one thing per diff.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="accepting-the-first-thing-that-compiles" class="slide level2">
+<h2>Accepting the first thing that compiles</h2>
+<p><span class="fragment"><em>“Compiles” ≠ “works.”</em></span></p>
+<ul>
+<li class="fragment">Try the empty input.</li>
+<li class="fragment">Try the wrong type.</li>
+<li class="fragment">Try the oversized input.</li>
+<li class="fragment">Try the obvious adversarial input.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/first-thing-that-compiles.md</code></p>
+<p>Coverage of the golden path alone has always been a trap. With AI- generated code, where the model optimizes for “looks plausible,” it’s worse.</p>
+<p>The fix is a small checklist for every function before you declare it done.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="scope-creep-prompts" class="slide level2">
+<h2>Scope-creep prompts</h2>
+<p><span class="fragment"><em>You asked for one change. You got six.</em></span></p>
+<ul>
+<li class="fragment">Constrain the agent in the prompt explicitly.</li>
+<li class="fragment">“Change only the <code>authenticate</code> function; do not modify other files.”</li>
+<li class="fragment">If the agent oversteps: reject the whole change and re-prompt.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/scope-creep-prompts.md</code></p>
+<p>Reformatting six other files, renaming three functions, “improving” a module you didn’t mention — the diff becomes unreadable.</p>
+<p>Redoing is cheaper than untangling. Cherry-picking from a sprawling diff is where mistakes hide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="building-on-sand" class="slide level2">
+<h2>Building on sand</h2>
+<p><span class="fragment"><em>Unreliable deps, beta APIs, deprecated models.</em></span></p>
+<ul>
+<li class="fragment">A beta API changes its response format — your pipeline breaks.</li>
+<li class="fragment">A model gets deprecated — your shot no longer renders.</li>
+<li class="fragment">Know what’s unstable. Document it. Have a fallback.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/building-on-sand.md</code></p>
+<p>For anything production-critical, prefer the oldest stable version of the tool that does what you need.</p>
+<p>Cross-links to <code>practical/</code> on reproducibility — how to keep a project working six months from now.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="runaway-api-bills" class="slide level2">
+<h2>Runaway API bills</h2>
+<p><span class="fragment"><em>Loops, retries, leaks — always set a ceiling.</em></span></p>
+<ul>
+<li class="fragment">Per-key spending cap at the vendor.</li>
+<li class="fragment">Per-request timeouts in your code.</li>
+<li class="fragment">Circuit breaker after N consecutive failures.</li>
+<li class="fragment">Email alerts above a threshold.</li>
+</ul>
+<p><span class="fragment">Set these up <em>before</em> you need them — 3am is too late.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/runaway-api-bills.md</code></p>
+<p>A script stuck in a loop, a misconfigured retry, a leaked key in someone else’s hands — the common thread is no ceiling.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deploying-to-production-without-testing" class="slide level2">
+<h2>Deploying to production without testing</h2>
+<p><span class="fragment"><em>Works on my machine, at scale.</em></span></p>
+<ul>
+<li class="fragment">A staging environment that mirrors production.</li>
+<li class="fragment">An automated test suite that runs before every deploy.</li>
+<li class="fragment">A deploy that’s reversible in one command.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/deploy-without-testing.md</code></p>
+<p>Different env vars, different database state, different traffic. “Works in dev” covers none of these.</p>
+<p>Small projects don’t need elaborate infrastructure, but every project needs <em>a way</em> to deploy safely and <em>a way</em> to undo a deploy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="trusting-a-local-running-model-demo" class="slide level2">
+<h2>Trusting a local-running model demo</h2>
+<p><span class="fragment"><em>A clever trick is not a pipeline.</em></span></p>
+<ul>
+<li class="fragment">A demo proves a look is possible.</li>
+<li class="fragment">Not that a pipeline is viable at a hundred shots.</li>
+<li class="fragment">Budget the real cost of scaling the approach before committing.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/local-model-demo-trap.md</code></p>
+<p>Local-model demos don’t scale. What feels like a clever trick on one shot becomes a serious infrastructure project at production volume.</p>
+<p>Cross-links to <code>practical/</code> on cost and reproducibility.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="works-on-my-machine-illusions" class="slide level2">
+<h2>“Works on my machine” illusions</h2>
+<p><span class="fragment"><em>Reproducibility is a practice, not a hope.</em></span></p>
+<ul>
+<li class="fragment">Pin every version in a lockfile.</li>
+<li class="fragment">Document required env vars in <code>.env.example</code>.</li>
+<li class="fragment">Check in a working setup script.</li>
+<li class="fragment">Test the fresh-clone scenario before declaring a project done.</li>
+</ul>
+<aside class="notes">
+<p><strong>Source:</strong> <code>vibe-coding/common-traps/works-on-my-machine.md</code></p>
+<p>A project that can’t run on a new machine from a git clone plus a documented setup step isn’t really shareable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section id="practical" class="title-slide slide level1 center" data-background-color="#1a1532">
+<h1>Practical</h1>
+<p><span class="fragment">The non-creative stuff that sinks projects.</span></p>
+<aside class="notes">
+<p><strong>Source:</strong> <code>practical/index.md</code></p>
+<p>Licenses, cost, reproducibility, likeness, provenance, delivery. Applies across the whole site, not just one section.</p>
+<p>Planned topics (slides not yet authored — pull the audience back to the wiki for now, or add slides as the prose solidifies):</p>
+<ul>
+<li>Model and tool licenses — non-commercial vs permissive vs OSS; what “open weights” actually lets you do.</li>
+<li>Copyright and training-data debates — written to age gracefully.</li>
+<li>Likeness and consent — actors, real people, estates.</li>
+<li>Provenance and labeling — C2PA, visible disclosure norms, platform requirements.</li>
+<li>Cost management — API spend, cloud GPU hours, iteration budgets.</li>
+<li>Reproducibility — archiving prompts, seeds, model versions, and for code: lockfiles and commits.</li>
+<li>Delivery considerations — codecs, color space, frame rates.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+      (function () {
+        function resolveExitHref() {
+          try {
+            var ref = document.referrer ? new URL(document.referrer) : null;
+            if (ref && ref.origin === location.origin && ref.pathname !== location.pathname) {
+              return ref.href;
+            }
+          } catch (_) {}
+          return '../';
+        }
+
+        function injectExitButton(toolbar, exitHref) {
+          if (toolbar.querySelector('[data-role="deck-exit"]')) return;
+          var li = document.createElement('li');
+          li.className = 'toolbar-panel-button';
+          li.setAttribute('data-role', 'deck-exit');
+          li.setAttribute('role', 'button');
+          li.setAttribute('tabindex', '0');
+          li.setAttribute('aria-label', 'Exit slides and return to the guide');
+          li.innerHTML =
+            '<span class="deck-exit-icon" aria-hidden="true">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+                '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>' +
+                '<polyline points="16 17 21 12 16 7"/>' +
+                '<line x1="21" y1="12" x2="9" y2="12"/>' +
+              '</svg>' +
+            '</span>' +
+            '<br><span class="slide-menu-toolbar-label">Exit</span>';
+          var go = function (e) {
+            if (e) e.preventDefault();
+            window.location.href = exitHref;
+          };
+          li.addEventListener('click', go);
+          li.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') go(e);
+          });
+          toolbar.insertBefore(li, toolbar.firstChild);
+        }
+
+        function whenReady(selector, cb) {
+          var el = document.querySelector(selector);
+          if (el) return cb(el);
+          var obs = new MutationObserver(function () {
+            var found = document.querySelector(selector);
+            if (found) { obs.disconnect(); cb(found); }
+          });
+          obs.observe(document.body, { childList: true, subtree: true });
+        }
+
+        var exitHref = resolveExitHref();
+
+        whenReady('.slide-menu-toolbar', function (toolbar) {
+          injectExitButton(toolbar, exitHref);
+        });
+
+        // Keyboard shortcut: "q" exits the deck.
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'q' || e.metaKey || e.ctrlKey || e.altKey) return;
+          var t = e.target;
+          if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+          e.preventDefault();
+          window.location.href = exitHref;
+        });
+
+        // Escape in overview view exits the deck (overriding Reveal's default of closing overview).
+        // Runs in the capture phase so it fires before Reveal's own Escape handler.
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+          if (!window.Reveal || typeof window.Reveal.isOverview !== 'function' || !window.Reveal.isOverview()) return;
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = exitHref;
+        }, true);
+      })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/generative-production\.com");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

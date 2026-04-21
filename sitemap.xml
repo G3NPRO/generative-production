@@ -2,114 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://generative-production.com/glossary.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/study-guide.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/foundations/iteration-and-selection.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.382Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/foundations/what-is-generative-production.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.382Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/foundations/prompting-principles.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.382Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/decks/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.112Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.381Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/vibe-coding/setup-and-safety/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/common-traps/scope-creep-prompts.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/vibe-coding/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/common-traps/local-model-demo-trap.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/vibe-coding/building-software/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/common-traps/runaway-api-bills.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/generative-media/craft/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/concepts/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/concepts/model-basics/seeds.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/lifecycle/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/concepts/model-basics/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/concepts/modalities/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/generative-media/concepts/tools-and-vendors/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/vibe-coding/working-with-models/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
-  </url>
-  <url>
-    <loc>https://generative-production.com/vibe-coding/foundations/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/common-traps/works-on-my-machine.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/vibe-coding/common-traps/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/vibe-coding/setup-and-safety/managing-credentials.html</loc>
-    <lastmod>2026-04-20T19:02:15.114Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/common-traps/refactor-without-review.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
   </url>
   <url>
-    <loc>https://generative-production.com/decks/prompting-intro.html</loc>
-    <lastmod>2026-04-20T19:02:15.112Z</lastmod>
+    <loc>https://generative-production.com/vibe-coding/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/building-software/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/craft/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/concepts/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/concepts/model-basics/seeds.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/lifecycle/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/concepts/model-basics/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/concepts/modalities/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/generative-media/concepts/tools-and-vendors/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/working-with-models/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/foundations/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/deploy-without-testing.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/committing-secrets.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/force-push-disasters.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/blindly-running-commands.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/first-thing-that-compiles.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/common-traps/building-on-sand.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/vibe-coding/setup-and-safety/index.html</loc>
+    <lastmod>2026-04-21T22:21:55.384Z</lastmod>
+  </url>
+  <url>
+    <loc>https://generative-production.com/decks/site-deck.html</loc>
+    <lastmod>2026-04-21T22:21:55.381Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/foundations/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.112Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.381Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/foundations/tracking-your-work.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.382Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/learning-sources/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/practical/index.html</loc>
-    <lastmod>2026-04-20T19:02:15.113Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.383Z</lastmod>
   </url>
   <url>
     <loc>https://generative-production.com/CONTRIBUTING.html</loc>
-    <lastmod>2026-04-20T19:02:15.112Z</lastmod>
+    <lastmod>2026-04-21T22:21:55.374Z</lastmod>
   </url>
 </urlset>
