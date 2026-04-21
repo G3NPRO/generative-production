@@ -559,174 +559,241 @@
     "text": "How this is built\nOne master deck file aggregates slide content for every section. Each section’s title slide uses a tinted background so you can feel when you cross a chapter boundary. Pages that have more to say can be split into vertical sub-slides (press ↓); pages that are short fit on one slide.\nThe wiki and the deck share the same content. The wiki is for reading; the deck is for presenting."
   },
   {
-    "objectID": "vibe-coding/common-traps/scope-creep-prompts.html",
-    "href": "vibe-coding/common-traps/scope-creep-prompts.html",
-    "title": "Scope-Creep Prompts",
+    "objectID": "vibe-coding/setup-and-safety/index.html",
+    "href": "vibe-coding/setup-and-safety/index.html",
+    "title": "Setup and Safety",
     "section": "",
-    "text": "Scope-Creep Prompts\nYou ask for a small change; the agent takes the opportunity to reformat six other files, rename three functions, and “improve” a module you didn’t mention. Now the diff is unreadable and you can’t tell what was actually asked for. The fix: constrain the agent in the prompt (“change only the authenticate function; do not modify other files”) and review the diff before committing. When the agent oversteps, reject the whole change and re-prompt rather than trying to cherry-pick — the cheap move is to redo it, not to untangle it.",
+    "text": "Setup and Safety\nThe things that will hurt you if you skip them. Credentials, billing, what never goes into git, and how to let an agent run commands without letting it ruin your afternoon.\n\nManaging credentials\nCredentials (API keys, passwords, tokens) are the secrets your code uses to access paid services. They get handled differently from every other kind of configuration because a leaked key gets scraped from a public repo within minutes and billed to you until you rotate it. The standard pattern: store real keys in a password manager, copy them into a local .env file your project reads from, add .env to .gitignore so it never gets committed, and ship a .env.example with blank values so collaborators know which keys to fill in. Set up .gitignore before you put a credential in a file — the mistake is almost always committing the file before realizing you should have excluded it.\n\n\nAPI keys, billing, and spending caps\nEvery paid generative tool authenticates you with an API key, and every one of those keys is attached to a billing account. The two things that will bite a beginner: rate limits (you hit a ceiling and requests start failing) and uncapped spend (a runaway script, or a leaked key, burns through your card). Treat an API key like a credit card — one per project so blast radius stays contained, a hard monthly spending limit set at the vendor dashboard before you write a line of code, and email alerts at 50% and 90% of that limit. A leaked uncapped key has cost beginners thousands of dollars in a day; a capped one caps the damage.\n\n\nRepos and .gitignore\nA repository (“repo”) is the folder git tracks. A public repo is visible to everyone on the internet, including bots that scan GitHub for leaked secrets — so “what goes in the repo” is a load-bearing decision. .gitignore is the file that tells git not to track certain files: credentials (.env), build artifacts (node_modules/, _site/), generated media, large binaries, and anything personal or secret. Every new project starts with a .gitignore tailored to its language or framework (most hosts offer a starter file), and every commit should be preceded by a git status to confirm you’re about to push what you think you’re pushing.\n\n\nSandboxing\nSandboxing means running the agent in an environment where it can’t hurt you — a container, a virtual machine, a project folder it can’t escape. This matters because agents execute commands, and an agent that’s been tricked, confused, or compromised can do real damage to your machine. The practical move: run agents against a project directory with a clear boundary, never give one full access to your home folder or system directories, use permission prompts for anything that touches your filesystem, and review each command before approving when the tool supports it. Trust the agent to the exact degree you’d trust a well-meaning intern — capable, but supervised.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
+      "Setup and Safety"
+    ]
+  },
+  {
+    "objectID": "vibe-coding/common-traps/building-on-sand.html",
+    "href": "vibe-coding/common-traps/building-on-sand.html",
+    "title": "Building on Sand",
+    "section": "",
+    "text": "Building on Sand\nUnreliable dependencies, beta APIs, deprecated models, preview-tier services — building on any of them means your project can stop working without warning. A beta video-generation API changes its response format; your pipeline breaks. A model gets deprecated; your shot no longer renders. The fix is awareness: when you depend on something unstable, know it, document it, and have a fallback plan. For anything production-critical, prefer the oldest stable version of the tool that does what you need.\nSee also: ../../practical/ on reproducibility — how to keep a project working six months from now.",
+    "crumbs": [
+      "Present",
+      "Vibe-coding",
       "Common Traps",
-      "Scope-Creep Prompts"
+      "Building on Sand"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/local-model-demo-trap.html",
-    "href": "vibe-coding/common-traps/local-model-demo-trap.html",
-    "title": "Trusting a Local-Running Model Demo",
+    "objectID": "vibe-coding/common-traps/first-thing-that-compiles.html",
+    "href": "vibe-coding/common-traps/first-thing-that-compiles.html",
+    "title": "Accepting the First Thing That Compiles",
     "section": "",
-    "text": "Trusting a Local-Running Model Demo\nYou run an open-weight video model on your laptop, it produces a beautiful shot, you plan the whole project around that capability. Then the project grows: you need a hundred shots, you need consistency across them, you need reliability. Local-model demos don’t scale — what feels like a clever trick on one shot becomes a serious infrastructure project at production volume. The fix is honesty about the gap: a demo proves a look is possible, not that a pipeline is viable. Before committing, budget the real cost of scaling the approach.\nSee also: ../../practical/ on cost management and reproducibility.",
+    "text": "Accepting the First Thing That Compiles\nThe code compiles, the test passes, the feature appears to work — so you ship it. Then an edge case blows up in production. “Compiles” means the syntax is correct; “works for my input” means nothing about the inputs you didn’t try. The fix is a small checklist: try the empty input, the wrong type, the oversized input, and the obvious adversarial input before declaring a function done. Coverage of the golden path alone has always been a trap; with AI-generated code, where the model optimizes for “looks plausible,” it’s worse.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Trusting a Local-Running Model Demo"
+      "Accepting the First Thing That Compiles"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/runaway-api-bills.html",
-    "href": "vibe-coding/common-traps/runaway-api-bills.html",
-    "title": "Runaway API Bills",
+    "objectID": "vibe-coding/common-traps/blindly-running-commands.html",
+    "href": "vibe-coding/common-traps/blindly-running-commands.html",
+    "title": "Blindly Running Agent-Suggested Shell Commands",
     "section": "",
-    "text": "Runaway API Bills\nA script gets stuck in a loop and calls the API a million times overnight; a misconfigured job keeps retrying a failed request; a leaked key is used by someone else. The common thread: no ceiling. The fix is layered — per-key spending caps at the vendor, per-request timeouts in your code, a circuit breaker that stops calling an API after N consecutive failures, and email alerts when spend exceeds a threshold. You set these up before you need them, because the time you need them is at 3am when the damage is already happening.\nSee also: ../setup-and-safety/ on API keys and spending caps.",
+    "text": "Blindly Running Agent-Suggested Shell Commands\nAn agent proposes a command; you hit approve without reading it. Usually fine. Once in a while, catastrophic — a command that deletes a folder you cared about, overwrites a file, or runs something dangerous with your credentials. The fix is a habit: read every command before approving, flag anything with rm -rf, sudo, or a redirect into a file you didn’t expect, and never run an unfamiliar command in a directory you don’t want to lose. The agent will propose the right command most of the time; the cost of reading it is trivial compared to the cost of a mistake.\nSee also: ../setup-and-safety/ on sandboxing — another layer of defense when you can’t read every command.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Runaway API Bills"
+      "Blindly Running Agent-Suggested Shell Commands"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/works-on-my-machine.html",
-    "href": "vibe-coding/common-traps/works-on-my-machine.html",
-    "title": "“Works on My Machine” Illusions",
+    "objectID": "vibe-coding/common-traps/force-push-disasters.html",
+    "href": "vibe-coding/common-traps/force-push-disasters.html",
+    "title": "Force-Push Disasters",
     "section": "",
-    "text": "“Works on My Machine” Illusions\nYour project runs fine locally. On a collaborator’s machine, or on the server, or on GitHub Actions, it breaks — because your machine has a specific Python version, a specific env var, a file that exists only locally, or a tool you installed and forgot. The fix is reproducibility as a practice: pin every version in a lockfile, document every required env var in .env.example, check in a working setup script, and test the “fresh clone” scenario at least once before calling a project done. If a project can’t run on a new machine from a git clone plus a documented setup step, it’s not really shareable.",
+    "text": "Force-Push Disasters\ngit push --force overwrites the remote branch with your local state, discarding whatever was there before. Beginners use it to “fix” a messy commit history, and end up erasing work — sometimes their own, sometimes a collaborator’s. The fix: never force-push unless you explicitly need to and understand exactly what you’re overwriting, prefer --force-with-lease (which at least checks someone else hasn’t pushed in the meantime), and never force-push to main. If you need to undo a commit, use revert (adds a new commit that cancels the old one) instead.\nSee also: ../foundations/ on git literacy — the habit that makes force-push unnecessary.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "\"Works on My Machine\" Illusions"
+      "Force-Push Disasters"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/index.html",
-    "href": "vibe-coding/common-traps/index.html",
-    "title": "Common Traps",
+    "objectID": "vibe-coding/common-traps/committing-secrets.html",
+    "href": "vibe-coding/common-traps/committing-secrets.html",
+    "title": "Committing Secrets to Git",
     "section": "",
-    "text": "A named gallery of specific beginner mistakes, each with the fix. Each trap is its own short page — a cautionary tale you can hand to someone about to make the same mistake. Cross-linked to ../../practical/ where topics overlap (licenses, reproducibility, cost).\n\n\n\nCommitting secrets to git. — the single most common way beginners get burned.\nBlindly running agent-suggested shell commands. — most are fine; once in a while, catastrophic.\nForce-push disasters. — one flag, whole branch gone.\nLetting the agent refactor without review. — a 300-line diff you didn’t read.\nAccepting the first thing that compiles. — “compiles” ≠ “works.”\nScope-creep prompts. — you asked for one change; you got six.\nBuilding on sand. — unreliable deps, beta APIs, deprecated models.\nRunaway API bills. — loops, retries, leaks — always set a ceiling.\nDeploying to production without testing. — works-on-my-machine, at scale.\nTrusting a local-running model demo. — a clever trick is not a pipeline.\n“Works on my machine” illusions. — reproducibility is a practice, not a hope.",
+    "text": "Committing Secrets to Git\nThe single most common way beginner coders get burned. You add an API key to a config file, commit it, push to a public repo, and within minutes a bot has scraped the key and started using it on your account. The fix is preventive: set up .gitignore before you put a credential anywhere near the project, verify with git status before every commit, and if it happens anyway, rotate the key at the vendor immediately — don’t just delete the commit. Git history is distributed; you cannot unshare a leaked secret.\nSee also: ../setup-and-safety/ for the managing-credentials pattern that prevents this.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
-      "Common Traps"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/common-traps/index.html#the-gallery",
-    "href": "vibe-coding/common-traps/index.html#the-gallery",
-    "title": "Common Traps",
-    "section": "",
-    "text": "Committing secrets to git. — the single most common way beginners get burned.\nBlindly running agent-suggested shell commands. — most are fine; once in a while, catastrophic.\nForce-push disasters. — one flag, whole branch gone.\nLetting the agent refactor without review. — a 300-line diff you didn’t read.\nAccepting the first thing that compiles. — “compiles” ≠ “works.”\nScope-creep prompts. — you asked for one change; you got six.\nBuilding on sand. — unreliable deps, beta APIs, deprecated models.\nRunaway API bills. — loops, retries, leaks — always set a ceiling.\nDeploying to production without testing. — works-on-my-machine, at scale.\nTrusting a local-running model demo. — a clever trick is not a pipeline.\n“Works on my machine” illusions. — reproducibility is a practice, not a hope.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
-      "Common Traps"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/common-traps/refactor-without-review.html",
-    "href": "vibe-coding/common-traps/refactor-without-review.html",
-    "title": "Letting the Agent Refactor Without Review",
-    "section": "",
-    "text": "Letting the Agent Refactor Without Review\nYou ask the agent to “clean up” a module, it rewrites three hundred lines, and you approve the diff without reading it because it’s too long. Two weeks later a subtle bug surfaces, and you can’t tell what changed vs. what was always wrong. The fix: treat a large refactor as three small ones. Ask the agent to do one thing at a time — rename this, extract that, inline the other — and review each step. If the agent proposes a sweeping change, ask for a summary of what’s moving where before approving the diff.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Letting the Agent Refactor Without Review"
+      "Committing Secrets to Git"
     ]
   },
   {
-    "objectID": "vibe-coding/index.html",
-    "href": "vibe-coding/index.html",
-    "title": "Vibe-coding for Filmmakers",
+    "objectID": "vibe-coding/common-traps/deploy-without-testing.html",
+    "href": "vibe-coding/common-traps/deploy-without-testing.html",
+    "title": "Deploying to Production Without Testing",
     "section": "",
-    "text": "Writing code with AI coding tools, treated as a first-class form of generative production. Coding and media generation share the same underlying skill: prompting, iterating, selecting, tracking, and paying for generations.\nThis section is organized around one question: how do we keep beginner coders from making big mistakes?\n\n\n\nfoundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each.",
+    "text": "Deploying to Production Without Testing\nIt works on your machine, so you push it to the live server, and the live server has different environment variables, different database state, and different traffic patterns. Features that “worked” in development break under real conditions. The fix: a staging environment that mirrors production, an automated test suite that runs before every deploy, and a deploy that’s reversible (you can roll back in one command). Small projects don’t need elaborate infrastructure, but every project needs a way to deploy safely and a way to undo a deploy.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers"
+      "Vibe-coding",
+      "Common Traps",
+      "Deploying to Production Without Testing"
     ]
   },
   {
-    "objectID": "vibe-coding/index.html#contents",
-    "href": "vibe-coding/index.html#contents",
-    "title": "Vibe-coding for Filmmakers",
+    "objectID": "vibe-coding/foundations/index.html",
+    "href": "vibe-coding/foundations/index.html",
+    "title": "Foundations (Vibe-coding)",
     "section": "",
-    "text": "foundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each.",
+    "text": "Foundations (Vibe-coding)\nMental models for someone who has coded little or not at all. This is the on-ramp before the setup and safety material — enough to make the rest of the section make sense.\n\nWhat is an agent?\nAn “agent” in the coding sense is a model that can take actions on your behalf — read files, run commands, edit code — not just chat about them. This is the crucial distinction from a chat window where the model only produces text. Three shapes are common: autocomplete (suggests the next few lines as you type, you stay in control), chat (you ask, the model answers, you copy the answer into your project), and agent (the model reads and writes your project directly, often running commands in a terminal). Each has different affordances and different failure modes; pick the one that matches how much trust the task deserves.\n\n\nWhere does code actually run?\nCode has to run somewhere — your laptop, a cloud server, or a hybrid of both — and the difference matters more than it looks. Code that runs locally is fast, free, and private, but limited by your hardware; code that runs in the cloud can scale but costs money and exposes your data. Many AI coding tools also use cloud resources on your behalf (the model itself is in the cloud even when your project is local), which is why a “free” agent can still surprise you with bills. Before starting a project, know where each part of it will execute and what that implies for cost, privacy, and reliability.\n\n\nTerminal literacy\nThe terminal is a text-based way of telling your computer what to do — no icons, no mouse. Agents drop you into one constantly because it’s the fastest way for a program to manipulate files and run commands. You don’t need fluency, but you need comfort with a handful of verbs: cd to change directories, ls to list files, cat to read a file, git to track changes, and enough awareness to recognize when a command looks dangerous (anything with rm -rf, anything that rewrites history, anything you didn’t ask for). When the agent proposes a command, read it before approving it.\n\n\nGit literacy\nGit is the version-control system that remembers every change you commit to a project. For filmmakers this is the equivalent of keeping every take: you can always return to an earlier version, compare two versions, or branch off a new experiment without losing the main line. Git matters especially when you’re working with AI-generated code, because the agent will sometimes produce changes you don’t want — a revert is the undo button, and it only works if you’ve been committing along the way. The working habit: commit small, commit often, write a one-line message describing the why, and never skip the review step before pushing changes public.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers"
+      "Vibe-coding",
+      "Foundations"
     ]
   },
   {
-    "objectID": "vibe-coding/building-software/index.html",
-    "href": "vibe-coding/building-software/index.html",
-    "title": "Building Software",
+    "objectID": "vibe-coding/working-with-models/index.html",
+    "href": "vibe-coding/working-with-models/index.html",
+    "title": "Working with Models",
     "section": "",
-    "text": "Building Software\nSensible defaults for someone assembling their first non-trivial project. The theme: prefer the boringest credible choice, and read things before pasting them.\n\nReading API docs\nMost services you’ll integrate — an image-generation API, a cloud storage bucket, a video-delivery platform — publish documentation that describes what calls are available and what they expect. The skill is skimming docs for the three things you need: the authentication method (how the key goes in), the endpoint structure (what URL to hit and with what shape of data), and a working example (to confirm you read the first two correctly). REST and HTTP are the common vocabulary — a call is almost always a GET, POST, PUT, or DELETE to a URL with a JSON body. SDKs wrap this in a language-specific library; raw HTTP calls work when no SDK exists. Either way, read the docs before asking the model — the agent will invent plausible-looking calls that don’t exist.\n\n\nFrameworks vs rolling-your-own\nA framework is a pre-built scaffolding — Rails, Next.js, Django, SvelteKit — that decides most of the structural questions for you so you can focus on what’s unique about your project. Rolling your own means building the scaffolding yourself, which an agent will gladly do. The trade-off: frameworks give you battle-tested patterns, community support, and a shared vocabulary with other developers, at the cost of conforming to their conventions. Rolling your own gives you freedom at the cost of reinventing problems that have already been solved. For a beginner, the framework almost always wins — you want to spend your learning on your problem, not on everyone else’s problems that the framework already solved.\n\n\nBoring tech wins\nThe counter-intuitive rule of working with AI coding tools is that older, more established technologies produce better results than trendy ones. Rails, Django, Next.js, plain Postgres, plain HTML — the model has seen these in millions of projects and knows their idioms deeply. The new shiny framework released last quarter has less training data behind it, and the agent will confidently improvise code that looks right but isn’t. The move: default to the boringest credible choice; only reach for the cutting edge when the problem genuinely requires it. Boring tech is also better for you — it has documentation, tutorials, and Stack Overflow answers to help when the model is wrong.\n\n\nDependencies and package managers\nA dependency is someone else’s code that your project uses — a library, a framework, a utility. A package manager (npm, pip, bundler, cargo) installs and tracks them. Dependencies are powerful because you get to skip work someone else did, and dangerous because you’re trusting code you didn’t write and often didn’t read. Two beginner failure modes: installing random packages the agent suggests without checking who maintains them, and letting versions drift so that “works on my machine” doesn’t reproduce anywhere else. The discipline: prefer well-known packages with active maintenance, pin versions in a lockfile, and read what a package does before adding it.\n\n\nReading error messages\nError messages look intimidating but they’re usually specific and helpful — the first line often tells you exactly what went wrong and which file to look at. The beginner move is to paste the error into the agent and ask for a fix; the better move is to read it first, form a hypothesis, then consult the agent with “I think X is happening because Y — is that right?” This produces better help because you’re collaborating on a diagnosis instead of asking the model to guess. Stack traces read bottom-up: the deepest call is usually a library you don’t control; the call near the top in your code is almost always where the real bug lives.",
+    "text": "Working with Models\nChoosing, prompting, and managing context with AI coding tools. This section refines foundations/prompting-principles.md for the coding case, and adds the code-specific environment — rules files, skills, MCP — that shapes what the model actually sees.\n\nCoding models compared\nSeveral model families dominate coding: Anthropic’s Claude (Opus / Sonnet / Haiku tiers), OpenAI’s GPT family, Google’s Gemini, and a growing set of locally-runnable open models. They differ in three ways that matter: raw capability (how hard a problem can it solve), context window (how much of your project it can hold in memory at once), and cost per token. A model that’s cheaper per token but needs three attempts to get a function right is not actually cheaper. The right default is the most capable model in the tier that fits your budget; reach for smaller models only when the task is genuinely small (a rename, a syntax question) or when you’re running locally for privacy.\n\n\nPrompting for code\nPrompting a coding model refines the universal prompting principles: specificity beats cleverness, constraints improve output, one change per iteration, and reference examples teach faster than adjectives. The specific-to-code moves: name the language, framework, and version (Rails 8.1, Python 3.12, Node 22) so the model doesn’t guess; describe the existing code style if you want consistency; show a small example input and expected output; and say what you’ve already tried if the first attempt didn’t work. The anti-pattern is asking for a “complete implementation” with vague requirements — you’ll get something plausible that doesn’t fit your codebase.\n\n\nContext management\nThe chat window is an environment, not a prompt box. Everything in it — the files the agent has read, the commands it has run, the earlier questions and answers — shapes the next response. This is why “start a new chat” is useful advice: when the environment drifts or fills with irrelevant detail, a fresh conversation is often faster than trying to correct course. Rules files (CLAUDE.md, AGENTS.md, or the equivalent for your tool) are how you pin the stable context — conventions, domain knowledge, gotchas — so you don’t re-type it every session. The skill is curating the environment, not just writing prompts into it.\n\n\nSkills\nSkills are reusable packages of instructions and examples that extend an agent’s behavior for a specific task — “review a pull request,” “create a migration,” “debug a failing test.” They’re a step up from rules files: rules live in the project, skills can live in the tool and follow you across projects. Build one when you notice yourself explaining the same workflow to the agent for the third time; don’t bother earlier, because premature skills become stale instructions you have to maintain. A good skill is a recipe, not a personality.\n\n\nMCP\nMCP (Model Context Protocol) is a standard way for an agent to talk to external tools — a filesystem, a database, a browser, an image-generation API. Without MCP, each integration is a one-off; with it, an agent can plug into any compatible tool without custom code. For a beginner, the heuristic is simple: if you find yourself copy-pasting between an agent and another service repeatedly, that’s the point where wiring up an MCP server saves time. Don’t wire up servers speculatively — each one adds surface area for mistakes.\n\n\nAgents vs chat vs autocomplete\nThese three shapes of AI coding assistance each have a right job. Autocomplete (Copilot-style inline suggestions) is fastest for routine code — you stay in control, the model saves keystrokes. Chat is best for explanations, design questions, and small isolated functions you’ll paste in yourself. Agents shine on multi-file changes, refactors, and debugging sessions where reading and writing the project is half the work. Mixing them is normal: use autocomplete while typing, pop out to chat to understand an error message, dispatch an agent to implement the change. The wrong move is using one shape for every job.\n\n\nPrompting tips\nModels tuned to be helpful can be sycophantic — they’ll agree with the framing of your question rather than push back on it, especially when the question implies a preferred answer. “Is this a good idea?” invites a pat on the back; the model reads your framing and tends to confirm it. “What are the pros and cons of this approach?” forces a more balanced analysis. The same move applies elsewhere: instead of “Is this code clean?” try “What would a senior engineer criticize about this code?”; instead of “Should I use Rails here?” try “What are the trade-offs between Rails and a lighter framework for this use case?” Frame questions to invite critique, not agreement, and the model becomes a more useful collaborator.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
-      "Building Software"
+      "Vibe-coding",
+      "Working with Models"
     ]
   },
   {
-    "objectID": "generative-media/craft/index.html",
-    "href": "generative-media/craft/index.html",
-    "title": "Craft",
+    "objectID": "generative-media/concepts/tools-and-vendors/index.html",
+    "href": "generative-media/concepts/tools-and-vendors/index.html",
+    "title": "Tools and Vendors",
     "section": "",
-    "text": "Media-specific technique and decision-making. These pages assume you’ve read the foundations/ — they refine the shared meta-skills for moving images and sound.\n\n\n\nPrompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI.",
+    "text": "The landscape, framed categorically so the pages age gracefully. This folder tells you how to reason about a tool, not which one to pick today.\n\n\n\nOpen weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Craft"
+      "Concepts",
+      "Tools and Vendors"
     ]
   },
   {
-    "objectID": "generative-media/craft/index.html#planned-topics",
-    "href": "generative-media/craft/index.html#planned-topics",
-    "title": "Craft",
+    "objectID": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
+    "href": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
+    "title": "Tools and Vendors",
     "section": "",
-    "text": "Prompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI.",
+    "text": "Open weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Craft"
+      "Concepts",
+      "Tools and Vendors"
     ]
   },
   {
-    "objectID": "generative-media/concepts/index.html",
-    "href": "generative-media/concepts/index.html",
-    "title": "Concepts",
+    "objectID": "generative-media/concepts/modalities/index.html",
+    "href": "generative-media/concepts/modalities/index.html",
+    "title": "Modalities",
     "section": "",
-    "text": "The conceptual spine of this section. These pages describe what the tools are and how they work, independent of any specific product.\n\n\n\nmodel-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.",
+    "text": "One page per modality. Sub-topics live inline because the ideas cluster.\n\n\n\nImage — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Concepts"
+      "Concepts",
+      "Modalities"
     ]
   },
   {
-    "objectID": "generative-media/concepts/index.html#contents",
-    "href": "generative-media/concepts/index.html#contents",
-    "title": "Concepts",
+    "objectID": "generative-media/concepts/modalities/index.html#planned-pages",
+    "href": "generative-media/concepts/modalities/index.html#planned-pages",
+    "title": "Modalities",
     "section": "",
-    "text": "model-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.",
+    "text": "Image — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Concepts"
+      "Concepts",
+      "Modalities"
+    ]
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/index.html",
+    "href": "generative-media/concepts/model-basics/index.html",
+    "title": "Model Basics",
+    "section": "",
+    "text": "The foundational vocabulary of generative media models. Read top-to-bottom for a first pass, or dip in for a specific term.\n\n\n\nDiffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which.",
+    "crumbs": [
+      "Present",
+      "Generative Media",
+      "Concepts",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "generative-media/concepts/model-basics/index.html#planned-topics",
+    "href": "generative-media/concepts/model-basics/index.html#planned-topics",
+    "title": "Model Basics",
+    "section": "",
+    "text": "Diffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which.",
+    "crumbs": [
+      "Present",
+      "Generative Media",
+      "Concepts",
+      "Model Basics"
+    ]
+  },
+  {
+    "objectID": "generative-media/index.html",
+    "href": "generative-media/index.html",
+    "title": "Generative Media",
+    "section": "",
+    "text": "Producing images, video, audio, and spatial work with generative AI tools.\nIf you’re new here, start with foundations/ — the shared meta-skills that run through the whole site. Then come back here for media-specific concepts and craft.\n\n\n\nconcepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine.",
+    "crumbs": [
+      "Present",
+      "Generative Media"
+    ]
+  },
+  {
+    "objectID": "generative-media/index.html#contents",
+    "href": "generative-media/index.html#contents",
+    "title": "Generative Media",
+    "section": "",
+    "text": "concepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine.",
+    "crumbs": [
+      "Present",
+      "Generative Media"
+    ]
+  },
+  {
+    "objectID": "generative-media/lifecycle/index.html",
+    "href": "generative-media/lifecycle/index.html",
+    "title": "Lifecycle Crosswalk",
+    "section": "",
+    "text": "A supplemental view, not the primary spine. Generative tools are collapsing traditional film-production stages — previs becomes production, post becomes production — so this page cross-references concepts to lifecycle stages rather than organizing them that way.\nEvery bullet below links into a page elsewhere in the repo. Nothing is duplicated here.\n\n\n\nPreamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)",
+    "crumbs": [
+      "Present",
+      "Generative Media",
+      "Lifecycle Crosswalk"
+    ]
+  },
+  {
+    "objectID": "generative-media/lifecycle/index.html#planned-structure",
+    "href": "generative-media/lifecycle/index.html#planned-structure",
+    "title": "Lifecycle Crosswalk",
+    "section": "",
+    "text": "Preamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)",
+    "crumbs": [
+      "Present",
+      "Generative Media",
+      "Lifecycle Crosswalk"
     ]
   },
   {
@@ -786,241 +853,186 @@
     ]
   },
   {
-    "objectID": "generative-media/lifecycle/index.html",
-    "href": "generative-media/lifecycle/index.html",
-    "title": "Lifecycle Crosswalk",
+    "objectID": "generative-media/concepts/index.html",
+    "href": "generative-media/concepts/index.html",
+    "title": "Concepts",
     "section": "",
-    "text": "A supplemental view, not the primary spine. Generative tools are collapsing traditional film-production stages — previs becomes production, post becomes production — so this page cross-references concepts to lifecycle stages rather than organizing them that way.\nEvery bullet below links into a page elsewhere in the repo. Nothing is duplicated here.\n\n\n\nPreamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)",
+    "text": "The conceptual spine of this section. These pages describe what the tools are and how they work, independent of any specific product.\n\n\n\nmodel-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Lifecycle Crosswalk"
+      "Concepts"
     ]
   },
   {
-    "objectID": "generative-media/lifecycle/index.html#planned-structure",
-    "href": "generative-media/lifecycle/index.html#planned-structure",
-    "title": "Lifecycle Crosswalk",
+    "objectID": "generative-media/concepts/index.html#contents",
+    "href": "generative-media/concepts/index.html#contents",
+    "title": "Concepts",
     "section": "",
-    "text": "Preamble — why this is a crosswalk, not a spine.\nStages — Development, Pre-production, Production, Post, Delivery. Each a short paragraph plus a bulleted list of links.\nCollapsing seams — callouts where a tool genuinely dissolves a stage boundary.\n\n(Content to be written in a follow-on plan once the linked pages exist.)",
+    "text": "model-basics/ — diffusion intuition, LoRAs, seeds, CFG, samplers, conditioning, and the terms every media generator encounters.\nmodalities/ — one page per modality (image, video, audio, spatial) with sub-topics inline.\ntools-and-vendors/ — the landscape: local vs cloud, hardware realities, cloud compute providers, interfaces, model zoos.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Lifecycle Crosswalk"
+      "Concepts"
     ]
   },
   {
-    "objectID": "generative-media/index.html",
-    "href": "generative-media/index.html",
-    "title": "Generative Media",
+    "objectID": "generative-media/craft/index.html",
+    "href": "generative-media/craft/index.html",
+    "title": "Craft",
     "section": "",
-    "text": "Producing images, video, audio, and spatial work with generative AI tools.\nIf you’re new here, start with foundations/ — the shared meta-skills that run through the whole site. Then come back here for media-specific concepts and craft.\n\n\n\nconcepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine.",
-    "crumbs": [
-      "Present",
-      "Generative Media"
-    ]
-  },
-  {
-    "objectID": "generative-media/index.html#contents",
-    "href": "generative-media/index.html#contents",
-    "title": "Generative Media",
-    "section": "",
-    "text": "concepts/ — model basics, modalities, and the tools-and-vendors landscape.\ncraft/ — media-specific technique: consistency, camera motion, temporal coherence, and knowing when not to use AI.\nlifecycle/ — a supplemental crosswalk mapping pages to traditional film-production stages. Generative tools are collapsing these stages; this view is a reference, not a spine.",
-    "crumbs": [
-      "Present",
-      "Generative Media"
-    ]
-  },
-  {
-    "objectID": "generative-media/concepts/model-basics/index.html",
-    "href": "generative-media/concepts/model-basics/index.html",
-    "title": "Model Basics",
-    "section": "",
-    "text": "The foundational vocabulary of generative media models. Read top-to-bottom for a first pass, or dip in for a specific term.\n\n\n\nDiffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which.",
+    "text": "Media-specific technique and decision-making. These pages assume you’ve read the foundations/ — they refine the shared meta-skills for moving images and sound.\n\n\n\nPrompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Concepts",
-      "Model Basics"
+      "Craft"
     ]
   },
   {
-    "objectID": "generative-media/concepts/model-basics/index.html#planned-topics",
-    "href": "generative-media/concepts/model-basics/index.html#planned-topics",
-    "title": "Model Basics",
+    "objectID": "generative-media/craft/index.html#planned-topics",
+    "href": "generative-media/craft/index.html#planned-topics",
+    "title": "Craft",
     "section": "",
-    "text": "Diffusion intuition — how generation actually works, no math.\nSeeds — the reproducibility lever. (page)\nSamplers & schedulers — what they do, which to pick when.\nSteps & CFG — how much to think and how hard to listen to the prompt.\nLoRAs — lightweight style/subject adapters.\nQuantization & file types — why the same model ships in many sizes.\nResolution & aspect ratios — native sizes and why going off-spec breaks things.\nConditioning — ControlNet, IPAdapter, depth/pose/edge. The “steering wheel.”\nEmbeddings & textual inversion — teaching a model a new word.\nCheckpoints vs LoRAs vs embeddings — disambiguation.\nFine-tuning vs LoRAs vs prompting — when to reach for which.",
+    "text": "Prompting for visual generation — positive/negative, weighting, syntax differences. Refines foundations/prompting-principles.md.\nSeeds and reproducibility as craft — directed versus discovered.\nCharacter consistency across shots.\nScene and location consistency.\nShot-to-shot continuity — lighting, wardrobe, time-of-day.\nCamera motion control in video models.\nTemporal coherence — flicker, morphing, and how to fight it.\nDirecting AI: intention vs randomness.\nBlending generative with traditional — plates, comps, hybrid pipelines.\nWhen not to use AI.",
     "crumbs": [
       "Present",
       "Generative Media",
-      "Concepts",
-      "Model Basics"
+      "Craft"
     ]
   },
   {
-    "objectID": "generative-media/concepts/modalities/index.html",
-    "href": "generative-media/concepts/modalities/index.html",
-    "title": "Modalities",
+    "objectID": "vibe-coding/building-software/index.html",
+    "href": "vibe-coding/building-software/index.html",
+    "title": "Building Software",
     "section": "",
-    "text": "One page per modality. Sub-topics live inline because the ideas cluster.\n\n\n\nImage — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction.",
+    "text": "Building Software\nSensible defaults for someone assembling their first non-trivial project. The theme: prefer the boringest credible choice, and read things before pasting them.\n\nReading API docs\nMost services you’ll integrate — an image-generation API, a cloud storage bucket, a video-delivery platform — publish documentation that describes what calls are available and what they expect. The skill is skimming docs for the three things you need: the authentication method (how the key goes in), the endpoint structure (what URL to hit and with what shape of data), and a working example (to confirm you read the first two correctly). REST and HTTP are the common vocabulary — a call is almost always a GET, POST, PUT, or DELETE to a URL with a JSON body. SDKs wrap this in a language-specific library; raw HTTP calls work when no SDK exists. Either way, read the docs before asking the model — the agent will invent plausible-looking calls that don’t exist.\n\n\nFrameworks vs rolling-your-own\nA framework is a pre-built scaffolding — Rails, Next.js, Django, SvelteKit — that decides most of the structural questions for you so you can focus on what’s unique about your project. Rolling your own means building the scaffolding yourself, which an agent will gladly do. The trade-off: frameworks give you battle-tested patterns, community support, and a shared vocabulary with other developers, at the cost of conforming to their conventions. Rolling your own gives you freedom at the cost of reinventing problems that have already been solved. For a beginner, the framework almost always wins — you want to spend your learning on your problem, not on everyone else’s problems that the framework already solved.\n\n\nNative development\nNative development means building software that runs directly on a specific platform — iOS, Android, macOS, Windows — rather than in a web browser. It’s more powerful (access to hardware, platform APIs, offline use) but costly in ways beginners don’t see up front. There’s a literal price of admission to become a developer on each platform: Apple’s Developer Program is $99/year, Google Play is a $25 one-time fee, and code-signing certificates for Windows and macOS add their own recurring costs. Then there’s the approval cycle: every update to an iOS or Android app goes through platform review, which can take days to weeks and sometimes gets rejected for reasons you didn’t anticipate — a gatekeeper your web project simply doesn’t have. Each platform also has its own toolchain, language, and hardware requirements (iOS development requires a Mac). Don’t pick native for your first project — ship something on the web first, where publishing is free, updates are instant, and nothing stands between you and your users. Come back to native once you’ve shipped.\n\n\nBoring tech wins\nThe counter-intuitive rule of working with AI coding tools is that older, more established technologies produce better results than trendy ones. Rails, Django, Next.js, plain Postgres, plain HTML — the model has seen these in millions of projects and knows their idioms deeply. The new shiny framework released last quarter has less training data behind it, and the agent will confidently improvise code that looks right but isn’t. The move: default to the boringest credible choice; only reach for the cutting edge when the problem genuinely requires it. Boring tech is also better for you — it has documentation, tutorials, and Stack Overflow answers to help when the model is wrong.\n\n\nDependencies and package managers\nA dependency is someone else’s code that your project uses — a library, a framework, a utility. A package manager (npm, pip, bundler, cargo) installs and tracks them. Dependencies are powerful because you get to skip work someone else did, and dangerous because you’re trusting code you didn’t write and often didn’t read. Two beginner failure modes: installing random packages the agent suggests without checking who maintains them, and letting versions drift so that “works on my machine” doesn’t reproduce anywhere else. The discipline: prefer well-known packages with active maintenance, pin versions in a lockfile, and read what a package does before adding it.\n\n\nReading error messages\nError messages look intimidating but they’re usually specific and helpful — the first line often tells you exactly what went wrong and which file to look at. The beginner move is to paste the error into the agent and ask for a fix; the better move is to read it first, form a hypothesis, then consult the agent with “I think X is happening because Y — is that right?” This produces better help because you’re collaborating on a diagnosis instead of asking the model to guess. Stack traces read bottom-up: the deepest call is usually a library you don’t control; the call near the top in your code is almost always where the real bug lives.",
     "crumbs": [
       "Present",
-      "Generative Media",
-      "Concepts",
-      "Modalities"
+      "Vibe-coding",
+      "Building Software"
     ]
   },
   {
-    "objectID": "generative-media/concepts/modalities/index.html#planned-pages",
-    "href": "generative-media/concepts/modalities/index.html#planned-pages",
-    "title": "Modalities",
+    "objectID": "vibe-coding/index.html",
+    "href": "vibe-coding/index.html",
+    "title": "Vibe-coding for Filmmakers",
     "section": "",
-    "text": "Image — txt2img, img2img, inpaint/outpaint, upscaling, style transfer.\nVideo — txt2vid, img2vid, vid2vid, frame interpolation, consistency, clip-length limits.\nAudio — dialogue and voice cloning, ADR, lip-sync, Foley/SFX, music/score.\nSpatial — 3D generation, NeRF, Gaussian Splatting, camera tracking, plate reconstruction.",
+    "text": "Writing code with AI coding tools, treated as a first-class form of generative production. Coding and media generation share the same underlying skill: prompting, iterating, selecting, tracking, and paying for generations.\nThis section is organized around one question: how do we keep beginner coders from making big mistakes?\n\n\n\nfoundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nplatforms/ — the spectrum of places you actually write code with a model, from in-browser environments to command-line agents.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each.",
     "crumbs": [
       "Present",
-      "Generative Media",
-      "Concepts",
-      "Modalities"
+      "Vibe-coding"
     ]
   },
   {
-    "objectID": "generative-media/concepts/tools-and-vendors/index.html",
-    "href": "generative-media/concepts/tools-and-vendors/index.html",
-    "title": "Tools and Vendors",
+    "objectID": "vibe-coding/index.html#contents",
+    "href": "vibe-coding/index.html#contents",
+    "title": "Vibe-coding for Filmmakers",
     "section": "",
-    "text": "The landscape, framed categorically so the pages age gracefully. This folder tells you how to reason about a tool, not which one to pick today.\n\n\n\nOpen weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads.",
+    "text": "foundations/ — mental models for the coding side: what an agent is, where code runs, terminal and git literacy.\nplatforms/ — the spectrum of places you actually write code with a model, from in-browser environments to command-line agents.\nsetup-and-safety/ — credentials, API keys, sandboxing, what not to push to git.\nworking-with-models/ — choosing models, prompting code, context management, skills, MCP.\nbuilding-software/ — APIs, frameworks vs rolling-your-own, dependencies, reading errors.\ncommon-traps/ — a named gallery of specific beginner mistakes with the fix for each.",
     "crumbs": [
       "Present",
-      "Generative Media",
-      "Concepts",
-      "Tools and Vendors"
+      "Vibe-coding"
     ]
   },
   {
-    "objectID": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
-    "href": "generative-media/concepts/tools-and-vendors/index.html#planned-topics",
-    "title": "Tools and Vendors",
+    "objectID": "vibe-coding/common-traps/refactor-without-review.html",
+    "href": "vibe-coding/common-traps/refactor-without-review.html",
+    "title": "Letting the Agent Refactor Without Review",
     "section": "",
-    "text": "Open weights vs closed APIs vs open source — what each actually lets you do.\nService tiers — infrastructure vs workflow vs full-service, and how to tell which layer you’re on.\nLocal vs cloud — privacy, cost, control, ceiling trade-offs.\nHardware realities — GPU/VRAM, Mac vs PC, minimum viable rig.\nCloud compute — Colab, RunPod, Modal, Replicate, Fal as categories.\nInterfaces — ComfyUI, A1111, Forge, Invoke; node-based vs prompt-first.\nCloud video tools — Runway, Kling, Sora, Luma, Pika, Higgsfield framed categorically.\nModel zoos — Hugging Face, Civitai; reading a model card; spotting dubious uploads.",
+    "text": "Letting the Agent Refactor Without Review\nYou ask the agent to “clean up” a module, it rewrites three hundred lines, and you approve the diff without reading it because it’s too long. Two weeks later a subtle bug surfaces, and you can’t tell what changed vs. what was always wrong. The fix: treat a large refactor as three small ones. Ask the agent to do one thing at a time — rename this, extract that, inline the other — and review each step. If the agent proposes a sweeping change, ask for a summary of what’s moving where before approving the diff.",
     "crumbs": [
       "Present",
-      "Generative Media",
-      "Concepts",
-      "Tools and Vendors"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/working-with-models/index.html",
-    "href": "vibe-coding/working-with-models/index.html",
-    "title": "Working with Models",
-    "section": "",
-    "text": "Working with Models\nChoosing, prompting, and managing context with AI coding tools. This section refines foundations/prompting-principles.md for the coding case, and adds the code-specific environment — rules files, skills, MCP — that shapes what the model actually sees.\n\nCoding models compared\nSeveral model families dominate coding: Anthropic’s Claude (Opus / Sonnet / Haiku tiers), OpenAI’s GPT family, Google’s Gemini, and a growing set of locally-runnable open models. They differ in three ways that matter: raw capability (how hard a problem can it solve), context window (how much of your project it can hold in memory at once), and cost per token. A model that’s cheaper per token but needs three attempts to get a function right is not actually cheaper. The right default is the most capable model in the tier that fits your budget; reach for smaller models only when the task is genuinely small (a rename, a syntax question) or when you’re running locally for privacy.\n\n\nPrompting for code\nPrompting a coding model refines the universal prompting principles: specificity beats cleverness, constraints improve output, one change per iteration, and reference examples teach faster than adjectives. The specific-to-code moves: name the language, framework, and version (Rails 8.1, Python 3.12, Node 22) so the model doesn’t guess; describe the existing code style if you want consistency; show a small example input and expected output; and say what you’ve already tried if the first attempt didn’t work. The anti-pattern is asking for a “complete implementation” with vague requirements — you’ll get something plausible that doesn’t fit your codebase.\n\n\nContext management\nThe chat window is an environment, not a prompt box. Everything in it — the files the agent has read, the commands it has run, the earlier questions and answers — shapes the next response. This is why “start a new chat” is useful advice: when the environment drifts or fills with irrelevant detail, a fresh conversation is often faster than trying to correct course. Rules files (CLAUDE.md, AGENTS.md, or the equivalent for your tool) are how you pin the stable context — conventions, domain knowledge, gotchas — so you don’t re-type it every session. The skill is curating the environment, not just writing prompts into it.\n\n\nSkills\nSkills are reusable packages of instructions and examples that extend an agent’s behavior for a specific task — “review a pull request,” “create a migration,” “debug a failing test.” They’re a step up from rules files: rules live in the project, skills can live in the tool and follow you across projects. Build one when you notice yourself explaining the same workflow to the agent for the third time; don’t bother earlier, because premature skills become stale instructions you have to maintain. A good skill is a recipe, not a personality.\n\n\nMCP\nMCP (Model Context Protocol) is a standard way for an agent to talk to external tools — a filesystem, a database, a browser, an image-generation API. Without MCP, each integration is a one-off; with it, an agent can plug into any compatible tool without custom code. For a beginner, the heuristic is simple: if you find yourself copy-pasting between an agent and another service repeatedly, that’s the point where wiring up an MCP server saves time. Don’t wire up servers speculatively — each one adds surface area for mistakes.\n\n\nAgents vs chat vs autocomplete\nThese three shapes of AI coding assistance each have a right job. Autocomplete (Copilot-style inline suggestions) is fastest for routine code — you stay in control, the model saves keystrokes. Chat is best for explanations, design questions, and small isolated functions you’ll paste in yourself. Agents shine on multi-file changes, refactors, and debugging sessions where reading and writing the project is half the work. Mixing them is normal: use autocomplete while typing, pop out to chat to understand an error message, dispatch an agent to implement the change. The wrong move is using one shape for every job.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
-      "Working with Models"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/foundations/index.html",
-    "href": "vibe-coding/foundations/index.html",
-    "title": "Foundations (Vibe-coding)",
-    "section": "",
-    "text": "Foundations (Vibe-coding)\nMental models for someone who has coded little or not at all. This is the on-ramp before the setup and safety material — enough to make the rest of the section make sense.\n\nWhat is an agent?\nAn “agent” in the coding sense is a model that can take actions on your behalf — read files, run commands, edit code — not just chat about them. This is the crucial distinction from a chat window where the model only produces text. Three shapes are common: autocomplete (suggests the next few lines as you type, you stay in control), chat (you ask, the model answers, you copy the answer into your project), and agent (the model reads and writes your project directly, often running commands in a terminal). Each has different affordances and different failure modes; pick the one that matches how much trust the task deserves.\n\n\nWhere does code actually run?\nCode has to run somewhere — your laptop, a cloud server, or a hybrid of both — and the difference matters more than it looks. Code that runs locally is fast, free, and private, but limited by your hardware; code that runs in the cloud can scale but costs money and exposes your data. Many AI coding tools also use cloud resources on your behalf (the model itself is in the cloud even when your project is local), which is why a “free” agent can still surprise you with bills. Before starting a project, know where each part of it will execute and what that implies for cost, privacy, and reliability.\n\n\nTerminal literacy\nThe terminal is a text-based way of telling your computer what to do — no icons, no mouse. Agents drop you into one constantly because it’s the fastest way for a program to manipulate files and run commands. You don’t need fluency, but you need comfort with a handful of verbs: cd to change directories, ls to list files, cat to read a file, git to track changes, and enough awareness to recognize when a command looks dangerous (anything with rm -rf, anything that rewrites history, anything you didn’t ask for). When the agent proposes a command, read it before approving it.\n\n\nGit literacy\nGit is the version-control system that remembers every change you commit to a project. For filmmakers this is the equivalent of keeping every take: you can always return to an earlier version, compare two versions, or branch off a new experiment without losing the main line. Git matters especially when you’re working with AI-generated code, because the agent will sometimes produce changes you don’t want — a revert is the undo button, and it only works if you’ve been committing along the way. The working habit: commit small, commit often, write a one-line message describing the why, and never skip the review step before pushing changes public.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
-      "Foundations (Vibe-coding)"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/common-traps/deploy-without-testing.html",
-    "href": "vibe-coding/common-traps/deploy-without-testing.html",
-    "title": "Deploying to Production Without Testing",
-    "section": "",
-    "text": "Deploying to Production Without Testing\nIt works on your machine, so you push it to the live server, and the live server has different environment variables, different database state, and different traffic patterns. Features that “worked” in development break under real conditions. The fix: a staging environment that mirrors production, an automated test suite that runs before every deploy, and a deploy that’s reversible (you can roll back in one command). Small projects don’t need elaborate infrastructure, but every project needs a way to deploy safely and a way to undo a deploy.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Deploying to Production Without Testing"
+      "Letting the Agent Refactor Without Review"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/committing-secrets.html",
-    "href": "vibe-coding/common-traps/committing-secrets.html",
-    "title": "Committing Secrets to Git",
+    "objectID": "vibe-coding/common-traps/index.html",
+    "href": "vibe-coding/common-traps/index.html",
+    "title": "Common Traps",
     "section": "",
-    "text": "Committing Secrets to Git\nThe single most common way beginner coders get burned. You add an API key to a config file, commit it, push to a public repo, and within minutes a bot has scraped the key and started using it on your account. The fix is preventive: set up .gitignore before you put a credential anywhere near the project, verify with git status before every commit, and if it happens anyway, rotate the key at the vendor immediately — don’t just delete the commit. Git history is distributed; you cannot unshare a leaked secret.\nSee also: ../setup-and-safety/ for the managing-credentials pattern that prevents this.",
+    "text": "A named gallery of specific beginner mistakes, each with the fix. Each trap is its own short page — a cautionary tale you can hand to someone about to make the same mistake. Cross-linked to ../../practical/ where topics overlap (licenses, reproducibility, cost).\n\n\n\nCommitting secrets to git. — the single most common way beginners get burned.\nBlindly running agent-suggested shell commands. — most are fine; once in a while, catastrophic.\nForce-push disasters. — one flag, whole branch gone.\nLetting the agent refactor without review. — a 300-line diff you didn’t read.\nAccepting the first thing that compiles. — “compiles” ≠ “works.”\nScope-creep prompts. — you asked for one change; you got six.\nBuilding on sand. — unreliable deps, beta APIs, deprecated models.\nRunaway API bills. — loops, retries, leaks — always set a ceiling.\nDeploying to production without testing. — works-on-my-machine, at scale.\nTrusting a local-running model demo. — a clever trick is not a pipeline.\n“Works on my machine” illusions. — reproducibility is a practice, not a hope.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
+      "Common Traps"
+    ]
+  },
+  {
+    "objectID": "vibe-coding/common-traps/index.html#the-gallery",
+    "href": "vibe-coding/common-traps/index.html#the-gallery",
+    "title": "Common Traps",
+    "section": "",
+    "text": "Committing secrets to git. — the single most common way beginners get burned.\nBlindly running agent-suggested shell commands. — most are fine; once in a while, catastrophic.\nForce-push disasters. — one flag, whole branch gone.\nLetting the agent refactor without review. — a 300-line diff you didn’t read.\nAccepting the first thing that compiles. — “compiles” ≠ “works.”\nScope-creep prompts. — you asked for one change; you got six.\nBuilding on sand. — unreliable deps, beta APIs, deprecated models.\nRunaway API bills. — loops, retries, leaks — always set a ceiling.\nDeploying to production without testing. — works-on-my-machine, at scale.\nTrusting a local-running model demo. — a clever trick is not a pipeline.\n“Works on my machine” illusions. — reproducibility is a practice, not a hope.",
+    "crumbs": [
+      "Present",
+      "Vibe-coding",
+      "Common Traps"
+    ]
+  },
+  {
+    "objectID": "vibe-coding/common-traps/works-on-my-machine.html",
+    "href": "vibe-coding/common-traps/works-on-my-machine.html",
+    "title": "“Works on My Machine” Illusions",
+    "section": "",
+    "text": "“Works on My Machine” Illusions\nYour project runs fine locally. On a collaborator’s machine, or on the server, or on GitHub Actions, it breaks — because your machine has a specific Python version, a specific env var, a file that exists only locally, or a tool you installed and forgot. The fix is reproducibility as a practice: pin every version in a lockfile, document every required env var in .env.example, check in a working setup script, and test the “fresh clone” scenario at least once before calling a project done. If a project can’t run on a new machine from a git clone plus a documented setup step, it’s not really shareable.",
+    "crumbs": [
+      "Present",
+      "Vibe-coding",
       "Common Traps",
-      "Committing Secrets to Git"
+      "\"Works on My Machine\" Illusions"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/force-push-disasters.html",
-    "href": "vibe-coding/common-traps/force-push-disasters.html",
-    "title": "Force-Push Disasters",
+    "objectID": "vibe-coding/common-traps/runaway-api-bills.html",
+    "href": "vibe-coding/common-traps/runaway-api-bills.html",
+    "title": "Runaway API Bills",
     "section": "",
-    "text": "Force-Push Disasters\ngit push --force overwrites the remote branch with your local state, discarding whatever was there before. Beginners use it to “fix” a messy commit history, and end up erasing work — sometimes their own, sometimes a collaborator’s. The fix: never force-push unless you explicitly need to and understand exactly what you’re overwriting, prefer --force-with-lease (which at least checks someone else hasn’t pushed in the meantime), and never force-push to main. If you need to undo a commit, use revert (adds a new commit that cancels the old one) instead.\nSee also: ../foundations/ on git literacy — the habit that makes force-push unnecessary.",
+    "text": "Runaway API Bills\nA script gets stuck in a loop and calls the API a million times overnight; a misconfigured job keeps retrying a failed request; a leaked key is used by someone else. The common thread: no ceiling. The fix is layered — per-key spending caps at the vendor, per-request timeouts in your code, a circuit breaker that stops calling an API after N consecutive failures, and email alerts when spend exceeds a threshold. You set these up before you need them, because the time you need them is at 3am when the damage is already happening.\nSee also: ../setup-and-safety/ on API keys and spending caps.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Force-Push Disasters"
+      "Runaway API Bills"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/blindly-running-commands.html",
-    "href": "vibe-coding/common-traps/blindly-running-commands.html",
-    "title": "Blindly Running Agent-Suggested Shell Commands",
+    "objectID": "vibe-coding/common-traps/local-model-demo-trap.html",
+    "href": "vibe-coding/common-traps/local-model-demo-trap.html",
+    "title": "Trusting a Local-Running Model Demo",
     "section": "",
-    "text": "Blindly Running Agent-Suggested Shell Commands\nAn agent proposes a command; you hit approve without reading it. Usually fine. Once in a while, catastrophic — a command that deletes a folder you cared about, overwrites a file, or runs something dangerous with your credentials. The fix is a habit: read every command before approving, flag anything with rm -rf, sudo, or a redirect into a file you didn’t expect, and never run an unfamiliar command in a directory you don’t want to lose. The agent will propose the right command most of the time; the cost of reading it is trivial compared to the cost of a mistake.\nSee also: ../setup-and-safety/ on sandboxing — another layer of defense when you can’t read every command.",
+    "text": "Trusting a Local-Running Model Demo\nYou run an open-weight video model on your laptop, it produces a beautiful shot, you plan the whole project around that capability. Then the project grows: you need a hundred shots, you need consistency across them, you need reliability. Local-model demos don’t scale — what feels like a clever trick on one shot becomes a serious infrastructure project at production volume. The fix is honesty about the gap: a demo proves a look is possible, not that a pipeline is viable. Before committing, budget the real cost of scaling the approach.\nSee also: ../../practical/ on cost management and reproducibility.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Blindly Running Agent-Suggested Shell Commands"
+      "Trusting a Local-Running Model Demo"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/first-thing-that-compiles.html",
-    "href": "vibe-coding/common-traps/first-thing-that-compiles.html",
-    "title": "Accepting the First Thing That Compiles",
+    "objectID": "vibe-coding/common-traps/scope-creep-prompts.html",
+    "href": "vibe-coding/common-traps/scope-creep-prompts.html",
+    "title": "Scope-Creep Prompts",
     "section": "",
-    "text": "Accepting the First Thing That Compiles\nThe code compiles, the test passes, the feature appears to work — so you ship it. Then an edge case blows up in production. “Compiles” means the syntax is correct; “works for my input” means nothing about the inputs you didn’t try. The fix is a small checklist: try the empty input, the wrong type, the oversized input, and the obvious adversarial input before declaring a function done. Coverage of the golden path alone has always been a trap; with AI-generated code, where the model optimizes for “looks plausible,” it’s worse.",
+    "text": "Scope-Creep Prompts\nYou ask for a small change; the agent takes the opportunity to reformat six other files, rename three functions, and “improve” a module you didn’t mention. Now the diff is unreadable and you can’t tell what was actually asked for. The fix: constrain the agent in the prompt (“change only the authenticate function; do not modify other files”) and review the diff before committing. When the agent oversteps, reject the whole change and re-prompt rather than trying to cherry-pick — the cheap move is to redo it, not to untangle it.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
+      "Vibe-coding",
       "Common Traps",
-      "Accepting the First Thing That Compiles"
+      "Scope-Creep Prompts"
     ]
   },
   {
-    "objectID": "vibe-coding/common-traps/building-on-sand.html",
-    "href": "vibe-coding/common-traps/building-on-sand.html",
-    "title": "Building on Sand",
+    "objectID": "vibe-coding/platforms/index.html",
+    "href": "vibe-coding/platforms/index.html",
+    "title": "Platforms",
     "section": "",
-    "text": "Building on Sand\nUnreliable dependencies, beta APIs, deprecated models, preview-tier services — building on any of them means your project can stop working without warning. A beta video-generation API changes its response format; your pipeline breaks. A model gets deprecated; your shot no longer renders. The fix is awareness: when you depend on something unstable, know it, document it, and have a fallback plan. For anything production-critical, prefer the oldest stable version of the tool that does what you need.\nSee also: ../../practical/ on reproducibility — how to keep a project working six months from now.",
+    "text": "Platforms\nWhere you actually write code with a model. Options span a spectrum from fully-hosted tools that run in your browser to command-line agents that work directly on your own machine. The trade-offs are consistent across the spectrum: the more hosted the tool, the less setup you have to do and the less you can customize; the more local the tool, the more control and visibility you have, at the cost of complexity and your own hardware. For a first project, start further up the hosted end — most frustration at the start is setup, not code.\n\nIn-browser environments\nTools like Lovable, Bolt, v0, and Replit let you describe what you want and watch the model assemble a working app in a browser tab — no install, no setup, no git to learn on day one. They’re the fastest path from idea to running code, and the right place to prototype. The trade-off is that you’re confined to what the platform supports: particular frameworks, particular deploy targets, particular kinds of customization. When a project outgrows the sandbox, you export the code and move somewhere else.\n\n\nNative desktop apps from model makers\nAnthropic’s Claude and OpenAI’s ChatGPT both ship native Mac and Windows apps. These are chat-first tools — the model can read files you drop in, run small bits of code in a sandbox, and answer questions — but they don’t manage a project the way an agent or IDE does. Good for explanations, one-off snippets, debugging a small file, and learning. Not where you build a non-trivial project over weeks.\n\n\nAI-integrated IDEs\nAn IDE (integrated development environment) is the editor you’d use even without AI — VS Code, JetBrains, Xcode. AI-integrated IDEs bolt a model into that editor. Cursor and Windsurf are VS Code forks built around an agent; VS Code + GitHub Copilot (or Claude’s extension) adds similar capabilities to the mainline editor; JetBrains has its own AI integration. This is where most day-to-day coding with AI happens — you see your project, you see the model’s proposed changes, and you decide what to accept.\n\n\nCommand-line agents\nAt the other end of the spectrum, command-line agents like Claude Code, Codex CLI, and Aider run in a terminal, read and write files in your project directly, and execute shell commands. They’re less beginner-friendly — you need to be comfortable in a terminal — but they’re also the most powerful, because the agent has the same access to your project that you do. The right tool when you’re orchestrating multi-step work across many files.\n\n\nTypical pricing\nMost platforms cluster into a few tiers. Free usually means limited usage, slower models, or a rate cap — enough to try the tool, not to rely on it. ~$20/month pro subscriptions are the default for serious single-user work: Claude Pro, ChatGPT Plus, Cursor Pro, GitHub Copilot, Replit Core. Usage-based API pricing (Anthropic, OpenAI, Google) charges per token — cheap for occasional scripted calls, potentially expensive for heavy agent use over time. Team and enterprise plans stack higher still, typically $50–100+ per seat with admin controls. Before committing to a platform, confirm which tier your actual workflow needs — “the monthly tier is enough for most people” is a common refrain that breaks down fast once you’re building something serious.",
     "crumbs": [
       "Present",
-      "Vibe-coding for Filmmakers",
-      "Common Traps",
-      "Building on Sand"
-    ]
-  },
-  {
-    "objectID": "vibe-coding/setup-and-safety/index.html",
-    "href": "vibe-coding/setup-and-safety/index.html",
-    "title": "Setup and Safety",
-    "section": "",
-    "text": "Setup and Safety\nThe things that will hurt you if you skip them. Credentials, billing, what never goes into git, and how to let an agent run commands without letting it ruin your afternoon.\n\nManaging credentials\nCredentials (API keys, passwords, tokens) are the secrets your code uses to access paid services. They get handled differently from every other kind of configuration because a leaked key gets scraped from a public repo within minutes and billed to you until you rotate it. The standard pattern: store real keys in a password manager, copy them into a local .env file your project reads from, add .env to .gitignore so it never gets committed, and ship a .env.example with blank values so collaborators know which keys to fill in. Set up .gitignore before you put a credential in a file — the mistake is almost always committing the file before realizing you should have excluded it.\n\n\nAPI keys, billing, and spending caps\nEvery paid generative tool authenticates you with an API key, and every one of those keys is attached to a billing account. The two things that will bite a beginner: rate limits (you hit a ceiling and requests start failing) and uncapped spend (a runaway script, or a leaked key, burns through your card). Treat an API key like a credit card — one per project so blast radius stays contained, a hard monthly spending limit set at the vendor dashboard before you write a line of code, and email alerts at 50% and 90% of that limit. A leaked uncapped key has cost beginners thousands of dollars in a day; a capped one caps the damage.\n\n\nRepos and .gitignore\nA repository (“repo”) is the folder git tracks. A public repo is visible to everyone on the internet, including bots that scan GitHub for leaked secrets — so “what goes in the repo” is a load-bearing decision. .gitignore is the file that tells git not to track certain files: credentials (.env), build artifacts (node_modules/, _site/), generated media, large binaries, and anything personal or secret. Every new project starts with a .gitignore tailored to its language or framework (most hosts offer a starter file), and every commit should be preceded by a git status to confirm you’re about to push what you think you’re pushing.\n\n\nSandboxing\nSandboxing means running the agent in an environment where it can’t hurt you — a container, a virtual machine, a project folder it can’t escape. This matters because agents execute commands, and an agent that’s been tricked, confused, or compromised can do real damage to your machine. The practical move: run agents against a project directory with a clear boundary, never give one full access to your home folder or system directories, use permission prompts for anything that touches your filesystem, and review each command before approving when the tool supports it. Trust the agent to the exact degree you’d trust a well-meaning intern — capable, but supervised.",
-    "crumbs": [
-      "Present",
-      "Vibe-coding for Filmmakers",
-      "Setup and Safety"
+      "Vibe-coding",
+      "Platforms"
     ]
   },
   {
@@ -1098,7 +1110,7 @@
     "href": "decks/site-deck.html#terminal-literacy",
     "title": "Generative Production",
     "section": "Terminal literacy",
-    "text": "Terminal literacy\nThe shell verbs an agent drops you into constantly.\n\ncd · ls · cat · git\nSpot dangerous commands: rm -rf, sudo, history rewrites.\nRead every command before approving.\n\n\nSource: vibe-coding/foundations/index.md#terminal-literacy\nNo icons, no mouse — just text commands. Agents use the terminal because it’s the fastest way to manipulate files and run commands.\nYou don’t need fluency. You need enough comfort to recognize a dangerous command when the agent proposes one — anything with rm -rf, anything with sudo, anything that rewrites history, anything you didn’t ask for."
+    "text": "Terminal literacy\nAgents live in the terminal — know a few basic commands.\n\ncd · ls · cat · git\nRead every command before approving.\n\n\n$ cd ~/my-project\n$ ls\nREADME.md   src/   package.json\n\n$ cat README.md\n# My Project\n\n\nSource: vibe-coding/foundations/index.md#terminal-literacy\nNo icons, no mouse — just text commands. Agents use the terminal because it’s the fastest way to manipulate files and run commands.\nYou don’t need fluency. You need enough comfort to recognize a dangerous command when the agent proposes one — anything with sudo, anything that rewrites history, anything you didn’t ask for."
   },
   {
     "objectID": "decks/site-deck.html#git-literacy",
@@ -1106,6 +1118,34 @@
     "title": "Generative Production",
     "section": "Git literacy",
     "text": "Git literacy\nThe undo button for AI-generated code.\n\nRemembers every version you commit.\nCommit small, commit often.\nShort message describing why.\nReview before pushing.\n\n\nSource: vibe-coding/foundations/index.md#git-literacy\nFor filmmakers: like keeping every take. You can always return to an earlier version, compare two versions, or branch a new experiment without losing the main line.\nGit matters especially with AI-generated code: the agent will sometimes produce changes you don’t want, and revert only works if you’ve been committing along the way."
+  },
+  {
+    "objectID": "decks/site-deck.html#git-literacy-1",
+    "href": "decks/site-deck.html#git-literacy-1",
+    "title": "Generative Production",
+    "section": "Git literacy",
+    "text": "Git literacy\nThe everyday loop.\n\n$ git status\nmodified:  src/auth.js\n\n$ git diff src/auth.js\n\n$ git add src/auth.js\n$ git commit -m \"fix: handle expired tokens\"\n$ git push\n\n\nSource: vibe-coding/foundations/index.md#git-literacy\nWalk through the everyday loop:\n\ngit status — what’s changed.\ngit diff — review the exact lines before committing.\ngit add — stage the change.\ngit commit -m \"...\" — save it with a short message about the why.\ngit push — publish to the remote.\n\nThe key habit: diff before commit, commit before push."
+  },
+  {
+    "objectID": "decks/site-deck.html#platforms",
+    "href": "decks/site-deck.html#platforms",
+    "title": "Generative Production",
+    "section": "Platforms",
+    "text": "Platforms\nWhere you actually write code with a model.\n\nSource: vibe-coding/platforms/index.md\nSubsection divider. A sibling of Foundations — once you’ve got the mental models, the next question is where you vibe-code. The options span a spectrum from fully-hosted browser tools to command-line agents on your own machine."
+  },
+  {
+    "objectID": "decks/site-deck.html#platforms-1",
+    "href": "decks/site-deck.html#platforms-1",
+    "title": "Generative Production",
+    "section": "Platforms",
+    "text": "Platforms\nA spectrum — hosted to local.\n\nIn-browser — Lovable · Bolt · v0 · Replit.\nNative desktop — Claude (Anthropic) · ChatGPT (OpenAI).\nAI-integrated IDEs — Cursor · Windsurf · VS Code + Copilot · JetBrains AI.\nCommand-line agents — Claude Code · Codex CLI · Aider.\n\nMore hosted = less setup. More local = more control.\n\nSource: vibe-coding/platforms/index.md\nSpectrum goes from fully hosted (your browser runs the whole thing) to fully local (a CLI agent working on your machine).\n\nIn-browser environments — fastest to start, least customizable. Lovable, Bolt, v0, Replit. Right place to prototype.\nNative desktop apps from model makers — chat-first tools. Claude Desktop, ChatGPT Desktop. Good for explanations and snippets, not for building a project over weeks.\nAI-integrated IDEs — the day-to-day tool for serious work. Cursor and Windsurf (VS Code forks), VS Code + Copilot, JetBrains AI.\nCommand-line agents — most powerful, least beginner-friendly. Claude Code, Codex CLI, Aider. Right tool for multi-step work across many files.\n\nFor a first project, start further up the hosted end. Most early frustration is setup, not code."
+  },
+  {
+    "objectID": "decks/site-deck.html#typical-pricing",
+    "href": "decks/site-deck.html#typical-pricing",
+    "title": "Generative Production",
+    "section": "Typical pricing",
+    "text": "Typical pricing\nMost platforms cluster in a few tiers.\n\nFree — limited usage, slower models, rate caps.\n~$20/month — Claude Pro · ChatGPT Plus · Cursor Pro · GitHub Copilot · Replit Core.\nUsage-based API — pay per token (Anthropic, OpenAI, Google).\nTeam / enterprise — typically $50–100+/seat with admin features.\n\nConfirm which tier your real workflow needs before committing.\n\nSource: vibe-coding/platforms/index.md#typical-pricing\n\nFree — enough to try the tool, rarely enough to rely on.\n~$20/month — the default for serious single-user work. Most beginners land here and stay.\nUsage-based API — powers custom scripts and apps. Cheap for occasional calls, can get expensive fast when a coding agent is burning tokens.\nTeam / enterprise — for orgs needing admin controls, SSO, etc.\n\nCommon trap: “the monthly tier is enough for most people.” True until you’re doing real agent work, at which point usage-based API costs can dwarf the subscription. Budget intentionally."
   },
   {
     "objectID": "decks/site-deck.html#setup-and-safety",
@@ -1192,6 +1232,13 @@
     "text": "Agents vs chat vs autocomplete\nThree shapes, three right jobs.\n\nAutocomplete — routine code; saves keystrokes.\nChat — explanations, isolated functions.\nAgent — multi-file changes, refactors, debugging.\n\nMixing them is normal. Using one shape for every job is wrong.\n\nSource: vibe-coding/working-with-models/index.md#agents-vs-chat-vs-autocomplete\nTypical day: autocomplete while typing, pop out to chat to understand an error, dispatch an agent to implement the change.\nBeginners tend to pick one shape and use it for everything. The cost is speed and quality — each task has a shape it fits best."
   },
   {
+    "objectID": "decks/site-deck.html#prompting-tips",
+    "href": "decks/site-deck.html#prompting-tips",
+    "title": "Generative Production",
+    "section": "Prompting tips",
+    "text": "Prompting tips\nFrame questions to invite critique, not agreement.\n\nModels tuned to be helpful can be sycophantic.\nQuestions with a preferred answer tend to get confirmed, not examined.\n\n\n\nBad: “Is this a good idea?”\nBetter: “What are the pros and cons of this approach?”\n\n\n\nSource: vibe-coding/working-with-models/index.md#prompting-tips\nModels tuned to be helpful often agree with the framing in your question rather than push back on it. “Is this a good idea?” invites a pat on the back; the model reads your framing and tends to confirm it. “What are the pros and cons of this approach?” forces a more balanced analysis.\nThe same move applies elsewhere:\n\n“Is this code clean?” → “What would a senior engineer criticize about this code?”\n“Should I use Rails here?” → “What are the trade-offs between Rails and a lighter framework for this use case?”\n\nFrame questions to invite critique, not agreement."
+  },
+  {
     "objectID": "decks/site-deck.html#building-software",
     "href": "decks/site-deck.html#building-software",
     "title": "Generative Production",
@@ -1206,11 +1253,32 @@
     "text": "Reading API docs\nAuth · endpoints · a working example.\n\nREST + HTTP is the common vocabulary.\nGET, POST, PUT, DELETE to a URL with JSON.\nSDKs wrap the raw calls; raw HTTP works when no SDK exists.\n\nRead the docs before asking the model — the agent invents plausible calls that don’t exist.\n\nSource: vibe-coding/building-software/index.md#reading-api-docs\nSkim for the three things that matter: authentication method, endpoint shape, working example. Confirm you read the first two correctly by running the third."
   },
   {
+    "objectID": "decks/site-deck.html#reading-api-docs-1",
+    "href": "decks/site-deck.html#reading-api-docs-1",
+    "title": "Generative Production",
+    "section": "Reading API docs",
+    "text": "Reading API docs\nA curl call shows all three at once.\n\n$ curl https://queue.fal.run/fal-ai/nano-banana-2 \\\n    -H \"Authorization: Key $FAL_KEY\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n      \"prompt\": \"a cinematic golden-hour portrait\",\n      \"aspect_ratio\": \"16:9\"\n    }'\n\n{\n  \"request_id\": \"019db209-11c5-7762-9c58-14e378bdbe44\",\n  \"status\": \"IN_QUEUE\"\n}\n\n\nSource: vibe-coding/building-software/index.md#reading-api-docs\nWalk through the three parts this single call demonstrates:\n\nAuthentication — the Authorization header carries the key. It comes from $FAL_KEY, an environment variable, not a literal string — the key stays out of the code and out of git.\nEndpoint — the URL says what service and which model. Every API’s docs are organized around this.\nBody — JSON with the inputs the model wants. Different models accept different shapes; the docs spell them out.\n\nThe response is also JSON. This one returns a request_id because the job runs async in a queue; other APIs return the result directly.\nOnce a curl call works, translating to an SDK (Python, JS, etc.) is mechanical. But the curl version is the ground truth."
+  },
+  {
     "objectID": "decks/site-deck.html#frameworks-vs-rolling-your-own",
     "href": "decks/site-deck.html#frameworks-vs-rolling-your-own",
     "title": "Generative Production",
     "section": "Frameworks vs rolling-your-own",
     "text": "Frameworks vs rolling-your-own\nPre-built scaffolding vs inventing it yourself.\n\nFrameworks — battle-tested patterns, shared vocabulary, community.\nRolling your own — freedom, at the cost of solved problems you resolve.\nBeginner default: the framework almost always wins.\n\n\nSource: vibe-coding/building-software/index.md#frameworks-vs-rolling-your-own\nAn agent will gladly help you roll your own — that’s the trap. Spend your learning on your problem, not on everyone else’s problems the framework already solved.\nConforming to framework conventions is a feature, not a bug."
+  },
+  {
+    "objectID": "decks/site-deck.html#frameworks-vs-rolling-your-own-1",
+    "href": "decks/site-deck.html#frameworks-vs-rolling-your-own-1",
+    "title": "Generative Production",
+    "section": "Frameworks vs rolling-your-own",
+    "text": "Frameworks vs rolling-your-own\nEach one has thousands of projects behind it — the agent is fluent in all of them.\n\n\n\nRails · Ruby\n\n\nDjango · Python\n\n\nNext.js · JavaScript\n\n\n\n\nLaravel · PHP\n\n\nPhoenix · Elixir\n\n\nSvelteKit · JavaScript\n\n\nSource: vibe-coding/building-software/index.md#frameworks-vs-rolling-your-own\nA taste of the landscape — not a ranked list. Each of these is a battle-tested framework with a strong community and deep training-data coverage.\n\nRails (Ruby) — the archetype of “convention over configuration.”\nDjango (Python) — same philosophy, different language; batteries included.\nNext.js (JavaScript/TypeScript) — modern React on the server.\nLaravel (PHP) — Rails-like ergonomics for the PHP ecosystem.\nPhoenix (Elixir) — functional, distributed, excellent for real-time.\nSvelteKit (JavaScript/TypeScript) — lighter, compiler-first alternative to Next.js.\n\nPick one that fits the project and the language you want to learn; the agent will be competent in all of them."
+  },
+  {
+    "objectID": "decks/site-deck.html#native-development",
+    "href": "decks/site-deck.html#native-development",
+    "title": "Generative Production",
+    "section": "Native development",
+    "text": "Native development\niOS, Android, desktop — more powerful, more costly.\n\nPrice of admission to become a developer: Apple $99/year, Google Play $25, code-signing certs.\nApprovals now become an issue — platform review can take days to weeks, and rejections happen.\nNot your first project — ship on the web first.\n\n\nSource: vibe-coding/building-software/index.md#native-development\nNative apps run on a specific platform (iOS, Android, macOS, Windows) rather than in a browser. More powerful — hardware access, platform APIs, offline use — but costly in ways beginners don’t see.\n\nCost to become a developer. Apple Developer Program: $99/year. Google Play: $25 one-time. Windows and macOS code-signing certificates add recurring fees. These are invisible from the outside but block any app from reaching users.\nApprovals as a gatekeeper. Every update to an iOS or Android app goes through platform review. Days to weeks. Rejections for reasons you didn’t anticipate. Your web project has none of this.\nPer-platform toolchains. Each platform is its own ecosystem — Xcode for iOS, Android Studio for Android, different languages, different patterns. iOS development also requires a Mac.\n\nFor a first project, the web wins: free to publish, instant to update, no gatekeepers. Come back to native after you’ve shipped something."
   },
   {
     "objectID": "decks/site-deck.html#boring-tech-wins",
