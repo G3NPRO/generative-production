@@ -25,3 +25,5 @@ Thumbs.db
 
 # ignore planning materials
 /docs/superpowers
+/.quarto/
+**/*.quarto_ipynb

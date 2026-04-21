@@ -1,0 +1,59 @@
+<script>
+  (function () {
+    // Map the page you're on to a slide anchor inside the master site-deck.
+    // The anchor is the slide ID reveal.js assigns from the heading text.
+    // Keep this list in sync with decks/site-deck.qmd as new pages are slide-ified.
+    var PATH_TO_SLIDE = [
+      // Vibe-coding section
+      { match: /^\/vibe-coding\/working-with-models(\/|$)/,      slide: 'working-with-models' },
+      { match: /^\/vibe-coding\/building-software(\/|$)/,        slide: 'building-software' },
+      { match: /^\/vibe-coding\/common-traps(\/|$)/,             slide: 'common-traps' },
+      { match: /^\/vibe-coding\/foundations(\/|$)/,              slide: 'foundations-vibe-coding' },
+      { match: /^\/vibe-coding\/setup-and-safety\/managing-credentials/, slide: 'managing-credentials' },
+      { match: /^\/vibe-coding\/setup-and-safety(\/|$)/,         slide: 'setup-and-safety' },
+      { match: /^\/vibe-coding(\/|$)/,                           slide: 'vibe-coding-for-filmmakers' },
+      // Practical section (section title only, for now)
+      { match: /^\/practical(\/|$)/,                             slide: 'practical' }
+    ];
+
+    function findPresentLink() {
+      // Quarto renders navbar items as anchors with their visible text.
+      var candidates = document.querySelectorAll('.navbar a, .quarto-navigation-tool a, header a');
+      for (var i = 0; i < candidates.length; i++) {
+        var a = candidates[i];
+        if (/\bpresent\b/i.test((a.textContent || '').trim()) &&
+            /decks\/?/.test(a.getAttribute('href') || '')) {
+          return a;
+        }
+      }
+      return null;
+    }
+
+    function resolveDeckUrl(currentPath) {
+      for (var i = 0; i < PATH_TO_SLIDE.length; i++) {
+        if (PATH_TO_SLIDE[i].match.test(currentPath)) {
+          return 'site-deck.html#/' + PATH_TO_SLIDE[i].slide;
+        }
+      }
+      return 'site-deck.html';
+    }
+
+    function rewrite() {
+      var link = findPresentLink();
+      if (!link) return;
+      // Don't rewrite if we're already inside /decks/ — let it behave as normal.
+      if (/^\/decks(\/|$)/.test(location.pathname)) return;
+      var target = resolveDeckUrl(location.pathname);
+      var current = link.getAttribute('href') || '';
+      // Preserve Quarto's relative base so it resolves correctly from nested paths.
+      var base = current.replace(/(decks\/).*$/, '$1');
+      link.setAttribute('href', base + target.replace(/^site-deck/, 'site-deck'));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', rewrite);
+    } else {
+      rewrite();
+    }
+  })();
+</script>

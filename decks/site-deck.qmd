@@ -1,0 +1,208 @@
+---
+title: "Generative Production"
+subtitle: "The study guide, presented"
+---
+
+<!--
+Authoring convention for this deck:
+
+  Slide body     = the audience view — condensed, visual, memorable.
+  ::: {.notes}   = presenter notes — the full detail, organized as talking points.
+                   Always start with `**Source:** <relative path to the wiki page>`
+                   so the speaker can jump to the long-form version and the editor
+                   of either file knows where the other one lives.
+
+  Edit wiki page substantively? Skim the matching slide and its notes — sync them.
+  Edit a slide? Follow its Source: link back to the wiki and confirm.
+-->
+
+# Vibe-coding for Filmmakers
+
+[Code is generative production, too.]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/index.md`
+
+The umbrella of the section. One question organizes everything here:
+*how do we keep beginner coders from making big mistakes?*
+
+Writing code with AI coding tools is the same move as prompting an image
+model — prompt, get candidates, select, iterate, track — with different
+outputs. This section covers the code-specific skin over that shared skill.
+:::
+
+## Working with Models
+
+:::: {.columns}
+::: {.column width="55%"}
+### Prompting, context, the right model for the job. {.fragment}
+:::
+::: {.column width="45%"}
+![](assets/model-constellation.svg){fig-alt="A central prompt node connected to four candidate outputs by dashed lines." width="100%"}
+:::
+::::
+
+::: {.notes}
+**Source:** `vibe-coding/working-with-models/index.md`
+
+Topics to cover:
+
+- Coding models compared — Opus / Sonnet / Haiku, GPT-5, Gemini, local models.
+  Strengths, context windows, cost.
+- Prompting for code — refines the universal prompting principles for the
+  coding case: constraints, examples, iterative refinement.
+- Context management — why "start a new chat" matters; `CLAUDE.md` /
+  `AGENTS.md` / rules files.
+- Skills — what they are, when to build one.
+- MCP — what it is, when it's worth wiring up.
+- Agents vs chat vs autocomplete — different affordances.
+
+Key takeaway: the chat window is an *environment*, not a prompt box.
+Curate it.
+:::
+
+## Building Software
+
+### Boring tech wins. {.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/building-software/index.md`
+
+Sensible defaults for someone assembling their first non-trivial project.
+
+- Reading API docs — REST basics, SDKs vs raw HTTP.
+- Frameworks vs rolling-your-own — when to trust a boring framework
+  vs let the agent improvise.
+- Boring tech wins — Rails, Next.js, and the other old standbys beat
+  bespoke scaffolding.
+- Dependencies and package managers — why random packages are risky.
+- Reading error messages — understand before pasting to the model.
+
+Key takeaway: the framework you didn't invent is almost always better than
+the framework the agent improvised in the last ten minutes.
+:::
+
+## Common Traps
+
+### *Commit a secret. Force-push. Trust the demo.* {.fragment}
+
+A named gallery of specific beginner mistakes, with the fix for each.
+
+::: {.notes}
+**Source:** `vibe-coding/common-traps/index.md`
+
+The "keep beginners safe" promise made concrete. Each trap is a short
+cautionary tale ending with the fix.
+
+Planned pages:
+
+- Committing secrets to git.
+- Blindly running agent-suggested shell commands.
+- Force-push disasters and losing work.
+- Letting the agent refactor without review.
+- Accepting the first thing that compiles.
+- Scope-creep prompts.
+- Building on sand — unreliable deps, beta APIs, deprecated models.
+- Runaway API bills.
+- Deploying to production without testing.
+- Trusting a local-running model demo when the finished product needs
+  reliability.
+- "Works on my machine" illusions.
+
+Cross-linked to `practical/` where topics overlap.
+:::
+
+## Foundations (Vibe-coding)
+
+### Agents · Code · Terminal · Git {.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/foundations/index.md`
+
+Mental models for someone who's coded little or not at all.
+The on-ramp before the setup and safety material.
+
+- What is an agent? — IDE vs chat vs autocomplete; different affordances
+  for different jobs.
+- Where does code actually run? — local, cloud, hybrid, and why it matters
+  for cost and trust.
+- Terminal literacy — `cd`, `ls`, what a shell is, why the agent drops you
+  into one.
+- Git literacy — why version control matters *especially* for AI-generated
+  code.
+:::
+
+## Setup and Safety
+
+### The things that hurt you if you skip them. {.fragment}
+
+Credentials. Billing. What never goes into git.
+
+::: {.notes}
+**Source:** `vibe-coding/setup-and-safety/index.md`
+
+Planned topics:
+
+- Managing credentials — `.env` files, never committing secrets,
+  password-manager patterns.
+- API keys — what they are, how billing works, rate limits, spending caps.
+- Repos and `.gitignore` — what *never* goes into a public repo.
+- Sandboxing — when to trust an agent to run commands.
+
+Key takeaway: set up `.gitignore` *before* you put a credential in a file.
+:::
+
+## Managing Credentials
+
+### *Leak one and you pay for someone else's bill.* {.fragment}
+
+[**Password manager → .env → .gitignore.**]{.fragment}
+
+::: {.notes}
+**Source:** `vibe-coding/setup-and-safety/managing-credentials.md`
+
+Credentials are the secrets your code uses to access paid services.
+Key leaks are the single most common way beginner coders get burned —
+a public GitHub repo with a key in it gets scraped within minutes.
+
+Key ideas to walk through:
+
+- **Never commit a credential.** Not in code, not in config, not in a
+  comment, not "just temporarily." Git remembers.
+- **`.env` + environment variables.** `KEY=value` lines. Code reads from
+  the environment. `.env` is gitignored; ship a `.env.example` with blank
+  values.
+- **Password manager is source of truth.** 1Password, Bitwarden, Apple
+  Passwords. `.env` is a convenience cache.
+- **Rotate on leak — don't just delete the commit.** Git history is
+  distributed; you don't know who cloned the repo in the window the key
+  was public.
+- **Cap spending at the vendor.** Most AI vendors let you set a hard
+  monthly limit. Set one. Leaked uncapped keys have cost beginners
+  thousands of dollars in a day.
+
+Common mistakes to name:
+
+- Committing a `.env` file.
+- Pasting a real key into a chat or example.
+- Reusing one key for everything.
+- Leaving a leaked key live because "I deleted the commit."
+
+Exercise: before writing a line of API-using code, do the full setup —
+`.env`, `.gitignore`, `.env.example`, `git status` to confirm, store the
+real key in the password manager.
+:::
+
+# Practical
+
+[The non-creative stuff that sinks projects.]{.fragment}
+
+::: {.notes}
+**Source:** `practical/index.md`
+
+Licenses, cost, reproducibility, likeness, provenance, delivery.
+Applies across the whole site, not just one section.
+
+This chapter's slides are not authored yet — pull audience attention back
+to the wiki for these topics, or add slide pages as the prose solidifies.
+:::

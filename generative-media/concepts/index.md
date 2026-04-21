@@ -1,6 +1,6 @@
 # Concepts
 
-The conceptual spine of the media pillar. These pages describe *what the tools are* and *how they work*, independent of any specific product.
+The conceptual spine of this section. These pages describe *what the tools are* and *how they work*, independent of any specific product.
 
 ## Contents
 

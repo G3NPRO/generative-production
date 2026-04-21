@@ -6,7 +6,7 @@
 
 ## Key ideas
 
-- **Both pillars of this repo are Generative Production.** Generating an image with a diffusion model and generating a function with a coding model are the same move with different outputs. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.
+- **Media generation and code generation are the same move.** Generating an image with a diffusion model and generating a function with a coding model differ in output, not in method. The filmmaker prompts, the model produces candidates, the filmmaker selects and iterates.
 - **The meta-skills are universal.** Specificity in prompts, disciplined iteration, keeping track of what you made, and knowing what you're allowed to do with the result — these apply to every generative tool.
 - **Outputs differ, workflows rhyme.** A video model and a coding agent look nothing alike on the surface. But the rhythm of *try, read, refine, commit* is the same.
 - **The collapsing middle.** Traditional film-production stages were defined by who did what and when. Generative tools dissolve these boundaries: previs and final pixel become the same generation; the person writing the script is the person directing the shot. Organizing your learning around the tools, not the stages, ages better.

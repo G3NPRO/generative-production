@@ -10,21 +10,10 @@ website:
   site-url: https://generative-production.com
   repo-url: https://github.com/G3NPRO/generative-production
   navbar:
-    left:
-      - text: Foundations
-        href: foundations/
-      - text: Generative Media
-        href: generative-media/
-      - text: Vibe-coding
-        href: vibe-coding/
-      - text: Practical
-        href: practical/
-      - text: Glossary
-        href: glossary.md
     right:
       - text: Present
         icon: easel
-        href: decks/
+        href: decks/site-deck.html
       - text: Download
         icon: download
         menu:
@@ -35,8 +24,16 @@ website:
           - text: Single-page HTML
             href: study-guide.html
   sidebar:
-    style: floating
-    collapse-level: 2
+    style: docked
+    collapse-level: 1
+    contents:
+      - auto: foundations
+      - auto: generative-media
+      - auto: vibe-coding
+      - text: Practical
+        href: practical/index.md
+      - text: Glossary
+        href: glossary.md
 
 format:
   html:
@@ -45,6 +42,7 @@ format:
     toc-depth: 2
     toc-location: left
     code-copy: true
+    include-after-body: _includes/smart-present.html
 
 # Duration profiles (`5min`, `15min`, `30min`, `60min`) for decks are activated
 # per render via `quarto render --profile Xmin`; no main-config declaration is
@@ -54,3 +52,4 @@ format:
 # QUARTO_PROFILE to decide what to elide.
 filters:
   - filters/slide-duration.lua
+  - filters/chapter-bg.lua

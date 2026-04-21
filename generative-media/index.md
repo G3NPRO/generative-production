@@ -1,8 +1,8 @@
 # Generative Media
 
-One of the two pillars of **Generative Production**. This pillar covers producing images, video, audio, and spatial work with generative AI tools.
+Producing images, video, audio, and spatial work with generative AI tools.
 
-If you're new here, start with [`foundations/`](../foundations/) — the shared meta-skills that make both pillars one discipline. Then come back here for media-specific concepts and craft.
+If you're new here, start with [`foundations/`](../foundations/) — the shared meta-skills that run through the whole site. Then come back here for media-specific concepts and craft.
 
 ## Contents
 

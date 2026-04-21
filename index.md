@@ -1,21 +1,21 @@
 # Generative Production
 
-A study guide and curriculum-ready resource for filmmakers learning to work with generative AI tools. Organized around the claim that producing moving images with diffusion models and writing the code that glues a project together are *two tracks of the same discipline*.
+A study guide and curriculum-ready resource for filmmakers learning to work with generative AI tools. Organized around the claim that producing moving images with diffusion models and writing the code that glues a project together are *the same underlying discipline*.
 
 This site assumes you know the basics of filmmaking but are new to generative tools — and often, to coding.
 
 ## Start here
 
-- [**Foundations**](foundations/) — the shared meta-skills that unify the two pillars. If you read one thing, read this.
+- [**Foundations**](foundations/) — the shared meta-skills that run through every section. If you read one thing, read this.
 
-## The two pillars
+## Main sections
 
 - [**Generative Media**](generative-media/) — image, video, audio, and spatial production with generative tools. Covers model basics, modalities, the tools-and-vendors landscape, and media-specific craft.
 - [**Vibe-coding for Filmmakers**](vibe-coding/) — writing code with AI coding tools, treated as a first-class form of generative production. Organized around keeping beginner coders safe from common mistakes.
 
-## Shared sections
+## Reference
 
-- [**Practical**](practical/) — licenses, cost, reproducibility, likeness, provenance, delivery. Applies to both pillars.
+- [**Practical**](practical/) — licenses, cost, reproducibility, likeness, provenance, delivery. Applies across the whole site.
 - [**Glossary**](glossary.md) — flat A–Z vocabulary.
 - [**Learning sources**](learning-sources/) — curated places to keep learning.
 - [**Lifecycle crosswalk**](generative-media/lifecycle/) — a supplemental view mapping media topics to traditional production stages. Supplemental because generative tools are collapsing these boundaries.

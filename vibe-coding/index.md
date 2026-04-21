@@ -1,8 +1,8 @@
 # Vibe-coding for Filmmakers
 
-The second pillar of **Generative Production** — writing code with AI coding tools. Treated as a peer to media generation because both pillars share the same underlying skill: prompting, iterating, selecting, tracking, and paying for generations.
+Writing code with AI coding tools, treated as a first-class form of generative production. Coding and media generation share the same underlying skill: prompting, iterating, selecting, tracking, and paying for generations.
 
-This pillar is organized around one question: *how do we keep beginner coders from making big mistakes?*
+This section is organized around one question: *how do we keep beginner coders from making big mistakes?*
 
 ## Contents
 

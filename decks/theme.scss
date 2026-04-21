@@ -1,0 +1,298 @@
+/*-- scss:defaults --*/
+
+// Modern, restrained deck theme for Generative Production.
+// Layered on top of reveal.js's `simple` base.
+
+$font-family-sans-serif:
+  "Inter",
+  "SF Pro Text",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  system-ui,
+  sans-serif !default;
+
+$font-family-monospace:
+  "JetBrains Mono",
+  "SF Mono",
+  "Menlo",
+  ui-monospace,
+  monospace !default;
+
+$presentation-font-size-root: 36px;
+$presentation-line-height: 1.45;
+
+$body-bg: #0f0f14;
+$body-color: #e6e4ef;
+
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: #f5f3ff;
+$presentation-heading-font-weight: 700;
+$presentation-heading-line-height: 1.15;
+$presentation-heading-letter-spacing: -0.02em;
+$presentation-heading-text-transform: none;
+
+$link-color: #8b7dff;
+$link-color-hover: #b5aaff;
+$selection-bg: rgba(139, 125, 255, 0.28);
+$selection-color: $body-color;
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-feature-settings: "ss01", "cv11", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section,
+.reveal .slides section > section {
+  padding: 0 2rem;
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  margin-bottom: 0.6em;
+}
+
+.reveal h2 {
+  font-size: 1.65em;
+  margin-bottom: 0.7em;
+}
+
+// Condensed-slide tagline: an H3 directly under an H2 is the slide's
+// "thesis line" — readable, restrained, not a second title.
+.reveal section.slide.level2 h3 {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #c9c5d8;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  max-width: 42rem;
+  margin: 1.2em 0 0.7em;
+}
+
+.reveal section h3 em {
+  color: $link-color;
+  font-style: normal;
+  font-weight: 500;
+}
+
+// Section-title slides come from H1 markdown headings. Quarto tags them
+// as `.slide.level1` — scope the oversize heading here so we don't hit
+// the YAML title slide (which uses `.quarto-title-block`).
+.reveal section.slide.level1 h1 {
+  font-size: 2.6em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.reveal section.slide.level1 {
+  padding-top: 10vh;
+}
+
+.reveal section.slide.level1 p {
+  font-size: 1.15em;
+  color: #c9c5d8;
+  margin-top: 1em;
+  max-width: 44rem;
+}
+
+.reveal p,
+.reveal li {
+  color: $body-color;
+}
+
+.reveal ul,
+.reveal ol {
+  margin-left: 1.1em;
+}
+
+.reveal ul li,
+.reveal ol li {
+  margin-block: 0.45em;
+}
+
+.reveal ul li::marker {
+  color: rgba($link-color, 0.8);
+}
+
+.reveal a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba($link-color, 0.25);
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+.reveal a:hover {
+  border-bottom-color: $link-color;
+  color: $link-color-hover;
+}
+
+.reveal strong {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.reveal em {
+  font-style: italic;
+  color: #b9b6c4;
+}
+
+.reveal code {
+  font-family: $font-family-monospace;
+  font-size: 0.88em;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d5cfff;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  word-break: normal;
+}
+
+.reveal pre {
+  background: #1a1a22;
+  border-radius: 10px;
+  padding: 1em 1.2em;
+  font-size: 0.72em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+              0 10px 30px -12px rgba(0, 0, 0, 0.5);
+}
+
+.reveal pre code {
+  background: transparent;
+  border: 0;
+  color: #e8e6ff;
+  padding: 0;
+}
+
+.reveal blockquote {
+  border-left: 3px solid $link-color;
+  background: rgba(139, 125, 255, 0.08);
+  padding: 0.6em 1em;
+  border-radius: 0 6px 6px 0;
+  font-style: normal;
+  color: #c9c5d8;
+}
+
+.reveal table {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.reveal table th {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.reveal table td,
+.reveal table th {
+  padding: 0.45em 0.9em;
+}
+
+.reveal table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.reveal .slide-number {
+  font-family: $font-family-monospace;
+  font-size: 0.6em;
+  color: rgba(230, 228, 239, 0.5);
+  background: transparent;
+  letter-spacing: 0.04em;
+  padding: 0.4em 0.7em;
+}
+
+.reveal .controls {
+  color: rgba(230, 228, 239, 0.35);
+}
+
+.reveal .progress {
+  color: $link-color;
+  height: 3px;
+}
+
+.reveal section.title-slide,
+.reveal section[data-title-slide] {
+  text-align: left;
+}
+
+.reveal section.title-slide h1,
+.reveal .title-slide h1.title {
+  font-size: 2.6em;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4em;
+}
+
+.reveal section.title-slide .subtitle,
+.reveal .title-slide .subtitle {
+  color: $link-color;
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.reveal hr {
+  border: 0;
+  border-top: 1px solid rgba(15, 15, 18, 0.1);
+  margin: 1.2em 0;
+}
+
+.reveal .menu-wrapper .menu-button {
+  color: rgba(230, 228, 239, 0.55) !important;
+}
+
+// Images behave as restrained figures: no harsh white backgrounds, gentle
+// rounded corners, centered in their column/frame.
+.reveal .slides img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+  border-radius: 8px;
+  background: transparent;
+}
+
+// When an image is the only visual element in a column, vertically center it.
+.reveal .slides .columns > .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-menu-toolbar [data-role="deck-exit"] {
+  cursor: pointer;
+  color: $link-color;
+}
+
+.slide-menu-toolbar [data-role="deck-exit"]:hover,
+.slide-menu-toolbar [data-role="deck-exit"]:focus-visible {
+  color: $link-color-hover;
+  background: rgba($link-color, 0.08);
+  outline: none;
+}
+
+.slide-menu-toolbar [data-role="deck-exit"] .deck-exit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1;
+}
+
+.slide-menu-toolbar [data-role="deck-exit"] .deck-exit-icon svg {
+  width: 1em;
+  height: 1em;
+}

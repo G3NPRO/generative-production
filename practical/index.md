@@ -1,6 +1,6 @@
 # Practical
 
-The non-creative stuff that sinks projects. This folder sits at the top level because it applies to both pillars — licenses, cost, and reproducibility matter as much for code generation as for media generation.
+The non-creative stuff that sinks projects. This folder sits at the top level because it applies across the whole site — licenses, cost, and reproducibility matter as much for code generation as for media generation.
 
 ## Planned topics
 

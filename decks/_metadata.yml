@@ -1,0 +1,13 @@
+format:
+  revealjs:
+    theme: [simple, theme.scss]
+    slide-number: c/t
+    progress: true
+    incremental: false
+    hash-type: title
+    transition: fade
+    background-transition: fade
+    code-line-numbers: false
+    preview-links: auto
+    center: false
+    include-after-body: _includes/exit-deck.html
